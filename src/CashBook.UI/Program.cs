@@ -1,4 +1,6 @@
-﻿using CashBook.UI.Account;
+﻿using CashBook.DataAccess.Account;
+using CashBook.Services.Account;
+using CashBook.UI.Account;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using System;
@@ -15,7 +17,7 @@ namespace CashBook.UI
         /// </summary>
         /// 
         public static Container container;
-
+        
         [STAThread]
         static void Main()
         {
@@ -32,6 +34,8 @@ namespace CashBook.UI
             // Create the container as usual.
             var container = new Container();
 
+            container.Register<IAccountService,AccountService>();
+            container.Register<IAccountRepository, AccountRepository>();
             
             AutoRegisterWindowsForms(container);
 

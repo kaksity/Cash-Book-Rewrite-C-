@@ -197,6 +197,7 @@
             this.btnFind.Size = new System.Drawing.Size(85, 45);
             this.btnFind.TabIndex = 20;
             this.btnFind.UseVisualStyleBackColor = false;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnSave
             // 
@@ -212,6 +213,7 @@
             this.btnSave.Size = new System.Drawing.Size(85, 45);
             this.btnSave.TabIndex = 21;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 

@@ -13,8 +13,8 @@ namespace CashBook.Models.Account
         public string BankName { get; set; }
         public DateTime OpeningDate { get; set; }
         public string Description { get; set; }
-        public string OpeningBalance { get; set; }
-        public string CurrentBalance { get; set; }
+        public decimal OpeningBalance { get; set; }
+        public decimal CurrentBalance { get; set; }
         public int IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
