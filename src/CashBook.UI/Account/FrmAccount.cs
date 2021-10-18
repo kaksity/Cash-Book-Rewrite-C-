@@ -159,18 +159,26 @@ namespace CashBook.UI.Account
             // Check if we are going to add a new record or edit an existing record
             if (isNewRecord == true && isEditRecord == false)
             {
-                var account = new CreateAccountDto
+                var checkAccount = _accountService.GetAccountByAccountNumber(txtAccountNumber.Text);
+                if (checkAccount == null)
                 {
-                    AccountName = txtAccountName.Text.ToUpper(),
-                    AccountNumber = txtAccountNumber.Text,
-                    BankName = txtBankName.Text.ToUpper(),
-                    OpeningDate = dtpOpeningDate.Value,
-                    Description = txtDescription.Text.ToUpper(),
-                    OpeningBalance = Utility.ParseNumber(txtOpeningBalance.Text),
-                    CurrentBalance = Utility.ParseNumber(txtOpeningBalance.Text),
-                };
-                _accountService.CreateAccount(account);
-                MessageBox.Show("Account was record was created successfully", "Cash Book");
+                    var account = new CreateAccountDto
+                    {
+                        AccountName = txtAccountName.Text.ToUpper(),
+                        AccountNumber = txtAccountNumber.Text,
+                        BankName = txtBankName.Text.ToUpper(),
+                        OpeningDate = dtpOpeningDate.Value,
+                        Description = txtDescription.Text.ToUpper(),
+                        OpeningBalance = Utility.ParseNumber(txtOpeningBalance.Text),
+                        CurrentBalance = Utility.ParseNumber(txtOpeningBalance.Text),
+                    };
+                    _accountService.CreateAccount(account);
+                    MessageBox.Show("Account was record was created successfully", "Cash Book");
+                }
+                else
+                {
+                    MessageBox.Show("Account record already exists", "Cash Book");
+                }
                 Reset();
                 return;
             }
@@ -178,7 +186,26 @@ namespace CashBook.UI.Account
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            var frmSearchAccount = Program.container.GetInstance<FrmSearchAccount>();
+            frmSearchAccount.ShowDialog();
+            if (string.IsNullOrWhiteSpace(Program.accountId) == false)
+            {
+                var account = _accountService.GetAccountByAccountId(Program.accountId);
+                if (account != null)
+                {
+                    ToForm(account);
+                }
+            }
 
+        }
+        private void ToForm(ReadAccountDto dto)
+        {
+            txtAccountName.Text = dto.AccountName;
+            txtAccountNumber.Text = dto.AccountNumber;
+            txtBankName.Text = dto.BankName;
+            txtDescription.Text = dto.Description;
+            txtOpeningBalance.Text = Convert.ToString(dto.OpeningBalance);
+            lblCurrentBalance.Text = Convert.ToString(dto.CurrentBalance);
         }
     }
 }

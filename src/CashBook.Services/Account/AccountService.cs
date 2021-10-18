@@ -27,11 +27,65 @@ namespace CashBook.Services.Account
                 Description = dto.Description,
                 OpeningBalance = dto.OpeningBalance,
                 CurrentBalance = dto.CurrentBalance,
-                IsDeleted = 0,
+                IsDeleted = false,
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now
             };
             _accountRepository.CreateAccount(model);
+        }
+
+        public ReadAccountDto GetAccountByAccountId(string accountId)
+        {
+            var results = _accountRepository.GetAccountByAccountId(accountId);
+            var account = new ReadAccountDto
+            {
+                AccountId = results.AccountId,
+                AccountName = results.AccountName,
+                AccountNumber = results.AccountNumber,
+                BankName = results.BankName,
+                OpeningDate = results.OpeningDate,
+                Description = results.Description,
+                OpeningBalance = results.OpeningBalance,
+                CurrentBalance = results.CurrentBalance,
+            };
+            return account;
+        }
+
+        public ReadAccountDto GetAccountByAccountNumber(string accountNumber)
+        {
+            var results = _accountRepository.GetAccountByAccountNumber(accountNumber);
+            var account = new ReadAccountDto
+            {
+                AccountId = results.AccountId,
+                AccountName = results.AccountName,
+                AccountNumber = results.AccountNumber,
+                BankName = results.BankName,
+                OpeningDate = results.OpeningDate,
+                Description = results.Description,
+                OpeningBalance = results.OpeningBalance,
+                CurrentBalance = results.CurrentBalance,
+            };
+            return account;
+        }
+
+        public List<ReadAccountDto> GetAllAccounts()
+        {
+            var results = _accountRepository.GetAllAccounts();
+            var accounts = new List<ReadAccountDto>();
+            foreach (var item in results)
+            {
+                accounts.Add(new ReadAccountDto {
+                AccountId = item.AccountId,
+                AccountName = item.AccountName,
+                AccountNumber = item.AccountNumber,
+                BankName = item.BankName,
+                OpeningDate = item.OpeningDate,
+                Description = item.Description,
+                OpeningBalance = item.OpeningBalance,
+                CurrentBalance = item.CurrentBalance,
+                });
+            }
+            return accounts;
         }
     }
 }

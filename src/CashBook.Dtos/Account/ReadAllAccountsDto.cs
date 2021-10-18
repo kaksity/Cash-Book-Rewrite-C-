@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CashBook.Dtos.Account
 {
-    class ReadAllAccountsDto
+    public class ReadAccountDto
     {
         public string AccountId { get; set; }
         public string AccountName { get; set; }

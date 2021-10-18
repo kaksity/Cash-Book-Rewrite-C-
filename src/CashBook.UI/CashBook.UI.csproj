@@ -63,11 +63,20 @@
     <Compile Include="Account\FrmAccount.Designer.cs">
       <DependentUpon>FrmAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FrmSearchAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FrmSearchAccount.Designer.cs">
+      <DependentUpon>FrmSearchAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Utility.cs" />
     <EmbeddedResource Include="Account\FrmAccount.resx">
       <DependentUpon>FrmAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\FrmSearchAccount.resx">
+      <DependentUpon>FrmSearchAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

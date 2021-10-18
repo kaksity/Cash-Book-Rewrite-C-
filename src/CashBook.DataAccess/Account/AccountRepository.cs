@@ -49,22 +49,52 @@ namespace CashBook.DataAccess.Account
             }
         }
 
-        public AccountModel GetAccount(string accountId)
+        public AccountModel GetAccountByAccountNumber(string accountNumber)
         {
-            //using (IDbConnection connection = dbConnection)
-            //{
-            //    string query = "SELECT AccountId,AccountName,AccountNumber,BankName,OpeningDate,Description,OpeningBalance,CurrentBalance,IsDeleted,CreatedAt,UpdatedAt FROM Accounts WHERE IsDeleted=0";
-            //    connection.Open();
-            //    return connection.Query<AccountModel>(query).ToList();
-            //}
-            return null;
+            using (IDbConnection connection = dbConnection)
+            {
+                string query = @"
+                                 SELECT
+                                    AccountId, AccountName, AccountNumber, BankName, OpeningDate, Description, OpeningBalance, CurrentBalance, IsDeleted, CreatedAt, UpdatedAt
+                                 FROM
+                                    Accounts
+                                 WHERE
+                                    AccountNumber = @AccountNumber AND IsDeleted = false
+                                 ";
+                connection.Open();
+                return connection.Query<AccountModel>(query,new { AccountNumber = accountNumber}).SingleOrDefault();
+            }
+        }
+
+        public AccountModel GetAccountByAccountId(string accountId)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                string query = @"
+                                 SELECT
+                                    AccountId, AccountName, AccountNumber, BankName, OpeningDate, Description, OpeningBalance, CurrentBalance, IsDeleted, CreatedAt, UpdatedAt
+                                 FROM
+                                    Accounts
+                                 WHERE
+                                    AccountId = @AccountId AND IsDeleted = false
+                                 ";
+                connection.Open();
+                return connection.Query<AccountModel>(query, new { AccountId = accountId }).SingleOrDefault();
+            }
         }
 
         public List<AccountModel> GetAllAccounts()
         {
             using (IDbConnection connection = dbConnection)
             {
-                string query = "SELECT AccountId,AccountName,AccountNumber,BankName,OpeningDate,Description,OpeningBalance,CurrentBalance,IsDeleted,CreatedAt,UpdatedAt FROM Accounts WHERE IsDeleted=0";
+                string query = @"
+                                 SELECT
+                                    AccountId,AccountName,AccountNumber,BankName,OpeningDate,Description,OpeningBalance,CurrentBalance,IsDeleted,CreatedAt,UpdatedAt
+                                 FROM
+                                    Accounts
+                                 WHERE
+                                    IsDeleted=false
+                                 ";
                 connection.Open();
                 return connection.Query<AccountModel>(query).ToList();
             }

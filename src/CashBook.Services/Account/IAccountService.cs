@@ -7,18 +7,23 @@ namespace CashBook.Services.Account
 {
     public interface IAccountService
     {
-        //<Summary>
-        //Service to create an Account
-        //</Summary>
+        ///<Summary>
+        ///Service to create an Account
+        ///</Summary>
         void CreateAccount(CreateAccountDto dto);
-        //<Summary>
-        //DAL to Get All Accounts
-        //</Summary>
-        //List<AccountModel> GetAllAccounts();
-        //<Summary>
-        //DAL to Get an Account
-        //</Summary>
-        //AccountModel GetAccount(string accountId);
+        ///<Summary>
+        ///DAL to Get All Accounts
+        ///</Summary>
+        List<ReadAccountDto> GetAllAccounts();
+        ///<Summary>
+        ///DAL to Get an Account By Id
+        ///</Summary>
+        ReadAccountDto GetAccountByAccountNumber(string accountNumber);
+
+        ///<Summary>
+        ///DAL to Get an Account
+        ///</Summary>
+        ReadAccountDto GetAccountByAccountId(string accountId);
         //<Summary>
         //DAL to Update an Account
         //</Summary>

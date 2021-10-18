@@ -15,7 +15,7 @@ namespace CashBook.Models.Account
         public string Description { get; set; }
         public decimal OpeningBalance { get; set; }
         public decimal CurrentBalance { get; set; }
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

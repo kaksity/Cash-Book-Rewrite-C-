@@ -17,7 +17,8 @@ namespace CashBook.UI
         /// </summary>
         /// 
         public static Container container;
-        
+        public static string accountId;
+
         [STAThread]
         static void Main()
         {
