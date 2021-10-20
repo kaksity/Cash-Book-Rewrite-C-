@@ -229,6 +229,7 @@
             this.btnDelete.Size = new System.Drawing.Size(85, 45);
             this.btnDelete.TabIndex = 22;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUndo
             // 

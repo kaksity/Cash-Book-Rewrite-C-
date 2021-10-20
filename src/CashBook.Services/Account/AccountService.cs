@@ -34,6 +34,11 @@ namespace CashBook.Services.Account
             _accountRepository.CreateAccount(model);
         }
 
+        public void DeleteAccount(string accountId)
+        {
+            _accountRepository.DeleteAccount(accountId);
+        }
+
         public ReadAccountDto GetAccountByAccountId(string accountId)
         {
             var results = _accountRepository.GetAccountByAccountId(accountId);
@@ -86,6 +91,25 @@ namespace CashBook.Services.Account
                 });
             }
             return accounts;
+        }
+
+        public void UpdateAccount(ReadAccountDto dto)
+        {
+            var model = new AccountModel
+            {
+                AccountId = dto.AccountId,
+                AccountName = dto.AccountName,
+                AccountNumber = dto.AccountNumber,
+                BankName = dto.BankName,
+                OpeningDate = dto.OpeningDate,
+                Description = dto.Description,
+                OpeningBalance = dto.OpeningBalance,
+                CurrentBalance = dto.CurrentBalance,
+                IsDeleted = false,
+                UpdatedAt = DateTime.Now
+            };
+
+            _accountRepository.UpdateAccount(model);
         }
     }
 }

@@ -41,9 +41,9 @@ namespace CashBook.DataAccess.Account
                 string query = @"UPDATE
                                     Accounts
                                  SET 
-                                    IsDeleted=1
+                                    IsDeleted=true
                                  WHERE
-                                    Account = @AccountId AND IsDeleted=0
+                                    AccountId = @AccountId AND IsDeleted=false
                                  ";
                 connection.Execute(query, new { AccountId = accountId });
             }
@@ -108,11 +108,11 @@ namespace CashBook.DataAccess.Account
                 string query = @"UPDATE
                                     Accounts
                                  SET 
-                                    AccountName = @AccountName,AccountNumber = @AccountNumber, BankName = @BankName,OpeningDate = @OpeningDate,Description = @Description,OpeningBalance = @OpeningBalance, CurrentBalance = @CurrentBalance, CreatedAt = @CreatedAt, UpdatedAt = @UpdatedAt
+                                    AccountName = @AccountName,AccountNumber = @AccountNumber, BankName = @BankName,OpeningDate = @OpeningDate,Description = @Description,OpeningBalance = @OpeningBalance, CurrentBalance = @CurrentBalance, UpdatedAt = @UpdatedAt
                                  WHERE
-                                    Account = @AccountId AND IsDeleted=0
+                                    AccountId = @AccountId AND IsDeleted=false
                                  ";
-                connection.Execute(query);
+                connection.Execute(query,updateModel);
             }
         }
     }

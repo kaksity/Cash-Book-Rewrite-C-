@@ -88,6 +88,7 @@ namespace CashBook.UI.Account
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(Program.accountId) == true) return;
             EditEnable();
             isNewRecord = false;
             isEditRecord = true;
@@ -95,6 +96,7 @@ namespace CashBook.UI.Account
 
         private void Reset()
         {
+            Program.accountId = "";
             Clear();
             isNewRecord = false;
             isEditRecord = false;
@@ -182,8 +184,26 @@ namespace CashBook.UI.Account
                 Reset();
                 return;
             }
+            if (isNewRecord == false && isEditRecord == true)
+            {
+                var account = new ReadAccountDto
+                {
+                    AccountId = Program.accountId,
+                    AccountName = txtAccountName.Text.ToUpper(),
+                    AccountNumber = txtAccountNumber.Text,
+                    BankName = txtBankName.Text.ToUpper(),
+                    OpeningDate = dtpOpeningDate.Value,
+                    Description = txtDescription.Text.ToUpper(),
+                    OpeningBalance = Utility.ParseNumber(txtOpeningBalance.Text),
+                    CurrentBalance = Utility.ParseNumber(txtOpeningBalance.Text),
+                };
+                _accountService.UpdateAccount(account);
+                Clear();
+                MessageBox.Show("Account was record was updated successfully", "Cash Book");
+            }
         }
 
+       
         private void btnFind_Click(object sender, EventArgs e)
         {
             var frmSearchAccount = Program.container.GetInstance<FrmSearchAccount>();
@@ -206,6 +226,18 @@ namespace CashBook.UI.Account
             txtDescription.Text = dto.Description;
             txtOpeningBalance.Text = Convert.ToString(dto.OpeningBalance);
             lblCurrentBalance.Text = Convert.ToString(dto.CurrentBalance);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Program.accountId) == true)
+            {
+                MessageBox.Show("You must select a record", "Cash Book");
+                return;
+            }
+            _accountService.DeleteAccount(Program.accountId);
+            Clear();
+            MessageBox.Show("Account record was deleted successfully", "Cash Book");
         }
     }
 }
