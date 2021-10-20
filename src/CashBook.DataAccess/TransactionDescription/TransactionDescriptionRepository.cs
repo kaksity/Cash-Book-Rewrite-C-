@@ -24,6 +24,7 @@ namespace CashBook.DataAccess.TransactionDescription
         {
             using (IDbConnection connection = dbConnection)
             {
+                connection.Open();
                 string query = @"INSERT INTO 
                                     TransactionDescriptions(TransactionDescriptionId,DescriptionName,TransactionType,Description,IsDeleted,CreatedAt,UpdatedAt)
                                  VALUES
@@ -37,6 +38,7 @@ namespace CashBook.DataAccess.TransactionDescription
         {
             using (IDbConnection connection = dbConnection)
             {
+                connection.Open();
                 string query = @"UPDATE 
                                     TransactionDescriptions
                                  SET                                            
@@ -52,6 +54,7 @@ namespace CashBook.DataAccess.TransactionDescription
         {
             using (IDbConnection connection = dbConnection)
             {
+                connection.Open();
                 string query = @"SELECT 
                                     TransactionDescriptionId,DescriptionName,TransactionType,Description,IsDeleted,CreatedAt,UpdatedAt
                                  FROM 
@@ -70,6 +73,7 @@ namespace CashBook.DataAccess.TransactionDescription
         {
             using (IDbConnection connection = dbConnection)
             {
+                connection.Open();
                 string query = @"SELECT 
                                     TransactionDescriptionId,DescriptionName,TransactionType,Description,IsDeleted,CreatedAt,UpdatedAt
                                  FROM 

@@ -28,6 +28,7 @@ namespace CashBook.Services.TransactionDescription
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now
             };
+            _transactionDescriptionRepository.CreateTransactionDescription(transactionDescription);
         }
 
         public void DeleteTransactionDescription(string transactionDescriptionId)

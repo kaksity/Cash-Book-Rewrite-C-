@@ -1,6 +1,8 @@
 ﻿using CashBook.DataAccess.Account;
+using CashBook.DataAccess.TransactionDescription;
 using CashBook.Services.Account;
-using CashBook.UI.Account;
+using CashBook.Services.TransactionDescription;
+using CashBook.UI.TransactionDescription;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using System;
@@ -27,7 +29,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmAccount>());
+            Application.Run(container.GetInstance<FrmTransactionDescription>());
         }
 
         private static Container Bootstrap()
@@ -37,7 +39,8 @@ namespace CashBook.UI
 
             container.Register<IAccountService,AccountService>();
             container.Register<IAccountRepository, AccountRepository>();
-            
+            container.Register<ITransactionDescriptionRepository, TransactionDescriptionRepository>();
+            container.Register<ITransactionDescriptionService, TransactionDescriptionService>();
             AutoRegisterWindowsForms(container);
 
             container.Verify();
