@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashBook.Dtos.TransactionDescription
 {
-    class CreateTransactionDescriptionDto
+    public class CreateTransactionDescriptionDto
     {
         public string DescriptionName { get; set; }
         public string TransactionType { get; set; }
