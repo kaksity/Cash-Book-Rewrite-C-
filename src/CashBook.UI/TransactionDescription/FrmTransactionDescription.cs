@@ -22,6 +22,7 @@ namespace CashBook.UI.TransactionDescription
         }
 
         bool isNewRecord = false;
+        string transactionDescriptionId = "";
         bool isEditRecord = false;
         private List<ReadTransactionDescriptionDto> transactionDescriptionList;
 
@@ -66,6 +67,7 @@ namespace CashBook.UI.TransactionDescription
             cboTypeOfTransaction.SelectedIndex = 0;
             txtDescription.Text = "";
             txtNameOfDescription.Text = "";
+            transactionDescriptionId = "";
         }
         private void Reset()
         {
@@ -180,9 +182,8 @@ namespace CashBook.UI.TransactionDescription
 
                 _transactionDescriptionService.CreateTransactionDescription(transactionDescription);
                 LoadTransactionDescriptionData();
-                MessageBox.Show("Transaction Description record was created successfully","Cash Book");
-                
                 Reset();
+                MessageBox.Show("Transaction Description record was created successfully","Cash Book");
                 return;
             }
 
@@ -191,6 +192,27 @@ namespace CashBook.UI.TransactionDescription
         private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
+            ToForm(transactionDescriptionList[e.RowIndex]);
+        }
+        private void ToForm(ReadTransactionDescriptionDto dto)
+        {
+            transactionDescriptionId = dto.TransactionDescriptionId;
+            txtNameOfDescription.Text = dto.DescriptionName;
+            cboTypeOfTransaction.SelectedValue = dto.TransactionType;
+            txtDescription.Text = dto.Description;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(transactionDescriptionId) == true )
+            {
+                MessageBox.Show("You must select a record", "Cash Book");
+                return;
+            }
+            _transactionDescriptionService.DeleteTransactionDescription(transactionDescriptionId);
+            LoadTransactionDescriptionData();
+            Reset();
+            MessageBox.Show("Transaction Description record was created successfully", "Cash Book");
         }
     }
 }
