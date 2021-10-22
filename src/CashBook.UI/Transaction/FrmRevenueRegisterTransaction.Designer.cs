@@ -305,12 +305,13 @@
             this.Controls.Add(this.Label3);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmRevenueRegisterTransaction";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmRevenueRegisterTransaction";
+            this.Text = "Cash Book - Revenue Register";
             this.Load += new System.EventHandler(this.FrmRevenueRegisterTransaction_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -2,7 +2,7 @@
 using CashBook.DataAccess.TransactionDescription;
 using CashBook.Services.Account;
 using CashBook.Services.TransactionDescription;
-using CashBook.UI.TransactionDescription;
+using CashBook.UI.Transaction;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using System;
@@ -29,7 +29,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmTransactionDescription>());
+            Application.Run(container.GetInstance<FrmRevenueRegisterTransaction>());
         }
 
         private static Container Bootstrap()
