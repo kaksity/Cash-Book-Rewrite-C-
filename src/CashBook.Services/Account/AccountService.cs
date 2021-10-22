@@ -15,6 +15,13 @@ namespace CashBook.Services.Account
         {
             _accountRepository = accountRepository;
         }
+
+        public void AddToAccountBalance(ReadAccountDto dto, decimal ammount)
+        {
+            dto.CurrentBalance = dto.CurrentBalance + ammount;
+            this.UpdateAccount(dto);
+        }
+
         public void CreateAccount(CreateAccountDto dto)
         {
             var model = new AccountModel

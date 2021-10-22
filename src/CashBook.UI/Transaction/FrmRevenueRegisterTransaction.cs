@@ -158,6 +158,10 @@ namespace CashBook.UI.Transaction
 
             if (isNewRecord == true)
             {
+
+                //Check if the financial month has not been closeed
+
+                //Create the Transaction
                 var transaction = new CreateTransactionDto
                 {
                     AccountId = (string)cboAccount.SelectedValue,
@@ -170,7 +174,15 @@ namespace CashBook.UI.Transaction
                     TransactionDescriptionId =(string)cboDescription.SelectedValue,
                     RefNumber = "",
                 };
+
+                
                 _transactionService.CreateTransaction(transaction);
+
+                //Update the Account Balance
+                var account = _accountService.GetAccountByAccountId((string)cboAccount.SelectedValue);
+
+                _accountService.AddToAccountBalance(account, Utility.ParseNumber(txtDebit.Text));
+
                 MessageBox.Show("Transaction record was created successfully","Cash Book");
                 Reset();
                 return;
