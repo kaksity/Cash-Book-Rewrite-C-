@@ -45,6 +45,7 @@
     <Compile Include="Account\AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransactionDescription\TransactionDescriptionModel.cs" />
+    <Compile Include="Transaction\TransactionModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

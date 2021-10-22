@@ -82,6 +82,7 @@
             this.btnNew.Size = new System.Drawing.Size(85, 45);
             this.btnNew.TabIndex = 36;
             this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnSave
             // 
@@ -97,6 +98,7 @@
             this.btnSave.Size = new System.Drawing.Size(85, 45);
             this.btnSave.TabIndex = 35;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnUndo
             // 
@@ -112,6 +114,7 @@
             this.btnUndo.Size = new System.Drawing.Size(85, 45);
             this.btnUndo.TabIndex = 34;
             this.btnUndo.UseVisualStyleBackColor = false;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
             // btnAddAccount
             // 

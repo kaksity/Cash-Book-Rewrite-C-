@@ -1,6 +1,8 @@
 ﻿using CashBook.DataAccess.Account;
+using CashBook.DataAccess.Transaction;
 using CashBook.DataAccess.TransactionDescription;
 using CashBook.Services.Account;
+using CashBook.Services.Transaction;
 using CashBook.Services.TransactionDescription;
 using CashBook.UI.Transaction;
 using SimpleInjector;
@@ -41,6 +43,8 @@ namespace CashBook.UI
             container.Register<IAccountRepository, AccountRepository>();
             container.Register<ITransactionDescriptionRepository, TransactionDescriptionRepository>();
             container.Register<ITransactionDescriptionService, TransactionDescriptionService>();
+            container.Register<ITransactionRepository,TransactionRepository>();
+            container.Register<ITransactionService, TransactionService>();
             AutoRegisterWindowsForms(container);
 
             container.Verify();

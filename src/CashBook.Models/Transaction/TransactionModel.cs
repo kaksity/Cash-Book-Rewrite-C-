@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashBook.Models.Transaction
 {
-    public class Transaction
+    public class TransactionModel
     {
         public string TransactionId { get; set; }
         public string AccountId { get; set; }

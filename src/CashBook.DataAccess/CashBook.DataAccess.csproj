@@ -64,6 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransactionDescription\ITransactionDescriptionRepository.cs" />
     <Compile Include="TransactionDescription\TransactionDescriptionRepository.cs" />
+    <Compile Include="Transaction\ITransactionRepository.cs" />
+    <Compile Include="Transaction\TransactionRepository.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
