@@ -186,6 +186,21 @@ namespace CashBook.UI.TransactionDescription
                 MessageBox.Show("Transaction Description record was created successfully","Cash Book");
                 return;
             }
+            if (isNewRecord == false && isEditRecord == true)
+            {
+                var transactionDescription = new ReadTransactionDescriptionDto
+                {
+                    TransactionDescriptionId = transactionDescriptionId,
+                    DescriptionName = txtNameOfDescription.Text.Trim().ToUpper(),
+                    TransactionType = (string)cboTypeOfTransaction.SelectedValue,
+                    Description = txtDescription.Text.Trim().ToUpper()
+                };
+                _transactionDescriptionService.UpdateTransactionDescription(transactionDescription);
+                LoadTransactionDescriptionData();
+                Reset();
+                MessageBox.Show("Transaction Description record was updated successfully", "Cash Book");
+                return;
+            }
 
         }
 

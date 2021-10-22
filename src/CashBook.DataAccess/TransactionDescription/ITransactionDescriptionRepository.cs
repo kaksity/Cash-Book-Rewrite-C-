@@ -26,5 +26,9 @@ namespace CashBook.DataAccess.TransactionDescription
         /// DAL to Delete a transaction description
         /// </summary>
         void DeleteTransactionDescription(string transactionDescriptionId);
+        ///<summary>
+        /// DAL to Update a transaction description
+        /// </summary>
+        void UpdateTransactionDescription(TransactionDescriptionModel model);
     }
 }

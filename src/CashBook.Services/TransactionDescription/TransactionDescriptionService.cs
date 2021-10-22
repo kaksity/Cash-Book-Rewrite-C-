@@ -73,5 +73,19 @@ namespace CashBook.Services.TransactionDescription
             }
             return transactionDescription;
         }
+
+        public void UpdateTransactionDescription(ReadTransactionDescriptionDto model)
+        {
+            var transactionDescription = new TransactionDescriptionModel
+            {
+                TransactionDescriptionId = model.TransactionDescriptionId,
+                DescriptionName = model.DescriptionName,
+                TransactionType = model.TransactionType,
+                Description = model.Description,
+                IsDeleted = false,
+                UpdatedAt = DateTime.Now
+            };
+            _transactionDescriptionRepository.UpdateTransactionDescription(transactionDescription);
+        }
     }
 }

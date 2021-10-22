@@ -77,6 +77,12 @@
     <Compile Include="TransactionDescription\FrmTransactionDescription.Designer.cs">
       <DependentUpon>FrmTransactionDescription.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transaction\FrmRevenueRegisterTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\FrmRevenueRegisterTransaction.Designer.cs">
+      <DependentUpon>FrmRevenueRegisterTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Utility.cs" />
     <EmbeddedResource Include="Account\FrmAccount.resx">
       <DependentUpon>FrmAccount.cs</DependentUpon>
@@ -96,6 +102,9 @@
     </Compile>
     <EmbeddedResource Include="TransactionDescription\FrmTransactionDescription.resx">
       <DependentUpon>FrmTransactionDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\FrmRevenueRegisterTransaction.resx">
+      <DependentUpon>FrmRevenueRegisterTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

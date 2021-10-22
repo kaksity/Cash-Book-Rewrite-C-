@@ -27,5 +27,9 @@ namespace CashBook.Services.TransactionDescription
         /// Service to Delete a transaction description
         /// </summary>
         void DeleteTransactionDescription(string transactionDescriptionId);
+        ///<summary>
+        /// Service to Update a transaction description
+        /// </summary>
+        void UpdateTransactionDescription(ReadTransactionDescriptionDto model);
     }
 }

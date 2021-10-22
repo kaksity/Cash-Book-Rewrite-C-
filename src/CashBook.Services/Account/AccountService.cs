@@ -59,6 +59,9 @@ namespace CashBook.Services.Account
         public ReadAccountDto GetAccountByAccountNumber(string accountNumber)
         {
             var results = _accountRepository.GetAccountByAccountNumber(accountNumber);
+
+            if (results == null) return null;
+
             var account = new ReadAccountDto
             {
                 AccountId = results.AccountId,

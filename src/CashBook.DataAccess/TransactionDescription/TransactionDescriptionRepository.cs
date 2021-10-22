@@ -87,5 +87,21 @@ namespace CashBook.DataAccess.TransactionDescription
                 return connection.Query<TransactionDescriptionModel>(query,new { TransactionType = transactionType}).ToList();
             }
         }
+
+        public void UpdateTransactionDescription(TransactionDescriptionModel model)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                connection.Open();
+                string query = @"UPDATE 
+                                    TransactionDescriptions
+                                 SET                                            
+                                    TransactionDescriptionId=@TransactionDescriptionId,DescriptionName=@DescriptionName,TransactionType=@TransactionType,Description=@Description,IsDeleted=false,UpdatedAt=@UpdatedAt
+                                 WHERE
+                                    TransactionDescriptionId = @TransactionDescriptionId AND IsDeleted = false
+                                ";
+                connection.Execute(query,model);
+            }
+        }
     }
 }
