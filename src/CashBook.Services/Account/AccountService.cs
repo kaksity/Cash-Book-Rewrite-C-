@@ -58,6 +58,12 @@ namespace CashBook.Services.Account
             _maintainBalanceService.CreateMaintainBalance(maintainBalanceDto);
         }
 
+        public void DeductFromAccountBalance(ReadAccountDto dto, decimal ammount)
+        {
+            dto.CurrentBalance = dto.CurrentBalance - ammount;
+            this.UpdateAccount(dto);
+        }
+
         public void DeleteAccount(string accountId)
         {
             _accountRepository.DeleteAccount(accountId);

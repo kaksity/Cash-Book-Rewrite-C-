@@ -35,7 +35,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmMaintainBalance>());
+            Application.Run(container.GetInstance<FrmExpenseTransaction>());
         }
 
         private static Container Bootstrap()

@@ -34,8 +34,12 @@ namespace CashBook.Services.Account
         void DeleteAccount(string accountId);
 
         ///<summary>
-        /// Service to Update Account Balance
+        /// Service to Update Account Balance By Adding to the Account
         /// </summary>
         void AddToAccountBalance(ReadAccountDto dto, decimal ammount);
+        ///<summary>
+        /// Service to Update Account Balance By Deducting from the Account
+        /// </summary>
+        void DeductFromAccountBalance(ReadAccountDto dto, decimal ammount);
     }
 }
