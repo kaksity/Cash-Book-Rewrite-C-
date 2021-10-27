@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="Account\AccountRepository.cs" />
     <Compile Include="Account\IAccountRepository.cs" />
+    <Compile Include="MaintainBalance\IMaintainBalanceRepository.cs" />
+    <Compile Include="MaintainBalance\MaintainBalanceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransactionDescription\ITransactionDescriptionRepository.cs" />
     <Compile Include="TransactionDescription\TransactionDescriptionRepository.cs" />

@@ -1,6 +1,8 @@
 ﻿using CashBook.DataAccess.Account;
 using CashBook.Dtos.Account;
+using CashBook.Dtos.MaintainBalance;
 using CashBook.Models.Account;
+using CashBook.Services.MaintainBalance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,11 @@ namespace CashBook.Services.Account
     public class AccountService : IAccountService
     {
         private readonly IAccountRepository _accountRepository;
-        public AccountService(IAccountRepository accountRepository)
+        private readonly IMaintainBalanceService _maintainBalanceService;
+        public AccountService(IAccountRepository accountRepository, IMaintainBalanceService maintainBalanceService)
         {
             _accountRepository = accountRepository;
+            _maintainBalanceService = maintainBalanceService;
         }
 
         public void AddToAccountBalance(ReadAccountDto dto, decimal ammount)
@@ -24,9 +28,11 @@ namespace CashBook.Services.Account
 
         public void CreateAccount(CreateAccountDto dto)
         {
+            string accountId = Guid.NewGuid().ToString();
+
             var model = new AccountModel
             {
-                AccountId = Guid.NewGuid().ToString(),
+                AccountId = accountId,
                 AccountName = dto.AccountName,
                 AccountNumber = dto.AccountNumber,
                 BankName = dto.BankName,
@@ -38,7 +44,18 @@ namespace CashBook.Services.Account
                 CreatedAt = DateTime.Now,
                 UpdatedAt = DateTime.Now
             };
+            
             _accountRepository.CreateAccount(model);
+
+            var maintainBalanceDto = new CreateMaintainBalanceDto
+            {
+                AccountId= accountId,
+                OpeningBalance=dto.OpeningBalance,
+                ClosingBalance=0,
+                Duration=$"{dto.OpeningDate.Month}.{dto.OpeningDate.Year}",
+                Status=0
+            };
+            _maintainBalanceService.CreateMaintainBalance(maintainBalanceDto);
         }
 
         public void DeleteAccount(string accountId)

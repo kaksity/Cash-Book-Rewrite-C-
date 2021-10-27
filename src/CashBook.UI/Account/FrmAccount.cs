@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using CashBook.UI.Utilities;
 using CashBook.Dtos.Account;
 using CashBook.Services.Account;
+using CashBook.Services.MaintainBalance;
+using CashBook.Dtos.MaintainBalance;
 
 namespace CashBook.UI.Account
 {
@@ -175,6 +177,7 @@ namespace CashBook.UI.Account
                         CurrentBalance = Utility.ParseNumber(txtOpeningBalance.Text),
                     };
                     _accountService.CreateAccount(account);
+
                     MessageBox.Show("Account was record was created successfully", "Cash Book");
                 }
                 else

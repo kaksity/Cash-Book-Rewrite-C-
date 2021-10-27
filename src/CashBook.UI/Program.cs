@@ -1,9 +1,12 @@
 ﻿using CashBook.DataAccess.Account;
+using CashBook.DataAccess.MaintainBalance;
 using CashBook.DataAccess.Transaction;
 using CashBook.DataAccess.TransactionDescription;
 using CashBook.Services.Account;
+using CashBook.Services.MaintainBalance;
 using CashBook.Services.Transaction;
 using CashBook.Services.TransactionDescription;
+using CashBook.UI.Account;
 using CashBook.UI.Transaction;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
@@ -31,7 +34,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmRevenueRegisterTransaction>());
+            Application.Run(container.GetInstance<FrmAccount>());
         }
 
         private static Container Bootstrap()
@@ -41,6 +44,8 @@ namespace CashBook.UI
 
             container.Register<IAccountService,AccountService>();
             container.Register<IAccountRepository, AccountRepository>();
+            container.Register<IMaintainBalanceRepository, MaintainBalanceRepository>();
+            container.Register<IMaintainBalanceService, MaintainBalanceService>();
             container.Register<ITransactionDescriptionRepository, TransactionDescriptionRepository>();
             container.Register<ITransactionDescriptionService, TransactionDescriptionService>();
             container.Register<ITransactionRepository,TransactionRepository>();

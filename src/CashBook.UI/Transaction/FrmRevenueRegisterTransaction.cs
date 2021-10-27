@@ -180,7 +180,7 @@ namespace CashBook.UI.Transaction
 
                 //Update the Account Balance
                 var account = _accountService.GetAccountByAccountId((string)cboAccount.SelectedValue);
-
+                
                 _accountService.AddToAccountBalance(account, Utility.ParseNumber(txtDebit.Text));
 
                 MessageBox.Show("Transaction record was created successfully","Cash Book");
