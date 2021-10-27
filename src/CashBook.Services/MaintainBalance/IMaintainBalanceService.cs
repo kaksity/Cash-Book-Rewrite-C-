@@ -13,6 +13,6 @@ namespace CashBook.Services.MaintainBalance
 
         void CreateMaintainBalance(CreateMaintainBalanceDto model);
         List<ReadMaintainBalanceDto> GetAllMaintainBalanceByAccountId(string accountId);
-        //MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration);
+        ReadMaintainBalanceDto GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration);
     }
 }

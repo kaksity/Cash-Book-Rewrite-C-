@@ -1,12 +1,15 @@
 ﻿using CashBook.DataAccess.Account;
+using CashBook.DataAccess.BankReconcilation;
 using CashBook.DataAccess.MaintainBalance;
 using CashBook.DataAccess.Transaction;
 using CashBook.DataAccess.TransactionDescription;
 using CashBook.Services.Account;
+using CashBook.Services.BankReconcilation;
 using CashBook.Services.MaintainBalance;
 using CashBook.Services.Transaction;
 using CashBook.Services.TransactionDescription;
 using CashBook.UI.Account;
+using CashBook.UI.BankReconcilation;
 using CashBook.UI.MaintainBalance;
 using CashBook.UI.Transaction;
 using SimpleInjector;
@@ -35,7 +38,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmExpenseTransaction>());
+            Application.Run(container.GetInstance<FrmBankReconcilation>());
         }
 
         private static Container Bootstrap()
@@ -51,6 +54,9 @@ namespace CashBook.UI
             container.Register<ITransactionDescriptionService, TransactionDescriptionService>();
             container.Register<ITransactionRepository,TransactionRepository>();
             container.Register<ITransactionService, TransactionService>();
+            container.Register<IBankReconcilationRepository, BankReconcilationRepository>();
+            container.Register<IBankReconcilationService, BankReconcilationService>();
+
             AutoRegisterWindowsForms(container);
 
             container.Verify();

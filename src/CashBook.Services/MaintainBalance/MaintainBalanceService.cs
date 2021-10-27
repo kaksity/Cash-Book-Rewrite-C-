@@ -54,5 +54,23 @@ namespace CashBook.Services.MaintainBalance
             }
             return data;
         }
+
+        public ReadMaintainBalanceDto GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration)
+        {
+            var result = _maintainBalanceRepository.GetMaintainBalanceByAccountIdAndDuration(accountId,duration);
+
+            if (result == null) return null;
+
+            var returnData = new ReadMaintainBalanceDto
+            {
+                MaintainBalanceId = result.MaintainBalanceId,
+                AccountId = result.AccountId,
+                OpeningBalance = result.OpeningBalance,
+                ClosingBalance = result.ClosingBalance,
+                Duration = result.Duration,
+                Status = result.Status
+            };
+            return returnData;
+        }
     }
 }

@@ -69,6 +69,12 @@
     <Compile Include="Account\FrmSearchAccount.Designer.cs">
       <DependentUpon>FrmSearchAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="BankReconcilation\FrmBankReconcilation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankReconcilation\FrmBankReconcilation.Designer.cs">
+      <DependentUpon>FrmBankReconcilation.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaintainBalance\FrmMaintainBalance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\FrmSearchAccount.resx">
       <DependentUpon>FrmSearchAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankReconcilation\FrmBankReconcilation.resx">
+      <DependentUpon>FrmBankReconcilation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MaintainBalance\FrmMaintainBalance.resx">
       <DependentUpon>FrmMaintainBalance.cs</DependentUpon>
