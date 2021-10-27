@@ -1,5 +1,7 @@
 ﻿using CashBook.Dtos.Account;
+using CashBook.Models.MaintainBalance;
 using CashBook.Services.Account;
+using CashBook.Services.MaintainBalance;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +17,8 @@ namespace CashBook.UI.Account
     public partial class FrmSearchAccount : Form
     {
         private readonly IAccountService _accountService;
-
         bool isSelectedRecord = false;
-
+        
         public FrmSearchAccount(IAccountService accountService)
         {
             _accountService = accountService;
@@ -60,7 +61,7 @@ namespace CashBook.UI.Account
             grid.AllowUserToResizeRows = false;
         
     }
-
+        
         private List<ReadAccountDto>GetAllAccounts()
         {
             return _accountService.GetAllAccounts();

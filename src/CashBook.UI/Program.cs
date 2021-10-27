@@ -7,6 +7,7 @@ using CashBook.Services.MaintainBalance;
 using CashBook.Services.Transaction;
 using CashBook.Services.TransactionDescription;
 using CashBook.UI.Account;
+using CashBook.UI.MaintainBalance;
 using CashBook.UI.Transaction;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
@@ -34,7 +35,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmAccount>());
+            Application.Run(container.GetInstance<FrmMaintainBalance>());
         }
 
         private static Container Bootstrap()

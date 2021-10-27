@@ -19,7 +19,7 @@ namespace CashBook.Services.MaintainBalance
         }
         public void CreateMaintainBalance(CreateMaintainBalanceDto model)
         {
-            var maintainBalance = new MaintainBalanceModel
+            var maintainBalance = new ReadMaintainBalanceDto
             {
                 MaintainBalanceId = Guid.NewGuid().ToString(),
                 AccountId = model.AccountId,
@@ -32,6 +32,27 @@ namespace CashBook.Services.MaintainBalance
                 UpdatedAt = DateTime.Now
             };
             _maintainBalanceRepository.CreateMaintainBalance(maintainBalance);
+        }
+
+        public List<ReadMaintainBalanceDto> GetAllMaintainBalanceByAccountId(string accountId)
+        {
+            var accountsList = _maintainBalanceRepository.GetAllMaintainBalanceByAccount(accountId);
+
+            var data = new List<ReadMaintainBalanceDto>();
+
+            for (int i = 0; i < accountsList.Count; i++)
+            {
+                data.Add( new ReadMaintainBalanceDto
+                {
+                    MaintainBalanceId = accountsList[i].MaintainBalanceId,
+                    AccountId = accountsList[i].AccountId,
+                    OpeningBalance = accountsList[i].OpeningBalance,
+                    ClosingBalance = accountsList[i].ClosingBalance,
+                    Duration = accountsList[i].Duration,
+                    Status = accountsList[i].Status,
+                });
+            }
+            return data;
         }
     }
 }

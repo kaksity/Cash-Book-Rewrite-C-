@@ -19,7 +19,7 @@ namespace CashBook.DataAccess.MaintainBalance
                 return new FbConnection(Utility.ConnectionString);
             }
         }
-        public void CreateMaintainBalance(MaintainBalanceModel model)
+        public void CreateMaintainBalance(ReadMaintainBalanceDto model)
         {
             using (IDbConnection connection = dbConnection)
             {
@@ -35,7 +35,24 @@ namespace CashBook.DataAccess.MaintainBalance
             }
         }
 
-        public List<MaintainBalanceModel> GetAllMaintainBalance()
+        //public List<MaintainBalanceModel> GetAllMaintainBalance()
+        //{
+        //    using (IDbConnection connection = dbConnection)
+        //    {
+        //        string query = @"
+        //                        SELECT
+        //                            MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsDeleted, CreatedAt, UpdatedAt 
+        //                        FROM 
+        //                            MaintainBalances 
+        //                        WHERE
+        //                            IsDeleted=false
+        //                        ";
+        //        connection.Open();
+        //        return connection.Query<MaintainBalanceModel>(query).ToList();
+        //    }
+        //}
+
+        public List<ReadMaintainBalanceDto> GetAllMaintainBalanceByAccount(string accountId)
         {
             using (IDbConnection connection = dbConnection)
             {
@@ -45,14 +62,14 @@ namespace CashBook.DataAccess.MaintainBalance
                                 FROM 
                                     MaintainBalances 
                                 WHERE
-                                    IsDeleted=false
+                                    AccountId=@AccountId AND IsDeleted=false
                                 ";
                 connection.Open();
-                return connection.Query<MaintainBalanceModel>(query).ToList();
+                return connection.Query<ReadMaintainBalanceDto>(query, new { AccountId = accountId }).ToList();
             }
         }
 
-        public MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration)
+        public ReadMaintainBalanceDto GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration)
         {
             using (IDbConnection connection = dbConnection)
             {
@@ -65,7 +82,7 @@ namespace CashBook.DataAccess.MaintainBalance
                                     AccountId = @AccountId AND Duration = @Duration AND IsDeleted=false
                                 ";
                 connection.Open();
-                return connection.Query<MaintainBalanceModel>(query, new {
+                return connection.Query<ReadMaintainBalanceDto>(query, new {
                     AccountId = accountId,
                     Duration = duration
                 }).SingleOrDefault();

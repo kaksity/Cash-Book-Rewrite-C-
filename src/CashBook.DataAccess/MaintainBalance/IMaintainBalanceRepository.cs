@@ -9,8 +9,8 @@ namespace CashBook.DataAccess.MaintainBalance
 {
     public interface IMaintainBalanceRepository
     {
-        void CreateMaintainBalance(MaintainBalanceModel model);
-        List<MaintainBalanceModel> GetAllMaintainBalance();
-        MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration);
+        void CreateMaintainBalance(ReadMaintainBalanceDto model);
+        List<ReadMaintainBalanceDto> GetAllMaintainBalanceByAccount(string accountId);
+        ReadMaintainBalanceDto GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration);
     }
 }

@@ -46,6 +46,7 @@
     <Compile Include="Account\ReadAccountsDto.cs" />
     <Compile Include="Account\UpdateAccountDto.cs" />
     <Compile Include="MaintainBalance\CreateMaintainBalanceDto.cs" />
+    <Compile Include="MaintainBalance\ReadMaintainBalanceDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransactionDescription\CreateTransactionDescriptionDto.cs" />
     <Compile Include="TransactionDescription\ReadTransactionDescriptionDto.cs" />
