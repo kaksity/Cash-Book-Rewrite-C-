@@ -17,9 +17,25 @@ namespace CashBook.Services.MaintainBalance
         {
             _maintainBalanceRepository = maintainBalanceRepository;
         }
+
+        public void ResetClosingBalance(ReadMaintainBalanceDto dto)
+        {
+            var maintainBalance = new MaintainBalanceModel
+            {
+                MaintainBalanceId = dto.MaintainBalanceId,
+                AccountId = dto.AccountId,
+                OpeningBalance = dto.OpeningBalance,
+                ClosingBalance = 0,
+                Duration = dto.Duration,
+                Status = dto.Status,
+                UpdatedAt = DateTime.Now
+            };
+            _maintainBalanceRepository.UpdateMaintainBalance(maintainBalance);
+        }
+
         public void CreateMaintainBalance(CreateMaintainBalanceDto model)
         {
-            var maintainBalance = new ReadMaintainBalanceDto
+            var maintainBalance = new MaintainBalanceModel
             {
                 MaintainBalanceId = Guid.NewGuid().ToString(),
                 AccountId = model.AccountId,

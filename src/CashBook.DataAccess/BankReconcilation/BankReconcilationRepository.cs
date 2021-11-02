@@ -40,12 +40,33 @@ namespace CashBook.DataAccess.BankReconcilation
             {
                 connection.Open();
                 string query = @"
-                                DELETE FROM 
+                                UPDATE
                                     BankReconcilations 
+                                SET
+                                    IsDeleted=true
                                 WHERE 
                                     BankReconcilationId = @BankReconcilationId AND IsDeleted = false
                                 ";
                 connection.Execute(query, new { BankReconcilationId = bankReconcilationId });
+            }
+        }
+
+        public List<BankReconcilationModel> GetBankReconcilationByAccountId(string accountId)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                connection.Open();
+                string query = @"
+                                SELECT 
+                                    BankReconcilationId, AccountId, Duration,CreditTransfer, InterestReceived, StaleChqsReversed, BankCharges,DebitTransfer,OutstandingStaleChqs,UnpresentedChqs, BankNotCashBook,UncreditedLodgements, CashBookNotBank, DiffBtwBankAndCashBook, IsDeleted,CreatedAt, UpdatedAt 
+                                FROM
+                                    BankReconcilations
+                                WHERE
+                                    AccountId = @AccountId AND IsDeleted = false";
+                return connection.Query<BankReconcilationModel>(query, new
+                {
+                    AccountId = accountId,
+                }).ToList();
             }
         }
 

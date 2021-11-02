@@ -75,6 +75,12 @@
     <Compile Include="BankReconcilation\FrmBankReconcilation.Designer.cs">
       <DependentUpon>FrmBankReconcilation.cs</DependentUpon>
     </Compile>
+    <Compile Include="BankReconcilation\FrmViewBankReconcilation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankReconcilation\FrmViewBankReconcilation.Designer.cs">
+      <DependentUpon>FrmViewBankReconcilation.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaintainBalance\FrmMaintainBalance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BankReconcilation\FrmBankReconcilation.resx">
       <DependentUpon>FrmBankReconcilation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankReconcilation\FrmViewBankReconcilation.resx">
+      <DependentUpon>FrmViewBankReconcilation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MaintainBalance\FrmMaintainBalance.resx">
       <DependentUpon>FrmMaintainBalance.cs</DependentUpon>

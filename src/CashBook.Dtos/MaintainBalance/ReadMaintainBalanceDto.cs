@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashBook.Dtos.MaintainBalance
 {
-    class ReadMaintainBalanceDto
+    public class ReadMaintainBalanceDto
     {
         public string MaintainBalanceId { get; set; }
         public string AccountId { get; set; }

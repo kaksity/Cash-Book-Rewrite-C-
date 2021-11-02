@@ -38,7 +38,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmBankReconcilation>());
+            Application.Run(container.GetInstance<FrmViewBankReconcilation>());
         }
 
         private static Container Bootstrap()

@@ -43,7 +43,35 @@ namespace CashBook.Services.BankReconcilation
 
         public void DeleteBankReconcilationRecord(string bankReconcilationId)
         {
+            
             _bankReconcilationRepository.DeleteBankReconcilationRecord(bankReconcilationId);
+        }
+
+        public List<ReadBankReconcilationDto> GetBankReconcilationByAccountId(string accountId)
+        {
+            var result = _bankReconcilationRepository.GetBankReconcilationByAccountId(accountId);
+            var data = new List<ReadBankReconcilationDto>();
+            foreach (var item in result)
+            {
+                data.Add(new ReadBankReconcilationDto
+                {
+                    BankReconcilationId = item.BankReconcilationId,
+                    AccountId = item.AccountId,
+                    Duration = item.Duration,
+                    CreditTransfer = item.CreditTransfer,
+                    InterestReceived = item.InterestReceived,
+                    StaleChqsReversed = item.StaleChqsReversed,
+                    BankCharges = item.BankCharges,
+                    DebitTransfer = item.DebitTransfer,
+                    OutstandingStaleChqs = item.OutstandingStaleChqs,
+                    UnpresentedChqs = item.UnpresentedChqs,
+                    BankNotCashBook = item.BankNotCashBook,
+                    UncreditedLodgements = item.UncreditedLodgements,
+                    CashBookNotBank = item.CashBookNotBank,
+                    DiffBtwBankAndCashBook = item.DiffBtwBankAndCashBook
+                });
+            }
+            return data;
         }
 
         public ReadBankReconcilationDto GetBankReconcilationByAccountIdAndDuration(string accountId, string duration)

@@ -19,8 +19,13 @@ namespace CashBook.Services.BankReconcilation
         /// </summary>
         void DeleteBankReconcilationRecord(string bankReconcilationId);
         ///<summary>
-        /// DAL to Get BankReconcilation Record based on AccountId and Duration
+        /// Service Layer to Get BankReconcilation Record based on AccountId and Duration
         /// </summary>
         ReadBankReconcilationDto GetBankReconcilationByAccountIdAndDuration(string accountId, string duration);
+
+        ///<summary>
+        /// Service Layer to Get List of Bank Reconcilation Record based on AccountId
+        /// </summary>
+        List<ReadBankReconcilationDto> GetBankReconcilationByAccountId(string accountId);
     }
 }

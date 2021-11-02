@@ -19,7 +19,8 @@ namespace CashBook.DataAccess.MaintainBalance
                 return new FbConnection(Utility.ConnectionString);
             }
         }
-        public void CreateMaintainBalance(ReadMaintainBalanceDto model)
+
+        public void CreateMaintainBalance(MaintainBalanceModel model)
         {
             using (IDbConnection connection = dbConnection)
             {
@@ -52,7 +53,7 @@ namespace CashBook.DataAccess.MaintainBalance
         //    }
         //}
 
-        public List<ReadMaintainBalanceDto> GetAllMaintainBalanceByAccount(string accountId)
+        public List<MaintainBalanceModel> GetAllMaintainBalanceByAccount(string accountId)
         {
             using (IDbConnection connection = dbConnection)
             {
@@ -65,11 +66,11 @@ namespace CashBook.DataAccess.MaintainBalance
                                     AccountId=@AccountId AND IsDeleted=false
                                 ";
                 connection.Open();
-                return connection.Query<ReadMaintainBalanceDto>(query, new { AccountId = accountId }).ToList();
+                return connection.Query<MaintainBalanceModel>(query, new { AccountId = accountId }).ToList();
             }
         }
 
-        public ReadMaintainBalanceDto GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration)
+        public MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration)
         {
             using (IDbConnection connection = dbConnection)
             {
@@ -82,10 +83,46 @@ namespace CashBook.DataAccess.MaintainBalance
                                     AccountId = @AccountId AND Duration = @Duration AND IsDeleted=false
                                 ";
                 connection.Open();
-                return connection.Query<ReadMaintainBalanceDto>(query, new {
+                return connection.Query<MaintainBalanceModel>(query, new {
                     AccountId = accountId,
                     Duration = duration
                 }).SingleOrDefault();
+            }
+        }
+
+        public MaintainBalanceModel GetMaintainBalanceByBankReconcilationId(string maintainBalanceId)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                string query = @"
+                                SELECT
+                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsDeleted, CreatedAt, UpdatedAt 
+                                FROM 
+                                    MaintainBalances 
+                                WHERE
+                                    MaintainBalanceId = @MaintainBalanceId AND IsDeleted=false
+                                ";
+                connection.Open();
+                return connection.Query<MaintainBalanceModel>(query, new
+                {
+                    MaintainBalanceId = maintainBalanceId
+                }).SingleOrDefault();
+            }
+        }
+        public void UpdateMaintainBalance(MaintainBalanceModel model)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                string query = @"
+                            UPDATE
+                                MaintainBalances
+                            SET
+                                ClosingBalance=@ClosingBalance, Duration=@Duration, Status = @Status, UpdatedAt=@UpdatedAt
+                            WHERE
+                                MaintainBalanceId=@MaintainBalanceId AND IsDeleted=false
+                            ";
+                connection.Open();
+                connection.Execute(query,model);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using CashBook.Models.MaintainBalance;
+﻿using CashBook.Dtos.MaintainBalance;
+using CashBook.Models.MaintainBalance;
 using CashBook.Services.Account;
 using CashBook.Services.MaintainBalance;
 using System;
@@ -32,6 +33,9 @@ namespace CashBook.UI.MaintainBalance
             maintainBalanceList = GetMaintainBalanceByAccountId((string)cboAccount.SelectedValue);
             LoadGridData(maintainBalanceList);
         }
+
+        
+
         private void LoadAccountComboBox()
         {
             var account = _accountService.GetAllAccounts();
