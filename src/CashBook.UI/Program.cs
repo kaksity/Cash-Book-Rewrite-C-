@@ -10,6 +10,7 @@ using CashBook.Services.Transaction;
 using CashBook.Services.TransactionDescription;
 using CashBook.UI.Account;
 using CashBook.UI.BankReconcilation;
+using CashBook.UI.MainMenu;
 using CashBook.UI.MaintainBalance;
 using CashBook.UI.Transaction;
 using SimpleInjector;
@@ -38,7 +39,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmViewBankReconcilation>());
+            Application.Run(container.GetInstance<FrmMainMenu>());
         }
 
         private static Container Bootstrap()
