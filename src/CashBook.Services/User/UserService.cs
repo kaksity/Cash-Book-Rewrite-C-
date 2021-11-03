@@ -36,5 +36,25 @@ namespace CashBook.Services.User
 
             _userRepository.CreateNewUser(newUser);
         }
+
+        public ReadUserDto GetUserByUsername(string username)
+        {
+            var userModel = _userRepository.GetUserByUsername(username.ToUpper());
+
+            if (userModel == null) return null;
+
+            var userReadDto = new ReadUserDto
+            {
+                UserId = userModel.UserId,
+                UserName = userModel.UserName.ToUpper(),
+                UserPassword = userModel.UserPassword,
+                FullName = userModel.FullName.ToUpper(),
+                TelePhoneNumber = userModel.TelePhoneNumber,
+                EmailAddress = userModel.EmailAddress.ToLower(),
+                SecurityQuestion = userModel.SecurityQuestion.ToUpper(),
+                SecurityAnswer = userModel.SecurityAnswer.ToUpper(),
+            };
+            return userReadDto;
+        }
     }
 }

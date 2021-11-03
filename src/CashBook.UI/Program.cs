@@ -42,7 +42,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmRegisterNewUser>());
+            Application.Run(container.GetInstance<FrmLogin>());
         }
 
         private static Container Bootstrap()

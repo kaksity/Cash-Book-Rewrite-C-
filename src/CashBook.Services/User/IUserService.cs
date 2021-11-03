@@ -10,7 +10,7 @@ namespace CashBook.Services.User
     public interface IUserService
     {
         void CreateNewUser(CreateUserDto dto);
-        //UserModel GetUserByUsername(string username);
+        ReadUserDto GetUserByUsername(string username);
         //UserModel GetUserByUserId(string userId);
         //void UpdateUser(UserModel model);
     }

@@ -248,6 +248,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cash Book - Register";
+            this.Load += new System.EventHandler(this.FrmRegisterNewUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

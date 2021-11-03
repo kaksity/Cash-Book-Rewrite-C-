@@ -88,5 +88,10 @@ namespace CashBook.UI.Authentication
             _userService.CreateNewUser(newUserDto);
             MessageBox.Show("Thank you for using CashBook. User account was created successfully", "Cash Book");
         }
+
+        private void FrmRegisterNewUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

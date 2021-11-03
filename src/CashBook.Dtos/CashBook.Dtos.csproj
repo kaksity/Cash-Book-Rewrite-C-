@@ -54,6 +54,7 @@
     <Compile Include="TransactionDescription\ReadTransactionDescriptionDto.cs" />
     <Compile Include="Transaction\CreateTransactionDto.cs" />
     <Compile Include="User\CreateUserDto.cs" />
+    <Compile Include="User\ReadUserDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
