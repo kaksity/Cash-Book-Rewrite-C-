@@ -69,6 +69,18 @@
     <Compile Include="Account\FrmSearchAccount.Designer.cs">
       <DependentUpon>FrmSearchAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Authentication\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentication\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Authentication\FrmRegisterNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentication\FrmRegisterNewUser.Designer.cs">
+      <DependentUpon>FrmRegisterNewUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="BankReconcilation\FrmBankReconcilation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\FrmSearchAccount.resx">
       <DependentUpon>FrmSearchAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authentication\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authentication\FrmRegisterNewUser.resx">
+      <DependentUpon>FrmRegisterNewUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BankReconcilation\FrmBankReconcilation.resx">
       <DependentUpon>FrmBankReconcilation.cs</DependentUpon>

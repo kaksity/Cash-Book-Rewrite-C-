@@ -70,6 +70,8 @@
     <Compile Include="TransactionDescription\TransactionDescriptionRepository.cs" />
     <Compile Include="Transaction\ITransactionRepository.cs" />
     <Compile Include="Transaction\TransactionRepository.cs" />
+    <Compile Include="User\IUserRepository.cs" />
+    <Compile Include="User\UserRepository.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>

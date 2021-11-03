@@ -53,6 +53,8 @@
     <Compile Include="TransactionDescription\TransactionDescriptionService.cs" />
     <Compile Include="Transaction\ITransactionService.cs" />
     <Compile Include="Transaction\TransactionService.cs" />
+    <Compile Include="User\IUserService.cs" />
+    <Compile Include="User\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CashBook.DataAccess\CashBook.DataAccess.csproj">
