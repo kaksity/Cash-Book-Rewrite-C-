@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CashBook.Models.Account;
+using CashBook.Models.TransactionDescription;
 
 namespace CashBook.Models.Transaction
 {
@@ -21,5 +23,7 @@ namespace CashBook.Models.Transaction
         public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public AccountModel Account { get; set; }
+        public TransactionDescriptionModel TransactionDescription { get; set; }
     }
 }

@@ -63,9 +63,21 @@
     <Compile Include="Account\IAccountRepository.cs" />
     <Compile Include="BankReconcilation\BankReconcilationRepository.cs" />
     <Compile Include="BankReconcilation\IBankReconcilationRepository.cs" />
+    <Compile Include="BinCardItem\BinCardItemRepository.cs" />
+    <Compile Include="BinCardItem\IBinCardItemRepository.cs" />
+    <Compile Include="BinCard\BinCardRepository.cs" />
+    <Compile Include="BinCard\IBinCardRepository.cs" />
     <Compile Include="MaintainBalance\IMaintainBalanceRepository.cs" />
     <Compile Include="MaintainBalance\MaintainBalanceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Accounts\AccountReportRepository.cs" />
+    <Compile Include="Reports\Accounts\IAccountReportRepository.cs" />
+    <Compile Include="Reports\BankReconcilations\BankReconcilationReportRepository.cs" />
+    <Compile Include="Reports\BankReconcilations\IBankReconcilationReportRepository.cs" />
+    <Compile Include="Reports\TransactionDescriptions\ITransactionDescriptionReportRepository.cs" />
+    <Compile Include="Reports\TransactionDescriptions\TransactionDescriptionReportRepository.cs" />
+    <Compile Include="Reports\Transactions\ITransactionReportRepository.cs" />
+    <Compile Include="Reports\Transactions\TransactionReportRepository.cs" />
     <Compile Include="TransactionDescription\ITransactionDescriptionRepository.cs" />
     <Compile Include="TransactionDescription\TransactionDescriptionRepository.cs" />
     <Compile Include="Transaction\ITransactionRepository.cs" />
@@ -83,6 +95,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

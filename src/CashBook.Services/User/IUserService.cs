@@ -11,7 +11,8 @@ namespace CashBook.Services.User
     {
         void CreateNewUser(CreateUserDto dto);
         ReadUserDto GetUserByUsername(string username);
-        //UserModel GetUserByUserId(string userId);
-        //void UpdateUser(UserModel model);
+        ReadUserDto GetUserByUserId(string userId);
+        void UpdateUser(UpdateUserDto dto);
+        bool AnyUserExist();
     }
 }

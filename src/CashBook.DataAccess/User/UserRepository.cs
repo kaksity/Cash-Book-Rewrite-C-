@@ -19,6 +19,24 @@ namespace CashBook.DataAccess.User
                 return new FbConnection(Utility.ConnectionString);
             }
         }
+
+        public List<UserModel> GetAllUsers()
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                connection.Open();
+                string query = @"
+                                SELECT
+                                    UserId, OrganizationName,UserName, UserPassword, FullName, TelephoneNumber,EmailAddress, SecurityQuestion, SecurityAnswer, IsDeleted,CreatedAt, UpdatedAt
+                                FROM
+                                    Users
+                                WHERE
+                                    IsDeleted=false
+                                ";
+                return connection.Query<UserModel>(query).ToList();
+            }
+        }
+
         public void CreateNewUser(UserModel model)
         {
             using (IDbConnection connection = dbConnection)
@@ -26,9 +44,9 @@ namespace CashBook.DataAccess.User
                 connection.Open();
                 string query = @"
                                 INSERT INTO 
-                                    Users (UserId, UserName, UserPassword, FullName, TelephoneNumber,EmailAddress, SecurityQuestion, SecurityAnswer, IsDeleted,CreatedAt, UpdatedAt)
+                                    Users (UserId, UserName, OrganizationName,UserPassword, FullName, TelephoneNumber,EmailAddress, SecurityQuestion, SecurityAnswer, IsDeleted,CreatedAt, UpdatedAt)
                                 VALUES
-                                    (@UserId, @UserName, @UserPassword, @FullName, @TelephoneNumber, @EmailAddress, @SecurityQuestion, @SecurityAnswer, @IsDeleted, @CreatedAt, @UpdatedAt);
+                                    (@UserId, @UserName, @OrganizationName,@UserPassword, @FullName, @TelephoneNumber, @EmailAddress, @SecurityQuestion, @SecurityAnswer, @IsDeleted, @CreatedAt, @UpdatedAt);
                                 ";
                 connection.Execute(query,model);
             }
@@ -41,7 +59,7 @@ namespace CashBook.DataAccess.User
                 connection.Open();
                 string query = @"
                                 SELECT
-                                    UserId, UserName, UserPassword, FullName, TelephoneNumber,EmailAddress, SecurityQuestion, SecurityAnswer, IsDeleted,CreatedAt, UpdatedAt
+                                    UserId, OrganizationName,UserName, UserPassword, FullName, TelephoneNumber,EmailAddress, SecurityQuestion, SecurityAnswer, IsDeleted,CreatedAt, UpdatedAt
                                 FROM
                                     Users
                                 WHERE
@@ -58,7 +76,7 @@ namespace CashBook.DataAccess.User
                 connection.Open();
                 string query = @"
                                 SELECT
-                                    UserId, UserName, UserPassword, FullName, TelephoneNumber,EmailAddress, SecurityQuestion, SecurityAnswer, IsDeleted,CreatedAt, UpdatedAt
+                                    UserId, OrganizationName,UserName, UserPassword, FullName, TelephoneNumber,EmailAddress, SecurityQuestion, SecurityAnswer, IsDeleted,CreatedAt, UpdatedAt
                                 FROM
                                     Users
                                 WHERE
@@ -68,7 +86,7 @@ namespace CashBook.DataAccess.User
             }
         }
 
-        public void UpdateUser(UserModel model)
+        public void UpdateUserWithoutPassword(UserModel model)
         {
             using (IDbConnection connection = dbConnection)
             {
@@ -77,7 +95,24 @@ namespace CashBook.DataAccess.User
                                 UPDATE
                                     Users
                                 SET
-                                    UserId=@UserId, UserName=@UserName, UserPassword=@UserPassword, FullName=@FullName, TelephoneNumber=@TelephoneNumber,EmailAddress=@EmailAddress, SecurityQuestion=@SecurityQuestion, SecurityAnswer=@SecurityAnswer,UpdatedAt=@UpdatedAt
+                                    UserId=@UserId, OrganizationName = @OrganizationName, UserName=@UserName, FullName=@FullName, TelephoneNumber=@TelephoneNumber,EmailAddress=@EmailAddress, SecurityQuestion=@SecurityQuestion, SecurityAnswer=@SecurityAnswer,UpdatedAt=@UpdatedAt
+                                WHERE
+                                    UserId=@UserId AND IsDeleted=false
+                                ";
+                connection.Execute(query, model);
+            }
+        }
+
+        public void UpdateUserWithPassword(UserModel model)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                connection.Open();
+                string query = @"
+                                UPDATE
+                                    Users
+                                SET
+                                    UserId=@UserId, OrganizationName = @OrganizationName, UserName=@UserName, UserPassword=@UserPassword, FullName=@FullName, TelephoneNumber=@TelephoneNumber,EmailAddress=@EmailAddress, SecurityQuestion=@SecurityQuestion, SecurityAnswer=@SecurityAnswer,UpdatedAt=@UpdatedAt
                                 WHERE
                                     UserId=@UserId AND IsDeleted=false
                                 ";

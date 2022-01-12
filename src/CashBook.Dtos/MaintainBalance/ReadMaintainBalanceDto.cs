@@ -14,5 +14,6 @@ namespace CashBook.Dtos.MaintainBalance
         public decimal ClosingBalance { get; set; }
         public string Duration { get; set; }
         public int Status { get; set; }
+        public bool IsEdited { get; set; }
     }
 }

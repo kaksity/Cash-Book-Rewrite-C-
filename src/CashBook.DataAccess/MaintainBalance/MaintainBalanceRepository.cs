@@ -26,9 +26,9 @@ namespace CashBook.DataAccess.MaintainBalance
             {
                 string query = @"
                                 INSERT INTO 
-                                    MaintainBalances (MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsDeleted, CreatedAt, UpdatedAt)
+                                    MaintainBalances (MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status,IsEdited, IsDeleted, CreatedAt, UpdatedAt)
                                 VALUES 
-                                    (@MaintainBalanceId, @AccountId, @OpeningBalance,@ClosingBalance, @Duration, @Status, @IsDeleted, @CreatedAt, @UpdatedAt)
+                                    (@MaintainBalanceId, @AccountId, @OpeningBalance,@ClosingBalance, @Duration, @Status, @IsEdited,@IsDeleted, @CreatedAt, @UpdatedAt)
                                 ";
                 connection.Open();
 
@@ -59,33 +59,40 @@ namespace CashBook.DataAccess.MaintainBalance
             {
                 string query = @"
                                 SELECT
-                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsDeleted, CreatedAt, UpdatedAt 
+                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsEdited, IsDeleted, CreatedAt, UpdatedAt 
                                 FROM 
                                     MaintainBalances 
                                 WHERE
                                     AccountId=@AccountId AND IsDeleted=false
+                                ORDER BY
+                                    Duration
+                                DESC
                                 ";
                 connection.Open();
                 return connection.Query<MaintainBalanceModel>(query, new { AccountId = accountId }).ToList();
             }
         }
 
-        public MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration)
+        public MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, DateTime duration)
         {
             using (IDbConnection connection = dbConnection)
             {
                 string query = @"
                                 SELECT
-                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsDeleted, CreatedAt, UpdatedAt 
+                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsEdited, IsDeleted, CreatedAt, UpdatedAt 
                                 FROM 
                                     MaintainBalances 
                                 WHERE
-                                    AccountId = @AccountId AND Duration = @Duration AND IsDeleted=false
+                                    AccountId = @AccountId AND EXTRACT( MONTH FROM Duration) = @Month AND EXTRACT(YEAR FROM Duration) = @Year AND IsDeleted=false
+                                ORDER BY
+                                    Duration
+                                DESC
                                 ";
                 connection.Open();
                 return connection.Query<MaintainBalanceModel>(query, new {
                     AccountId = accountId,
-                    Duration = duration
+                    Month = duration.Month,
+                    Year = duration.Year
                 }).SingleOrDefault();
             }
         }
@@ -96,11 +103,14 @@ namespace CashBook.DataAccess.MaintainBalance
             {
                 string query = @"
                                 SELECT
-                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsDeleted, CreatedAt, UpdatedAt 
+                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsEdited, IsDeleted, CreatedAt, UpdatedAt 
                                 FROM 
                                     MaintainBalances 
                                 WHERE
                                     MaintainBalanceId = @MaintainBalanceId AND IsDeleted=false
+                                ORDER BY
+                                    Duration
+                                DESC
                                 ";
                 connection.Open();
                 return connection.Query<MaintainBalanceModel>(query, new
@@ -109,20 +119,113 @@ namespace CashBook.DataAccess.MaintainBalance
                 }).SingleOrDefault();
             }
         }
-        public void UpdateMaintainBalance(MaintainBalanceModel model)
+        public void CloseMaintainBalance(MaintainBalanceModel model)
         {
             using (IDbConnection connection = dbConnection)
             {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = @"
+                            UPDATE
+                                MaintainBalances
+                            SET
+                                ClosingBalance=@ClosingBalance, Duration=@Duration, IsEdited=@IsEdited,Status = @Status, UpdatedAt=@UpdatedAt
+                            WHERE
+                                MaintainBalanceId=@MaintainBalanceId AND IsDeleted=false
+                            ";
+
+                        connection.Execute(query,param:model, transaction:transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+        public void DeleteMaintainBalance(string maintainBalanceId)
+        {
+            using (var connection = dbConnection)
+            {
+                connection.Open();
                 string query = @"
                             UPDATE
                                 MaintainBalances
                             SET
-                                ClosingBalance=@ClosingBalance, Duration=@Duration, Status = @Status, UpdatedAt=@UpdatedAt
+                                IsDeleted=true, UpdatedAt=@UpdatedAt
                             WHERE
                                 MaintainBalanceId=@MaintainBalanceId AND IsDeleted=false
                             ";
+
+                connection.Execute(query, param: new { MaintainBalanceId = maintainBalanceId,UpdatedAt = DateTime.Now});
+            }
+        }
+
+        public void SetMaintainBalanceAsEdited(string maintainBalanceId)
+        {
+           
+            using (var connection = dbConnection)
+            {
                 connection.Open();
-                connection.Execute(query,model);
+                string query = "SELECT * FROM MaintainBalances WHERE MaintainBalanceId=@MaintainBalanceId AND IsDeleted=false";
+
+                var result = connection.Query<MaintainBalanceModel>(query, param: new { MaintainBalanceId = maintainBalanceId}).SingleOrDefault();
+
+                var parameter = new { Duration = result.Duration, UpdatedAt = DateTime.Now };
+                query = @"
+                            UPDATE
+                                MaintainBalances
+                            SET
+                                IsEdited=true, UpdatedAt=@UpdatedAt
+                            WHERE
+                                Duration >=  @Duration AND IsDeleted=false
+                            ";
+
+                connection.Execute(query, param: parameter);
+            }
+        }
+
+        public List<MaintainBalanceModel> GetEditedMaintainBalanceByAccount(string accountId)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                string query = @"
+                                SELECT
+                                    MaintainBalanceId, AccountId, OpeningBalance,ClosingBalance, Duration, Status, IsEdited, IsDeleted, CreatedAt, UpdatedAt 
+                                FROM 
+                                    MaintainBalances 
+                                WHERE
+                                    AccountId=@AccountId AND IsDeleted=false AND IsEdited=true
+                                ORDER BY
+                                    Duration
+                                ASC
+                                ";
+                connection.Open();
+                return connection.Query<MaintainBalanceModel>(query, new { AccountId = accountId }).ToList();
+            }
+        }
+
+        public void UpdateMaintainBalance(MaintainBalanceModel model)
+        {
+            using (var connection = dbConnection)
+            {
+                connection.Open();
+                string query = @"
+                            UPDATE
+                                MaintainBalances
+                            SET
+                                OpeningBalance=@OpeningBalance, ClosingBalance=@ClosingBalance, IsEdited=@IsEdited,Status=@Status,UpdatedAt=@UpdatedAt
+                            WHERE
+                                MaintainBalanceId=@MaintainBalanceId AND IsDeleted=false
+                            ";
+
+                connection.Execute(query, param: model);
             }
         }
     }

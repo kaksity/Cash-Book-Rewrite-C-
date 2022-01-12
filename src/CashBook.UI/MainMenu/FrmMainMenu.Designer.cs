@@ -28,271 +28,187 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RevenueRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CreateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExpenseTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CreateToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ViewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExpenseItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BankReconcilationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CloseFinancialTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BackupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OrganizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TransactionDescriptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BankReconcilationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.SchoolFeesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ColumnCashbookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DataRecoveryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LocalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BackUpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.RestoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStrip1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainMenu));
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnBankReconcilation = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnIncomeRegister = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // MenuStrip1
+            // button1
             // 
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileToolStripMenuItem,
-            this.HelpToolStripMenuItem,
-            this.ReportsToolStripMenuItem,
-            this.DataRecoveryToolStripMenuItem});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.MenuStrip1.Size = new System.Drawing.Size(1090, 24);
-            this.MenuStrip1.TabIndex = 1;
-            this.MenuStrip1.Text = "MenuStrip1";
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(68, 126);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(236, 65);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Cash Book";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // FileToolStripMenuItem
+            // btnBankReconcilation
             // 
-            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AccountToolStripMenuItem,
-            this.RevenueRegisterToolStripMenuItem,
-            this.ExpenseTransactionToolStripMenuItem,
-            this.ExpenseItemToolStripMenuItem,
-            this.BankReconcilationToolStripMenuItem,
-            this.CloseFinancialTransactionToolStripMenuItem});
-            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
-            this.FileToolStripMenuItem.Text = "&Operations";
+            this.btnBankReconcilation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBankReconcilation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.btnBankReconcilation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBankReconcilation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBankReconcilation.ForeColor = System.Drawing.Color.White;
+            this.btnBankReconcilation.Location = new System.Drawing.Point(741, 126);
+            this.btnBankReconcilation.Name = "btnBankReconcilation";
+            this.btnBankReconcilation.Size = new System.Drawing.Size(236, 65);
+            this.btnBankReconcilation.TabIndex = 1;
+            this.btnBankReconcilation.Text = "Bank Reconcilation";
+            this.btnBankReconcilation.UseVisualStyleBackColor = false;
+            this.btnBankReconcilation.Click += new System.EventHandler(this.btnBankReconcilation_Click);
             // 
-            // AccountToolStripMenuItem
+            // button3
             // 
-            this.AccountToolStripMenuItem.Name = "AccountToolStripMenuItem";
-            this.AccountToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.AccountToolStripMenuItem.Text = "Account";
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(68, 252);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(236, 65);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "32 Column Cashbook";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // RevenueRegisterToolStripMenuItem
+            // btnIncomeRegister
             // 
-            this.RevenueRegisterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CreateToolStripMenuItem1,
-            this.ViewToolStripMenuItem});
-            this.RevenueRegisterToolStripMenuItem.Name = "RevenueRegisterToolStripMenuItem";
-            this.RevenueRegisterToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.RevenueRegisterToolStripMenuItem.Text = "Revenue Register";
+            this.btnIncomeRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnIncomeRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.btnIncomeRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIncomeRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncomeRegister.ForeColor = System.Drawing.Color.White;
+            this.btnIncomeRegister.Location = new System.Drawing.Point(68, 373);
+            this.btnIncomeRegister.Name = "btnIncomeRegister";
+            this.btnIncomeRegister.Size = new System.Drawing.Size(236, 65);
+            this.btnIncomeRegister.TabIndex = 3;
+            this.btnIncomeRegister.Text = "Income Register";
+            this.btnIncomeRegister.UseVisualStyleBackColor = false;
+            this.btnIncomeRegister.Click += new System.EventHandler(this.btnIncomeRegister_Click);
             // 
-            // CreateToolStripMenuItem1
+            // button5
             // 
-            this.CreateToolStripMenuItem1.Name = "CreateToolStripMenuItem1";
-            this.CreateToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
-            this.CreateToolStripMenuItem1.Text = "Create";
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(741, 252);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(236, 65);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Advance Ledger";
+            this.button5.UseVisualStyleBackColor = false;
             // 
-            // ViewToolStripMenuItem
+            // button6
             // 
-            this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
-            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
-            this.ViewToolStripMenuItem.Text = "View";
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(741, 373);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(236, 65);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Stock Ledger";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // ExpenseTransactionToolStripMenuItem
+            // btnSettings
             // 
-            this.ExpenseTransactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CreateToolStripMenuItem2,
-            this.ViewToolStripMenuItem1});
-            this.ExpenseTransactionToolStripMenuItem.Name = "ExpenseTransactionToolStripMenuItem";
-            this.ExpenseTransactionToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.ExpenseTransactionToolStripMenuItem.Text = "Expense Transaction";
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettings.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.Location = new System.Drawing.Point(859, 585);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(194, 44);
+            this.btnSettings.TabIndex = 6;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // CreateToolStripMenuItem2
+            // panel1
             // 
-            this.CreateToolStripMenuItem2.Name = "CreateToolStripMenuItem2";
-            this.CreateToolStripMenuItem2.Size = new System.Drawing.Size(108, 22);
-            this.CreateToolStripMenuItem2.Text = "Create";
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1065, 55);
+            this.panel1.TabIndex = 7;
             // 
-            // ViewToolStripMenuItem1
+            // label1
             // 
-            this.ViewToolStripMenuItem1.Name = "ViewToolStripMenuItem1";
-            this.ViewToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
-            this.ViewToolStripMenuItem1.Text = "View";
-            // 
-            // ExpenseItemToolStripMenuItem
-            // 
-            this.ExpenseItemToolStripMenuItem.Name = "ExpenseItemToolStripMenuItem";
-            this.ExpenseItemToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.ExpenseItemToolStripMenuItem.Text = "Transaction Description Item";
-            // 
-            // BankReconcilationToolStripMenuItem
-            // 
-            this.BankReconcilationToolStripMenuItem.Name = "BankReconcilationToolStripMenuItem";
-            this.BankReconcilationToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.BankReconcilationToolStripMenuItem.Text = "Bank Reconcilation";
-            // 
-            // CloseFinancialTransactionToolStripMenuItem
-            // 
-            this.CloseFinancialTransactionToolStripMenuItem.Name = "CloseFinancialTransactionToolStripMenuItem";
-            this.CloseFinancialTransactionToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
-            this.CloseFinancialTransactionToolStripMenuItem.Text = "Close Financial Transaction";
-            // 
-            // HelpToolStripMenuItem
-            // 
-            this.HelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BackupToolStripMenuItem,
-            this.OrganizationToolStripMenuItem});
-            this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
-            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.HelpToolStripMenuItem.Text = "&Profile";
-            // 
-            // BackupToolStripMenuItem
-            // 
-            this.BackupToolStripMenuItem.Name = "BackupToolStripMenuItem";
-            this.BackupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.BackupToolStripMenuItem.Text = "&User";
-            // 
-            // OrganizationToolStripMenuItem
-            // 
-            this.OrganizationToolStripMenuItem.Name = "OrganizationToolStripMenuItem";
-            this.OrganizationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.OrganizationToolStripMenuItem.Text = "Organization";
-            // 
-            // ReportsToolStripMenuItem
-            // 
-            this.ReportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TransactionToolStripMenuItem,
-            this.AccountsToolStripMenuItem,
-            this.TransactionDescriptionToolStripMenuItem,
-            this.BankReconcilationToolStripMenuItem1,
-            this.SchoolFeesToolStripMenuItem1,
-            this.ColumnCashbookToolStripMenuItem});
-            this.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem";
-            this.ReportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.ReportsToolStripMenuItem.Text = "&Reports";
-            // 
-            // TransactionToolStripMenuItem
-            // 
-            this.TransactionToolStripMenuItem.Name = "TransactionToolStripMenuItem";
-            this.TransactionToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.TransactionToolStripMenuItem.Text = "Transaction";
-            // 
-            // AccountsToolStripMenuItem
-            // 
-            this.AccountsToolStripMenuItem.Name = "AccountsToolStripMenuItem";
-            this.AccountsToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.AccountsToolStripMenuItem.Text = "Accounts";
-            // 
-            // TransactionDescriptionToolStripMenuItem
-            // 
-            this.TransactionDescriptionToolStripMenuItem.Name = "TransactionDescriptionToolStripMenuItem";
-            this.TransactionDescriptionToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.TransactionDescriptionToolStripMenuItem.Text = "Transaction Description";
-            // 
-            // BankReconcilationToolStripMenuItem1
-            // 
-            this.BankReconcilationToolStripMenuItem1.Name = "BankReconcilationToolStripMenuItem1";
-            this.BankReconcilationToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
-            this.BankReconcilationToolStripMenuItem1.Text = "Bank Reconcilation";
-            // 
-            // SchoolFeesToolStripMenuItem1
-            // 
-            this.SchoolFeesToolStripMenuItem1.Name = "SchoolFeesToolStripMenuItem1";
-            this.SchoolFeesToolStripMenuItem1.Size = new System.Drawing.Size(197, 22);
-            this.SchoolFeesToolStripMenuItem1.Text = "School Fees";
-            // 
-            // ColumnCashbookToolStripMenuItem
-            // 
-            this.ColumnCashbookToolStripMenuItem.Name = "ColumnCashbookToolStripMenuItem";
-            this.ColumnCashbookToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.ColumnCashbookToolStripMenuItem.Text = "32 Column Cashbook";
-            // 
-            // DataRecoveryToolStripMenuItem
-            // 
-            this.DataRecoveryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LocalToolStripMenuItem});
-            this.DataRecoveryToolStripMenuItem.Name = "DataRecoveryToolStripMenuItem";
-            this.DataRecoveryToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
-            this.DataRecoveryToolStripMenuItem.Text = "&Data Recovery";
-            // 
-            // LocalToolStripMenuItem
-            // 
-            this.LocalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BackUpToolStripMenuItem1,
-            this.RestoreToolStripMenuItem});
-            this.LocalToolStripMenuItem.Name = "LocalToolStripMenuItem";
-            this.LocalToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
-            this.LocalToolStripMenuItem.Text = "&Local";
-            // 
-            // BackUpToolStripMenuItem1
-            // 
-            this.BackUpToolStripMenuItem1.Name = "BackUpToolStripMenuItem1";
-            this.BackUpToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
-            this.BackUpToolStripMenuItem1.Text = "&Back Up";
-            // 
-            // RestoreToolStripMenuItem
-            // 
-            this.RestoreToolStripMenuItem.Name = "RestoreToolStripMenuItem";
-            this.RestoreToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.RestoreToolStripMenuItem.Text = "&Restore";
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(458, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 31);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "HOME";
             // 
             // FrmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 489);
-            this.Controls.Add(this.MenuStrip1);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1065, 641);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnSettings);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnIncomeRegister);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnBankReconcilation);
+            this.Controls.Add(this.button1);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cash Book - Main Menu";
+            this.Text = "Swift Accounts - Main Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMainMenu_FormClosing);
+            this.Load += new System.EventHandler(this.FrmMainMenu_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        internal System.Windows.Forms.MenuStrip MenuStrip1;
-        internal System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem AccountToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem RevenueRegisterToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem CreateToolStripMenuItem1;
-        internal System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem ExpenseTransactionToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem CreateToolStripMenuItem2;
-        internal System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem1;
-        internal System.Windows.Forms.ToolStripMenuItem ExpenseItemToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem BankReconcilationToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem CloseFinancialTransactionToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem BackupToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem OrganizationToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem ReportsToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem TransactionToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem AccountsToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem TransactionDescriptionToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem BankReconcilationToolStripMenuItem1;
-        internal System.Windows.Forms.ToolStripMenuItem SchoolFeesToolStripMenuItem1;
-        internal System.Windows.Forms.ToolStripMenuItem ColumnCashbookToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem DataRecoveryToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem LocalToolStripMenuItem;
-        internal System.Windows.Forms.ToolStripMenuItem BackUpToolStripMenuItem1;
-        internal System.Windows.Forms.ToolStripMenuItem RestoreToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBankReconcilation;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnIncomeRegister;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -26,5 +26,13 @@ namespace CashBook.UI.Utilities
         {
             return decimal.Parse(input);
         }
+        public static string FormatDecimal(decimal input)
+        {
+            return input.ToString("N");
+        }
+        public static string FormatDate(DateTime input)
+        {
+            return input.ToString("dd/MM/yyyy");
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CashBook.UI.Utilities;
 
 namespace CashBook.UI.Authentication
 {
@@ -25,50 +26,56 @@ namespace CashBook.UI.Authentication
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text) == true)
             {
-                MessageBox.Show("Username is required", "Cash Book");
+                MessageBox.Show("Username is required", Software.GetApplicationName());
                 txtUsername.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtOrganizationName.Text) == true)
+            {
+                MessageBox.Show("Organization Name is required", Software.GetApplicationName());
+                txtOrganizationName.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtFullName.Text) == true)
             {
-                MessageBox.Show("Full Name is required", "Cash Book");
+                MessageBox.Show("Full Name is required", Software.GetApplicationName());
                 txtFullName.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtSecurityQuestion.Text) == true)
             {
-                MessageBox.Show("Security Question is required", "Cash Book");
+                MessageBox.Show("Security Question is required", Software.GetApplicationName());
                 txtSecurityQuestion.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtSecurityAnswer.Text) == true)
             {
-                MessageBox.Show("Security Answer is required", "Cash Book");
+                MessageBox.Show("Security Answer is required", Software.GetApplicationName());
                 txtSecurityAnswer.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtPassword.Text) == true)
             {
-                MessageBox.Show("Password is required", "Cash Book");
+                MessageBox.Show("Password is required", Software.GetApplicationName());
                 txtPassword.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text) == true)
             {
-                MessageBox.Show("Confirm Password is required", "Cash Book");
+                MessageBox.Show("Confirm Password is required", Software.GetApplicationName());
                 txtConfirmPassword.Focus();
                 return;
             }
 
             if (txtPassword.Text.Length < 8)
             {
-                MessageBox.Show("Password Length must be 8 or more characters", "Cash Book");
+                MessageBox.Show("Password Length must be 8 or more characters", Software.GetApplicationName());
                 txtPassword.Focus();
                 return;
             }
             if (txtPassword.Text != txtConfirmPassword.Text)
             {
-                MessageBox.Show("Password Must Match Confirm Password", "Cash Book");
+                MessageBox.Show("Password Must Match Confirm Password", Software.GetApplicationName());
                 txtConfirmPassword.Focus();
                 return;
             }
@@ -77,6 +84,7 @@ namespace CashBook.UI.Authentication
             var newUserDto = new CreateUserDto
             {
                 UserName = txtUsername.Text,
+                OrganizationName = txtOrganizationName.Text.ToUpper(),
                 UserPassword = txtPassword.Text,
                 FullName = txtFullName.Text,
                 TelePhoneNumber = txtTelephoneNumber.Text,
@@ -86,12 +94,20 @@ namespace CashBook.UI.Authentication
             };
 
             _userService.CreateNewUser(newUserDto);
-            MessageBox.Show("Thank you for using CashBook. User account was created successfully", "Cash Book");
+            MessageBox.Show("Thank you for using Swift Accounts. User account was created successfully", Software.GetApplicationName());
+            this.Hide();
+            var frmLogin = Program.container.GetInstance<FrmLogin>();
+            frmLogin.ShowDialog();
         }
 
         private void FrmRegisterNewUser_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmRegisterNewUser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

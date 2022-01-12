@@ -46,15 +46,29 @@
     <Compile Include="Account\IAccountService.cs" />
     <Compile Include="BankReconcilation\BankReconcilationService.cs" />
     <Compile Include="BankReconcilation\IBankReconcilationService.cs" />
+    <Compile Include="BinCardItem\BinCardItemService.cs" />
+    <Compile Include="BinCardItem\IBinCardItemService.cs" />
+    <Compile Include="BinCard\BinCardService.cs" />
+    <Compile Include="BinCard\IBinCardService.cs" />
     <Compile Include="MaintainBalance\IMaintainBalanceService.cs" />
     <Compile Include="MaintainBalance\MaintainBalanceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Accounts\AccountReportService.cs" />
+    <Compile Include="Reports\Accounts\IAccountReportService.cs" />
+    <Compile Include="Reports\BankReconcilations\BankReconcilationReportService.cs" />
+    <Compile Include="Reports\BankReconcilations\IBankReconcilationReportService.cs" />
+    <Compile Include="Reports\TransactionDescriptions\ITransactionDescriptionReportService.cs" />
+    <Compile Include="Reports\TransactionDescriptions\TransactionDescriptionReportService.cs" />
+    <Compile Include="Reports\Transactions\ITransactionReportService.cs" />
+    <Compile Include="Reports\Transactions\TransactionReportService.cs" />
     <Compile Include="TransactionDescription\ITransactionDescriptionService.cs" />
     <Compile Include="TransactionDescription\TransactionDescriptionService.cs" />
     <Compile Include="Transaction\ITransactionService.cs" />
     <Compile Include="Transaction\TransactionService.cs" />
     <Compile Include="User\IUserService.cs" />
     <Compile Include="User\UserService.cs" />
+    <Compile Include="Utility\IUtilityService.cs" />
+    <Compile Include="Utility\UtilityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CashBook.DataAccess\CashBook.DataAccess.csproj">

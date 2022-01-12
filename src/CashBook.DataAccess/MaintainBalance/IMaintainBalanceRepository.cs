@@ -11,9 +11,14 @@ namespace CashBook.DataAccess.MaintainBalance
     {
         void CreateMaintainBalance(MaintainBalanceModel model);
         List<MaintainBalanceModel> GetAllMaintainBalanceByAccount(string accountId);
-        MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, string duration);
+        List<MaintainBalanceModel> GetEditedMaintainBalanceByAccount(string accountId);
+        MaintainBalanceModel GetMaintainBalanceByAccountIdAndDuration(string accountId, DateTime duration);
         MaintainBalanceModel GetMaintainBalanceByBankReconcilationId(string maintainBalanceId);
+        void CloseMaintainBalance(MaintainBalanceModel model);
         void UpdateMaintainBalance(MaintainBalanceModel model);
+        void DeleteMaintainBalance(string maintainBalanceId);
+        void SetMaintainBalanceAsEdited(string maintainBalanceId);
+
 
     }
 }

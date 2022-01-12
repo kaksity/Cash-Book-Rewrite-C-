@@ -6,16 +6,71 @@ using System.Threading.Tasks;
 using CashBook.Dtos.BankReconcilation;
 using CashBook.DataAccess.BankReconcilation;
 using CashBook.Models.BankReconcilation;
+using CashBook.Services.Reports.BankReconcilations;
+using CashBook.Services.Transaction;
+using CashBook.Dtos.Transaction;
 
 namespace CashBook.Services.BankReconcilation
 {
     public class BankReconcilationService : IBankReconcilationService
     {
         private readonly IBankReconcilationRepository _bankReconcilationRepository;
-        public BankReconcilationService(IBankReconcilationRepository bankReconcilationRepository)
+        private readonly ITransactionService _transactionService;
+
+        public BankReconcilationService(IBankReconcilationRepository bankReconcilationRepository, ITransactionService transactionService)
         {
             _bankReconcilationRepository = bankReconcilationRepository;
+            _transactionService = transactionService;
+
         }
+
+        private Tuple<decimal, decimal> CalculateTotalIncomeAndExpenseTransaction(List<ReadTransactionDto> data)
+        {
+            decimal totalIncomeTransaction = 0;
+            decimal totalExpenseTransaction = 0;
+
+            foreach (var item in data)
+            {
+                if (item.AmmountDeposited == 0)
+                {
+                    totalExpenseTransaction += item.AmmountWithdrawn;
+                }
+                else
+                {
+                    totalIncomeTransaction += item.AmmountDeposited;
+                }
+            }
+            return Tuple.Create(totalIncomeTransaction, totalExpenseTransaction);
+        }
+
+        public decimal CalculateBankReconcilationClosingBalance(decimal openingBalance, ReadBankReconcilationDto dto)
+        {
+            var splitedDuration = dto.Duration.Split('.');
+
+            int month = Convert.ToInt16(splitedDuration[0]);
+            int year = Convert.ToInt16(splitedDuration[1]);
+
+            var allTransactions = _transactionService.GetAllTransactionByAccountIdMonthAndYear(dto.AccountId, month, year);
+            var totalReceiptsAndPayments = CalculateTotalIncomeAndExpenseTransaction(allTransactions);
+
+            var totalReceipts = totalReceiptsAndPayments.Item1;
+            var totalPayments = totalReceiptsAndPayments.Item2;
+
+            decimal subCashBookBalance = totalReceipts + dto.CreditTransfer + dto.InterestReceived + dto.StaleChqsReversed - totalPayments - dto.BankCharges - dto.DebitTransfer;
+
+            decimal cashbookBalance = openingBalance + subCashBookBalance;
+            decimal suggestedCashbookBalance = cashbookBalance + dto.OutstandingStaleChqs;
+
+            decimal bankAddTotal = dto.UnpresentedChqs + dto.BankNotCashBook;
+            decimal bankLessTotal = dto.UncreditedLodgements + dto.CashBookNotBank;
+
+            decimal bankTotal = bankAddTotal - bankLessTotal;
+
+            decimal closingBalance = suggestedCashbookBalance + bankTotal;
+
+            return closingBalance;
+        }
+
         public void CreateBankReconcilation(CreateBankReconcilationDto dto)
         {
             var bankReconcilation = new BankReconcilationModel

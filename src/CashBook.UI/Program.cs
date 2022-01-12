@@ -10,18 +10,28 @@ using CashBook.Services.MaintainBalance;
 using CashBook.Services.Transaction;
 using CashBook.Services.TransactionDescription;
 using CashBook.Services.User;
-using CashBook.UI.Account;
-using CashBook.UI.Authentication;
-using CashBook.UI.BankReconcilation;
-using CashBook.UI.MainMenu;
-using CashBook.UI.MaintainBalance;
-using CashBook.UI.Transaction;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
+using CashBook.Services.Utility;
+using CashBook.UI.Reports;
+using CashBook.Services.Reports;
+using CashBook.DataAccess.Reports;
+using CashBook.Services.Reports.BankReconcilations;
+using CashBook.DataAccess.Reports.BankReconcilations;
+using CashBook.DataAccess.Reports.TransactionDescriptions;
+using CashBook.Services.Reports.TransactionDescriptions;
+using CashBook.DataAccess.Reports.Accounts;
+using CashBook.Services.Reports.Accounts;
+using CashBook.UI.MainMenu;
+using CashBook.UI.Utilities;
+using CashBook.UI.Authentication;
+using CashBook.DataAccess.BinCardItem;
+using CashBook.Services.BinCardItem;
+using CashBook.UI.StockLedger;
+using CashBook.DataAccess.BinCard;
+using CashBook.Services.BinCard;
 
 namespace CashBook.UI
 {
@@ -33,7 +43,7 @@ namespace CashBook.UI
         /// 
         public static Container container;
         public static string accountId;
-
+        public static string userId = "372f76e3-f757-4549-b50c-eb68fd28ebb1";
         [STAThread]
         static void Main()
         {
@@ -42,7 +52,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmLogin>());
+            Application.Run(container.GetInstance<FrmStockLedgerMenu>());
         }
 
         private static Container Bootstrap()
@@ -62,6 +72,19 @@ namespace CashBook.UI
             container.Register<IBankReconcilationService, BankReconcilationService>();
             container.Register<IUserRepository, UserRepository>();
             container.Register<IUserService, UserService>();
+            container.Register<IUtilityService,UtilityService>();
+            container.Register<ITransactionReportRepository, TransactionReportRepository>();
+            container.Register<ITransactionReportService, TransactionReportService>();
+            container.Register<IBankReconcilationReportService, BankReconcilationReportService>();
+            container.Register<IBankReconcilationReportRepository, BankReconcilationReportRepository>();
+            container.Register<ITransactionDescriptionReportRepository, TransactionDescriptionReportRepository>();
+            container.Register<ITransactionDescriptionReportService, TransactionDescriptionReportService>();
+            container.Register<IAccountReportRepository,AccountReportRepository>();
+            container.Register<IAccountReportService, AccountReportService>();
+            container.Register<IBinCardItemRepository, BinCardItemRepository>();
+            container.Register<IBinCardItemService, BinCardItemService>();
+            container.Register<IBinCardRepository, BinCardRepository>();
+            container.Register<IBinCardService, BinCardService>();
             AutoRegisterWindowsForms(container);
 
             container.Verify();
@@ -75,8 +98,7 @@ namespace CashBook.UI
 
             foreach (var type in types)
             {
-                var registration =
-                    Lifestyle.Transient.CreateRegistration(type, container);
+                var registration = Lifestyle.Transient.CreateRegistration(type, container);
 
                 registration.SuppressDiagnosticWarning(
                     DiagnosticType.DisposableTransientComponent,

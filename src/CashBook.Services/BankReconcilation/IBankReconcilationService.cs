@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CashBook.Dtos.Transaction;
 
 namespace CashBook.Services.BankReconcilation
 {
@@ -27,5 +28,9 @@ namespace CashBook.Services.BankReconcilation
         /// Service Layer to Get List of Bank Reconcilation Record based on AccountId
         /// </summary>
         List<ReadBankReconcilationDto> GetBankReconcilationByAccountId(string accountId);
+
+        
+
+        decimal CalculateBankReconcilationClosingBalance(decimal openingBalance,ReadBankReconcilationDto dto);
     }
 }

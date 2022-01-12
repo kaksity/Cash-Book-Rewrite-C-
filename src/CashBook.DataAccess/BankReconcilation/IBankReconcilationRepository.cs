@@ -18,7 +18,7 @@ namespace CashBook.DataAccess.BankReconcilation
         /// DAL to Get BankReconcilation Record based on AccountId and Duration
         /// </summary>
         BankReconcilationModel GetBankReconcilationByAccountIdAndDuration(string accountId, string duration);
-        
+        BankReconcilationModel GetBankReconcilationByBankReconcilationId(string bankReconcilationId);
         ///<summary>
         /// DAL to Get List of Bank Reconcilation Record based on AccountId
         /// </summary>

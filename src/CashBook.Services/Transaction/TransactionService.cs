@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 using CashBook.Dtos.Transaction;
 using CashBook.DataAccess.Transaction;
 using CashBook.Models.Transaction;
+using System.Data;
+using CashBook.Services.TransactionDescription;
 
 namespace CashBook.Services.Transaction
 {
     public class TransactionService : ITransactionService
     {
         private readonly ITransactionRepository _transactionRepository;
-        public TransactionService(ITransactionRepository transactionRepository)
+        private readonly ITransactionDescriptionService _transactionDescriptionService;
+
+        public TransactionService(ITransactionRepository transactionRepository, ITransactionDescriptionService transactionDescriptionService)
         {
+            _transactionDescriptionService = transactionDescriptionService;
             _transactionRepository = transactionRepository;
         }
         public void CreateTransaction(CreateTransactionDto dto)
@@ -35,6 +40,225 @@ namespace CashBook.Services.Transaction
                  UpdatedAt = DateTime.Now
             };
             _transactionRepository.CreateTransaction(transaction);
+        }
+
+        public void DeleteTransaction(string transactionId)
+        {
+            _transactionRepository.DeleteTransaction(transactionId);
+        }
+
+        public List<ReadTransactionDto> GetAllExpenseTransaction()
+        {
+            var expenseTransactions = _transactionRepository.GetAllExpenseTransaction();
+
+            var result = new List<ReadTransactionDto>();
+            foreach (var item in expenseTransactions)
+            {
+                result.Add(new ReadTransactionDto
+                {
+                    TransactionId = item.TransactionId,
+                    AccountName = item.Account.AccountName,
+                    AccountNumber = item.Account.AccountNumber,
+                    AmmountDeposited = item.AmmountDeposited,
+                    AmmountWithdrawn = item.AmmountWithdrawn,
+                    NameOfBeneficiary = item.NameOfBeneficiary,
+                    DateOfTransaction = item.DateOfTransaction,
+                    PVOrRVNumber = item.PVOrRVNumber,
+                    SubHeadColumn = item.SubHeadColumn,
+                    TransactionDescriptionName = item.TransactionDescription.DescriptionName,
+                    RefNumber = item.RefNumber
+                });
+            }
+            return result;
+        }
+
+        public List<ReadTransactionDto> GetAllRevenueRegiserTransaction()
+        {
+            var revenueTransactions = _transactionRepository.GetAllRevenueRegisterTransaction();
+
+            var result = new List<ReadTransactionDto>();
+            foreach (var item in revenueTransactions)
+            {
+                result.Add(new ReadTransactionDto
+                {
+                    TransactionId = item.TransactionId,
+                    AccountName = item.Account.AccountName,
+                    AccountNumber = item.Account.AccountNumber,
+                    AmmountDeposited = item.AmmountDeposited,
+                    AmmountWithdrawn = item.AmmountWithdrawn,
+                    NameOfBeneficiary = item.NameOfBeneficiary,
+                    DateOfTransaction = item.DateOfTransaction,
+                    PVOrRVNumber = item.PVOrRVNumber,
+                    SubHeadColumn = item.SubHeadColumn,
+                    TransactionDescriptionName = item.TransactionDescription.DescriptionName,
+                    RefNumber = item.RefNumber
+                });
+            }
+            return result;
+        }
+
+        public List<ReadTransactionDto> GetFilteredExpenseTransaction(string accountId, int month, int year)
+        {
+            var expenseTransactions = _transactionRepository.GetFilteredExpenseTransaction(accountId,month,year);
+
+            var result = new List<ReadTransactionDto>();
+            foreach (var item in expenseTransactions)
+            {
+                result.Add(new ReadTransactionDto
+                {
+                    TransactionId = item.TransactionId,
+                    AccountName = item.Account.AccountName,
+                    AccountNumber = item.Account.AccountNumber,
+                    AmmountDeposited = item.AmmountDeposited,
+                    AmmountWithdrawn = item.AmmountWithdrawn,
+                    NameOfBeneficiary = item.NameOfBeneficiary,
+                    DateOfTransaction = item.DateOfTransaction,
+                    PVOrRVNumber = item.PVOrRVNumber,
+                    SubHeadColumn = item.SubHeadColumn,
+                    TransactionDescriptionName = item.TransactionDescription.DescriptionName,
+                    RefNumber = item.RefNumber
+                });
+            }
+            return result;
+        }
+
+        public List<ReadTransactionDto> GetFilteredRevenueRegisterTransaction(string accountId, int month, int year)
+        {
+            var revenueTransactions = _transactionRepository.GetFilteredRevenueRegisterTransaction(accountId, month, year);
+
+            var result = new List<ReadTransactionDto>();
+            foreach (var item in revenueTransactions)
+            {
+                result.Add(new ReadTransactionDto
+                {
+                    TransactionId = item.TransactionId,
+                    AccountName = item.Account.AccountName,
+                    AccountNumber = item.Account.AccountNumber,
+                    AmmountDeposited = item.AmmountDeposited,
+                    AmmountWithdrawn = item.AmmountWithdrawn,
+                    NameOfBeneficiary = item.NameOfBeneficiary,
+                    DateOfTransaction = item.DateOfTransaction,
+                    PVOrRVNumber = item.PVOrRVNumber,
+                    SubHeadColumn = item.SubHeadColumn,
+                    TransactionDescriptionName = item.TransactionDescription.DescriptionName,
+                    RefNumber = item.RefNumber
+                });
+            }
+            return result;
+        }
+
+        public DataTable Get32ColumnCashBook(string accountId, int year)
+        {
+            // Prepare a table to hold the results of transactions
+
+            var tblColumnCashbook = new DataTable();
+
+            //Create the Appropriate rows for the table
+            tblColumnCashbook.Columns.Clear();
+            tblColumnCashbook.Rows.Clear();
+
+            tblColumnCashbook.Columns.Add("colsDateOfTransaction",typeof(DateTime));
+            tblColumnCashbook.Columns.Add("colsTotalTransaction", typeof(decimal));
+
+            var transactionDescriptionItems = _transactionDescriptionService.GetAllTransactionDescriptionsByTransactionType("EXPENSE");
+
+            foreach (var item in transactionDescriptionItems)
+            {
+                tblColumnCashbook.Columns.Add(item.TransactionDescriptionId,typeof(decimal));
+            }
+
+
+            // First Get the List of Transaction Distinctively
+            var expenseTransactions = _transactionRepository.GetAllExpenseTransactionDistinctByYear(accountId,year);
+            
+            //Loop through the transactions to get all the transactions that occured on a particular day
+            foreach (var transaction in expenseTransactions)
+            {
+                // List of transaction that occured in a particular date
+
+                var results = _transactionRepository.GetAllExpenseTransactionByDate(accountId,transaction.DateOfTransaction);
+
+                //Loop throught the transactions and then put the transactions in the required place
+
+                DataRow row = tblColumnCashbook.NewRow();
+
+                decimal totalPerDay = 0;
+
+                row["colsDateOfTransaction"] = transaction.DateOfTransaction;
+
+                foreach (var item in results)
+                {
+                    decimal ammountWithdrawn = item.AmmountWithdrawn;
+                    decimal previousAmmountWithdrawn = 0;
+
+                    
+                    
+                    // Get the previous value and then updated it with the current value
+                    if(row[item.TransactionDescriptionId] == null)
+                    {
+                        previousAmmountWithdrawn = 0;
+                    }
+                    else
+                    {
+                        //previousAmmountWithdrawn = (decimal)row[item.TransactionDescriptionId];
+                    }
+
+                    row[item.TransactionDescriptionId] = previousAmmountWithdrawn + ammountWithdrawn; //  + previousAmmountWithdrawn; 
+                    totalPerDay += ammountWithdrawn;
+                }
+                row["colsTotalTransaction"] = totalPerDay;
+                tblColumnCashbook.Rows.Add(row);
+            }
+            return tblColumnCashbook;
+        }
+
+        public List<ReadTransactionDto> GetAllTransactionByAccountIdMonthAndYear(string accountId, int month, int year)
+        {
+            var transactions = _transactionRepository.GetAllTransactionByAccountIdMonthAndYear(accountId,month,year);
+
+            var result = new List<ReadTransactionDto>();
+            foreach (var item in transactions)
+            {
+                result.Add(new ReadTransactionDto
+                {
+                    TransactionId = item.TransactionId,
+                    AccountName = item.Account.AccountName,
+                    AccountNumber = item.Account.AccountNumber,
+                    AmmountDeposited = item.AmmountDeposited,
+                    AmmountWithdrawn = item.AmmountWithdrawn,
+                    NameOfBeneficiary = item.NameOfBeneficiary,
+                    DateOfTransaction = item.DateOfTransaction,
+                    PVOrRVNumber = item.PVOrRVNumber,
+                    SubHeadColumn = item.SubHeadColumn,
+                    TransactionDescriptionName = item.TransactionDescription.DescriptionName,
+                    RefNumber = item.RefNumber
+                });
+            }
+
+            return result;
+        }
+
+        public ReadTransactionDto GetTransactionByTransactionId(string transactionId)
+        {
+            var item = _transactionRepository.GetTransactionByTransactionId(transactionId);
+
+            if (item == null) return null;
+
+            return new ReadTransactionDto
+            {
+                TransactionId = item.TransactionId,
+                AccountId = item.AccountId,
+                AccountName = item.Account.AccountName,
+                AccountNumber = item.Account.AccountNumber,
+                AmmountDeposited = item.AmmountDeposited,
+                AmmountWithdrawn = item.AmmountWithdrawn,
+                NameOfBeneficiary = item.NameOfBeneficiary,
+                DateOfTransaction = item.DateOfTransaction,
+                PVOrRVNumber = item.PVOrRVNumber,
+                SubHeadColumn = item.SubHeadColumn,
+                TransactionDescriptionName = item.TransactionDescription.DescriptionName,
+                RefNumber = item.RefNumber
+            };
         }
     }
 }

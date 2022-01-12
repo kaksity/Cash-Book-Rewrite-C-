@@ -35,8 +35,6 @@
             this.txtBankName = new System.Windows.Forms.TextBox();
             this.txtAccountNumber = new System.Windows.Forms.TextBox();
             this.txtAccountName = new System.Windows.Forms.TextBox();
-            this.lblCurrentBalance = new System.Windows.Forms.Label();
-            this.Label4 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
             this.Label8 = new System.Windows.Forms.Label();
@@ -49,13 +47,17 @@
             this.btnUndo = new crsButton.cButton();
             this.btnEdit = new crsButton.cButton();
             this.btnNew = new crsButton.cButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnClose = new crsButton.cButton();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtpOpeningDate
             // 
             this.dtpOpeningDate.CustomFormat = "dd/M/yyyy";
             this.dtpOpeningDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpOpeningDate.Location = new System.Drawing.Point(128, 72);
+            this.dtpOpeningDate.Location = new System.Drawing.Point(129, 115);
             this.dtpOpeningDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpOpeningDate.Name = "dtpOpeningDate";
             this.dtpOpeningDate.Size = new System.Drawing.Size(523, 20);
@@ -63,7 +65,7 @@
             // 
             // txtOpeningBalance
             // 
-            this.txtOpeningBalance.Location = new System.Drawing.Point(128, 208);
+            this.txtOpeningBalance.Location = new System.Drawing.Point(129, 251);
             this.txtOpeningBalance.Margin = new System.Windows.Forms.Padding(2);
             this.txtOpeningBalance.Name = "txtOpeningBalance";
             this.txtOpeningBalance.Size = new System.Drawing.Size(523, 20);
@@ -71,7 +73,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(128, 128);
+            this.txtDescription.Location = new System.Drawing.Point(129, 171);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
@@ -80,7 +82,7 @@
             // 
             // txtBankName
             // 
-            this.txtBankName.Location = new System.Drawing.Point(128, 103);
+            this.txtBankName.Location = new System.Drawing.Point(129, 146);
             this.txtBankName.Margin = new System.Windows.Forms.Padding(2);
             this.txtBankName.Name = "txtBankName";
             this.txtBankName.Size = new System.Drawing.Size(523, 20);
@@ -88,7 +90,7 @@
             // 
             // txtAccountNumber
             // 
-            this.txtAccountNumber.Location = new System.Drawing.Point(128, 47);
+            this.txtAccountNumber.Location = new System.Drawing.Point(129, 90);
             this.txtAccountNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtAccountNumber.Name = "txtAccountNumber";
             this.txtAccountNumber.Size = new System.Drawing.Size(523, 20);
@@ -96,37 +98,16 @@
             // 
             // txtAccountName
             // 
-            this.txtAccountName.Location = new System.Drawing.Point(128, 21);
+            this.txtAccountName.Location = new System.Drawing.Point(129, 64);
             this.txtAccountName.Margin = new System.Windows.Forms.Padding(2);
             this.txtAccountName.Name = "txtAccountName";
             this.txtAccountName.Size = new System.Drawing.Size(523, 20);
             this.txtAccountName.TabIndex = 6;
             // 
-            // lblCurrentBalance
-            // 
-            this.lblCurrentBalance.BackColor = System.Drawing.Color.White;
-            this.lblCurrentBalance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblCurrentBalance.Location = new System.Drawing.Point(128, 231);
-            this.lblCurrentBalance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCurrentBalance.Name = "lblCurrentBalance";
-            this.lblCurrentBalance.Size = new System.Drawing.Size(522, 32);
-            this.lblCurrentBalance.TabIndex = 7;
-            this.lblCurrentBalance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(17, 240);
-            this.Label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(83, 13);
-            this.Label4.TabIndex = 8;
-            this.Label4.Text = "Current Balance";
-            // 
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(17, 211);
+            this.Label3.Location = new System.Drawing.Point(18, 254);
             this.Label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(89, 13);
@@ -136,7 +117,7 @@
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(17, 77);
+            this.Label6.Location = new System.Drawing.Point(18, 120);
             this.Label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(73, 13);
@@ -146,7 +127,7 @@
             // Label8
             // 
             this.Label8.AutoSize = true;
-            this.Label8.Location = new System.Drawing.Point(17, 132);
+            this.Label8.Location = new System.Drawing.Point(18, 175);
             this.Label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(60, 13);
@@ -156,7 +137,7 @@
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(17, 106);
+            this.Label5.Location = new System.Drawing.Point(18, 149);
             this.Label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(63, 13);
@@ -166,7 +147,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(17, 50);
+            this.Label2.Location = new System.Drawing.Point(18, 93);
             this.Label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(44, 13);
@@ -176,7 +157,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(17, 25);
+            this.Label1.Location = new System.Drawing.Point(18, 68);
             this.Label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(35, 13);
@@ -192,7 +173,7 @@
             this.btnFind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.Image")));
-            this.btnFind.Location = new System.Drawing.Point(383, 283);
+            this.btnFind.Location = new System.Drawing.Point(384, 326);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(85, 45);
             this.btnFind.TabIndex = 20;
@@ -208,7 +189,7 @@
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(474, 283);
+            this.btnSave.Location = new System.Drawing.Point(475, 326);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 45);
             this.btnSave.TabIndex = 21;
@@ -224,7 +205,7 @@
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(565, 283);
+            this.btnDelete.Location = new System.Drawing.Point(566, 326);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(85, 45);
             this.btnDelete.TabIndex = 22;
@@ -240,7 +221,7 @@
             this.btnUndo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnUndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
-            this.btnUndo.Location = new System.Drawing.Point(292, 283);
+            this.btnUndo.Location = new System.Drawing.Point(293, 326);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(85, 45);
             this.btnUndo.TabIndex = 23;
@@ -256,7 +237,7 @@
             this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(201, 283);
+            this.btnEdit.Location = new System.Drawing.Point(202, 326);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(85, 45);
             this.btnEdit.TabIndex = 24;
@@ -272,18 +253,59 @@
             this.btnNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(110, 283);
+            this.btnNew.Location = new System.Drawing.Point(111, 326);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(85, 45);
             this.btnNew.TabIndex = 25;
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(663, 55);
+            this.panel1.TabIndex = 26;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(252, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(176, 31);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "ACCOUNTS";
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.ButtonType = crsButton.cButton.btnType.close2;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(129, 377);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(522, 45);
+            this.btnClose.TabIndex = 27;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FrmAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 340);
+            this.AutoScroll = true;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(663, 431);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnFind);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDelete);
@@ -296,21 +318,23 @@
             this.Controls.Add(this.txtBankName);
             this.Controls.Add(this.txtAccountNumber);
             this.Controls.Add(this.txtAccountName);
-            this.Controls.Add(this.lblCurrentBalance);
-            this.Controls.Add(this.Label4);
             this.Controls.Add(this.Label3);
             this.Controls.Add(this.Label6);
             this.Controls.Add(this.Label8);
             this.Controls.Add(this.Label5);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmAccount";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cash Book - Account";
+            this.Text = "Swift Accounts - Account";
             this.Load += new System.EventHandler(this.FrmAccount_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,8 +348,6 @@
         internal System.Windows.Forms.TextBox txtBankName;
         internal System.Windows.Forms.TextBox txtAccountNumber;
         internal System.Windows.Forms.TextBox txtAccountName;
-        internal System.Windows.Forms.Label lblCurrentBalance;
-        internal System.Windows.Forms.Label Label4;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label Label6;
         internal System.Windows.Forms.Label Label8;
@@ -338,5 +360,8 @@
         internal crsButton.cButton btnUndo;
         internal crsButton.cButton btnEdit;
         internal crsButton.cButton btnNew;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
+        internal crsButton.cButton btnClose;
     }
 }

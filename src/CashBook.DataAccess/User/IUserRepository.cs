@@ -12,7 +12,8 @@ namespace CashBook.DataAccess.User
         void CreateNewUser(UserModel model);
         UserModel GetUserByUsername(string username);
         UserModel GetUserByUserId(string userId);
-        void UpdateUser(UserModel model);
-
+        List<UserModel> GetAllUsers();
+        void UpdateUserWithPassword(UserModel model);
+        void UpdateUserWithoutPassword(UserModel model);
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CashBook.UI.Utilities;
 
 namespace CashBook.UI.TransactionDescription
 {
@@ -166,7 +167,7 @@ namespace CashBook.UI.TransactionDescription
             //Check if the required data is given
             if (string.IsNullOrWhiteSpace(txtNameOfDescription.Text) == true)
             {
-                MessageBox.Show("Transaction Description Name is required","Cash Book");
+                MessageBox.Show("Transaction Description Name is required",Software.GetApplicationName());
                 txtNameOfDescription.Focus();
                 return;
             }
@@ -183,7 +184,7 @@ namespace CashBook.UI.TransactionDescription
                 _transactionDescriptionService.CreateTransactionDescription(transactionDescription);
                 LoadTransactionDescriptionData();
                 Reset();
-                MessageBox.Show("Transaction Description record was created successfully","Cash Book");
+                MessageBox.Show("Transaction Description record was created successfully",Software.GetApplicationName());
                 return;
             }
             if (isNewRecord == false && isEditRecord == true)
@@ -198,7 +199,7 @@ namespace CashBook.UI.TransactionDescription
                 _transactionDescriptionService.UpdateTransactionDescription(transactionDescription);
                 LoadTransactionDescriptionData();
                 Reset();
-                MessageBox.Show("Transaction Description record was updated successfully", "Cash Book");
+                MessageBox.Show("Transaction Description record was updated successfully", Software.GetApplicationName());
                 return;
             }
 
@@ -221,13 +222,18 @@ namespace CashBook.UI.TransactionDescription
         {
             if (string.IsNullOrWhiteSpace(transactionDescriptionId) == true )
             {
-                MessageBox.Show("You must select a record", "Cash Book");
+                MessageBox.Show("You must select a record", Software.GetApplicationName());
                 return;
             }
             _transactionDescriptionService.DeleteTransactionDescription(transactionDescriptionId);
             LoadTransactionDescriptionData();
             Reset();
-            MessageBox.Show("Transaction Description record was created successfully", "Cash Book");
+            MessageBox.Show("Transaction Description record was created successfully", Software.GetApplicationName());
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

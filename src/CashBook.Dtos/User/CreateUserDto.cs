@@ -9,6 +9,7 @@ namespace CashBook.Dtos.User
     public class CreateUserDto
     {
         public string UserName { get; set; }
+        public string OrganizationName { get; set; }
         public string UserPassword { get; set; }
         public string FullName { get; set; }
         public string TelePhoneNumber { get; set; }

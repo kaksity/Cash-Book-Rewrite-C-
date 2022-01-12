@@ -34,11 +34,20 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="crsButton">
       <HintPath>..\..\..\Cash Book\release\crsButton.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="RdlEngine">
+      <HintPath>..\..\dll\RdlEngine.DLL</HintPath>
+    </Reference>
+    <Reference Include="RdlViewer">
+      <HintPath>..\..\dll\RdlViewer.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleInjector">
       <HintPath>..\..\dll\SimpleInjector.dll</HintPath>
     </Reference>
@@ -69,6 +78,12 @@
     <Compile Include="Account\FrmSearchAccount.Designer.cs">
       <DependentUpon>FrmSearchAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Authentication\FrmForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentication\FrmForgotPassword.Designer.cs">
+      <DependentUpon>FrmForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Authentication\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,17 +96,29 @@
     <Compile Include="Authentication\FrmRegisterNewUser.Designer.cs">
       <DependentUpon>FrmRegisterNewUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Authentication\FrmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentication\FrmSplashScreen.Designer.cs">
+      <DependentUpon>FrmSplashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="BankReconcilation\FrmBankReconcilation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BankReconcilation\FrmBankReconcilation.Designer.cs">
       <DependentUpon>FrmBankReconcilation.cs</DependentUpon>
     </Compile>
-    <Compile Include="BankReconcilation\FrmViewBankReconcilation.cs">
+    <Compile Include="ColumnsCashBook\Frm32ColumnCashBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BankReconcilation\FrmViewBankReconcilation.Designer.cs">
-      <DependentUpon>FrmViewBankReconcilation.cs</DependentUpon>
+    <Compile Include="ColumnsCashBook\Frm32ColumnCashBook.Designer.cs">
+      <DependentUpon>Frm32ColumnCashBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu\FrmCashBookMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu\FrmCashBookMenu.Designer.cs">
+      <DependentUpon>FrmCashBookMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu\FrmMainMenu.cs">
       <SubType>Form</SubType>
@@ -107,6 +134,66 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\FrmGenerateBankReconcilationReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateBankReconcilationReport.Designer.cs">
+      <DependentUpon>FrmGenerateBankReconcilationReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateBinCardReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateBinCardReport.Designer.cs">
+      <DependentUpon>FrmGenerateBinCardReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateTransactionDescriptionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateTransactionDescriptionReport.Designer.cs">
+      <DependentUpon>FrmGenerateTransactionDescriptionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateTransactionReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmGenerateTransactionReport.Designer.cs">
+      <DependentUpon>FrmGenerateTransactionReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrmReportMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmReportMenu.Designer.cs">
+      <DependentUpon>FrmReportMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FrmReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\FrmReportViewer.Designer.cs">
+      <DependentUpon>FrmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockLedger\FrmBinCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockLedger\FrmBinCard.Designer.cs">
+      <DependentUpon>FrmBinCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockLedger\FrmBinCardItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockLedger\FrmBinCardItems.Designer.cs">
+      <DependentUpon>FrmBinCardItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockLedger\FrmStockLedgerMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockLedger\FrmStockLedgerMenu.Designer.cs">
+      <DependentUpon>FrmStockLedgerMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="TransactionDescription\FrmTransactionDescription.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +212,13 @@
     <Compile Include="Transaction\FrmRevenueRegisterTransaction.Designer.cs">
       <DependentUpon>FrmRevenueRegisterTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\FrmAcquirePhoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\FrmAcquirePhoto.Designer.cs">
+      <DependentUpon>FrmAcquirePhoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Software.cs" />
     <Compile Include="Utilities\Utility.cs" />
     <EmbeddedResource Include="Account\FrmAccount.resx">
       <DependentUpon>FrmAccount.cs</DependentUpon>
@@ -132,17 +226,26 @@
     <EmbeddedResource Include="Account\FrmSearchAccount.resx">
       <DependentUpon>FrmSearchAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Authentication\FrmForgotPassword.resx">
+      <DependentUpon>FrmForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authentication\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authentication\FrmRegisterNewUser.resx">
       <DependentUpon>FrmRegisterNewUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Authentication\FrmSplashScreen.resx">
+      <DependentUpon>FrmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BankReconcilation\FrmBankReconcilation.resx">
       <DependentUpon>FrmBankReconcilation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BankReconcilation\FrmViewBankReconcilation.resx">
-      <DependentUpon>FrmViewBankReconcilation.cs</DependentUpon>
+    <EmbeddedResource Include="ColumnsCashBook\Frm32ColumnCashBook.resx">
+      <DependentUpon>Frm32ColumnCashBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu\FrmCashBookMenu.resx">
+      <DependentUpon>FrmCashBookMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu\FrmMainMenu.resx">
       <DependentUpon>FrmMainMenu.cs</DependentUpon>
@@ -160,6 +263,36 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\FrmGenerateBankReconcilationReport.resx">
+      <DependentUpon>FrmGenerateBankReconcilationReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmGenerateBinCardReport.resx">
+      <DependentUpon>FrmGenerateBinCardReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmGenerateTransactionDescriptionReport.resx">
+      <DependentUpon>FrmGenerateTransactionDescriptionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmGenerateTransactionReport.resx">
+      <DependentUpon>FrmGenerateTransactionReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmReportMenu.resx">
+      <DependentUpon>FrmReportMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FrmReportViewer.resx">
+      <DependentUpon>FrmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockLedger\FrmBinCard.resx">
+      <DependentUpon>FrmBinCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockLedger\FrmBinCardItems.resx">
+      <DependentUpon>FrmBinCardItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockLedger\FrmStockLedgerMenu.resx">
+      <DependentUpon>FrmStockLedgerMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TransactionDescription\FrmTransactionDescription.resx">
       <DependentUpon>FrmTransactionDescription.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaction\FrmRevenueRegisterTransaction.resx">
       <DependentUpon>FrmRevenueRegisterTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\FrmAcquirePhoto.resx">
+      <DependentUpon>FrmAcquirePhoto.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -198,7 +334,9 @@
       <Name>CashBook.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

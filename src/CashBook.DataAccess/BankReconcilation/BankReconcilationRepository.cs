@@ -88,5 +88,24 @@ namespace CashBook.DataAccess.BankReconcilation
                 }).SingleOrDefault();
             }
         }
+
+        public BankReconcilationModel GetBankReconcilationByBankReconcilationId(string bankReconcilationId)
+        {
+            using (IDbConnection connection = dbConnection)
+            {
+                connection.Open();
+                string query = @"
+                                SELECT 
+                                    BankReconcilationId, AccountId, Duration,CreditTransfer, InterestReceived, StaleChqsReversed, BankCharges,DebitTransfer,OutstandingStaleChqs,UnpresentedChqs, BankNotCashBook,UncreditedLodgements, CashBookNotBank, DiffBtwBankAndCashBook, IsDeleted,CreatedAt, UpdatedAt 
+                                FROM
+                                    BankReconcilations
+                                WHERE
+                                    BankReconcilationId = @BankReconcilationId AND IsDeleted = false";
+                return connection.Query<BankReconcilationModel>(query, new
+                {
+                    BankReconcilationId = bankReconcilationId,
+                }).SingleOrDefault();
+            }
+        }
     }
 }

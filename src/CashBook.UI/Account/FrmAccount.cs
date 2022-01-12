@@ -63,7 +63,6 @@ namespace CashBook.UI.Account
             txtDescription.Text = "";
             txtAccountName.Text = "";
             txtOpeningBalance.Text = "";
-            lblCurrentBalance.Text = "";
         }
         private void Enable()
         {
@@ -123,19 +122,19 @@ namespace CashBook.UI.Account
             if (string.IsNullOrWhiteSpace(txtAccountName.Text) == true)
             {
                 txtAccountName.Focus();
-                MessageBox.Show("Account Name is required","Cash Book");
+                MessageBox.Show("Account Name is required",Software.GetApplicationName());
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtAccountNumber.Text) == true)
             {
                 txtAccountNumber.Focus();
-                MessageBox.Show("Account Number is required", "Cash Book");
+                MessageBox.Show("Account Number is required", Software.GetApplicationName());
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtOpeningBalance.Text) == true)
             {
                 txtOpeningBalance.Focus();
-                MessageBox.Show("Opening Balance is required", "Cash Book");
+                MessageBox.Show("Opening Balance is required", Software.GetApplicationName());
                 return;
             }
             /*
@@ -144,19 +143,19 @@ namespace CashBook.UI.Account
             if (Utility.IsNumeric(txtAccountNumber.Text) == false)
             {
                 txtAccountNumber.Focus();
-                MessageBox.Show("Account Number must be numeric", "Cash Book");
+                MessageBox.Show("Account Number must be numeric", Software.GetApplicationName());
                 return;
             }
             if (txtAccountNumber.Text.Trim().Length != 10)
             {
                 txtAccountNumber.Focus();
-                MessageBox.Show("Account Number must 10 digits", "Cash Book");
+                MessageBox.Show("Account Number must 10 digits", Software.GetApplicationName());
                 return;
             }
             if (Utility.IsNumeric(txtOpeningBalance.Text) == false)
             {
                 txtOpeningBalance.Focus();
-                MessageBox.Show("Opening Balance must be numeric", "Cash Book");
+                MessageBox.Show("Opening Balance must be numeric", Software.GetApplicationName());
                 return;
             }
 
@@ -178,11 +177,11 @@ namespace CashBook.UI.Account
                     };
                     _accountService.CreateAccount(account);
 
-                    MessageBox.Show("Account was record was created successfully", "Cash Book");
+                    MessageBox.Show("Account was record was created successfully", Software.GetApplicationName());
                 }
                 else
                 {
-                    MessageBox.Show("Account record already exists", "Cash Book");
+                    MessageBox.Show("Account record already exists", Software.GetApplicationName());
                 }
                 Reset();
                 return;
@@ -202,7 +201,7 @@ namespace CashBook.UI.Account
                 };
                 _accountService.UpdateAccount(account);
                 Clear();
-                MessageBox.Show("Account was record was updated successfully", "Cash Book");
+                MessageBox.Show("Account was record was updated successfully", Software.GetApplicationName());
             }
         }
 
@@ -227,20 +226,28 @@ namespace CashBook.UI.Account
             txtAccountNumber.Text = dto.AccountNumber;
             txtBankName.Text = dto.BankName;
             txtDescription.Text = dto.Description;
-            txtOpeningBalance.Text = Convert.ToString(dto.OpeningBalance);
-            lblCurrentBalance.Text = Convert.ToString(dto.CurrentBalance);
+            txtOpeningBalance.Text = $"N{Utility.FormatDecimal(dto.OpeningBalance)}";
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(Program.accountId) == true)
             {
-                MessageBox.Show("You must select a record", "Cash Book");
+                MessageBox.Show("You must select a record", Software.GetApplicationName());
+                return;
+            }
+            if (MessageBox.Show("Are you sure you want to delete this account record?",Software.GetApplicationName(),MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == DialogResult.No)
+            {
                 return;
             }
             _accountService.DeleteAccount(Program.accountId);
             Clear();
-            MessageBox.Show("Account record was deleted successfully", "Cash Book");
+            MessageBox.Show("Account record was deleted successfully", Software.GetApplicationName());
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -21,6 +21,9 @@ namespace CashBook.UI.BankReconcilation
         private readonly IBankReconcilationService _bankReconcilationService;
         private readonly IMaintainBalanceService _maintainBalanceService;
 
+        List<ReadBankReconcilationDto> listOfBankReconcilation = null;
+        string bankReconcilationId = "";
+
         bool isNewRecord = false;
 
         public FrmBankReconcilation(
@@ -37,23 +40,70 @@ namespace CashBook.UI.BankReconcilation
 
         private void FrmBankReconcilation_Load(object sender, EventArgs e)
         {
+            InitBankReconcilationGrid();
+
             LoadAccountComboBox();
             LoadMonthComboBox();
             LoadYearComboBox();
+            
+            listOfBankReconcilation = _bankReconcilationService.GetBankReconcilationByAccountId((string)cboViewBankReconcilationAccounts.SelectedValue);
+            LoadGridData(listOfBankReconcilation);
             Reset();
         }
         private void Reset()
         {
             isNewRecord = false;
             Clear();
+            lblSelectedRecord.Text = "";
+            bankReconcilationId = "";
             Disable();
         }
         private void LoadAccountComboBox()
         {
-            var account = _accountService.GetAllAccounts();
-            cboAccount.DisplayMember = "AccountName";
-            cboAccount.ValueMember = "AccountId";
-            cboAccount.DataSource = account;
+            var accounts = _accountService.GetAllAccounts();
+            cboAccounts.DisplayMember = "AccountName";
+            cboAccounts.ValueMember = "AccountId";
+            cboAccounts.DataSource = accounts;
+            cboViewBankReconcilationAccounts.DisplayMember = "AccountName";
+            cboViewBankReconcilationAccounts.ValueMember = "AccountId";
+            cboViewBankReconcilationAccounts.DataSource = accounts;
+        }
+        private void LoadGridData(List<ReadBankReconcilationDto> data)
+        {
+            grid.Rows.Clear();
+
+            if (data.Count == 0) return;
+
+            grid.Rows.Add(data.Count);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                grid.Rows[i].Cells["colsSNum"].Value = i + 1;
+                grid.Rows[i].Cells["colsDuration"].Value = data[i].Duration;
+                grid.Rows[i].Cells["colsStatus"].Value = "GENERATED";
+            }
+        }
+        private void InitBankReconcilationGrid()
+        {
+            grid.Columns.Clear();
+            grid.Rows.Clear();
+            grid.Columns.Add("colsSNum", "S/No");
+            grid.Columns.Add("colsDuration", "Duration");
+            grid.Columns.Add("colsStatus", "Status");
+
+            grid.Columns["colsSNum"].Width = 70;
+            grid.Columns["colsDuration"].Width = 250;
+            grid.Columns["colsStatus"].Width = 250;
+
+            grid.Columns["colsSNum"].ReadOnly = true;
+            grid.Columns["colsDuration"].ReadOnly = true;
+            grid.Columns["colsStatus"].ReadOnly = true;
+
+            grid.AllowUserToAddRows = false;
+            grid.AllowUserToDeleteRows = false;
+            grid.AllowUserToOrderColumns = false;
+            grid.AllowUserToResizeColumns = false;
+            grid.AllowUserToResizeRows = false;
         }
         private void LoadYearComboBox()
         {
@@ -101,7 +151,7 @@ namespace CashBook.UI.BankReconcilation
         private void Disable()
         {
 
-            cboAccount.Enabled = false;
+            cboAccounts.Enabled = false;
             cboMonths.Enabled = false;
             cboYears.Enabled = false;
             txtBankCharges.Enabled = false;
@@ -125,7 +175,7 @@ namespace CashBook.UI.BankReconcilation
         private void Enable()
         {
 
-            cboAccount.Enabled = true;
+            cboAccounts.Enabled = true;
             cboMonths.Enabled = true;
             cboYears.Enabled = true;
             txtBankCharges.Enabled = true;
@@ -148,7 +198,7 @@ namespace CashBook.UI.BankReconcilation
         private void Clear()
         {
 
-            cboAccount.Text = "";
+            cboAccounts.Text = "";
             cboMonths.Text = "";
             cboYears.Text = "";
             txtBankCharges.Text = "";
@@ -185,86 +235,86 @@ namespace CashBook.UI.BankReconcilation
         {
 
             // Verify If All the Necesary InPuts are given
-            if (string.IsNullOrWhiteSpace((string)cboAccount.SelectedValue) == true )
+            if (string.IsNullOrWhiteSpace((string)cboAccounts.SelectedValue) == true )
             {
-                MessageBox.Show("Account is Required", "Cash Book");
-                cboAccount.Focus();
+                MessageBox.Show("Account is Required", Software.GetApplicationName());
+                cboAccounts.Focus();
                 return;
             }
 
             if ((int)cboMonths.SelectedValue == 0)
             {
-                MessageBox.Show("Months is required", "Cash Book");
+                MessageBox.Show("Months is required", Software.GetApplicationName());
                 cboMonths.Focus();
                 return;
             }
 
             if ((int)cboYears.SelectedValue < 2020)
             {
-                MessageBox.Show("Years is required", "Cash Book");
+                MessageBox.Show("Years is required", Software.GetApplicationName());
                 cboYears.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtCreditTransfer.Text) == true)
             {
-                MessageBox.Show("Credit Transfer is required", "Cash Book");
+                MessageBox.Show("Credit Transfer is required", Software.GetApplicationName());
                 txtCreditTransfer.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtInterestReceived.Text) == true)
             {
-                MessageBox.Show("Interest Received is required", "Cash Book");
+                MessageBox.Show("Interest Received is required", Software.GetApplicationName());
                 txtInterestReceived.Focus();
                 return;
             }
             if (txtStaleChqsReversed.Text == "")
             {
-                MessageBox.Show("Stale Cheque Reversed is required", "Cash Book");
+                MessageBox.Show("Stale Cheque Reversed is required", Software.GetApplicationName());
                 txtStaleChqsReversed.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(txtBankCharges.Text) == true)
             {
-                MessageBox.Show("Bank Charges is required", "Cash Book");
+                MessageBox.Show("Bank Charges is required", Software.GetApplicationName());
                 txtBankCharges.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtDebitTransfer.Text) == true)
             {
-                MessageBox.Show("Debit Transfer is required", "Cash Book");
+                MessageBox.Show("Debit Transfer is required", Software.GetApplicationName());
                 txtDebitTransfer.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtOutstandingStaleChqs.Text) == true)
             {
-                MessageBox.Show("Outstanding Stale Cheques is required", "Cash Book");
+                MessageBox.Show("Outstanding Stale Cheques is required", Software.GetApplicationName());
                 txtOutstandingStaleChqs.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtUnpresentedChqs.Text) == true)
             {
-                MessageBox.Show("Unpresented Cheques is required","Cash Book");
+                MessageBox.Show("Unpresented Cheques is required",Software.GetApplicationName());
                 txtUnpresentedChqs.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtItemsInBankNotCashBook.Text) == true)
             {
-                MessageBox.Show("Items in Bank not in Cash Book is required", "Cash Book");
+                MessageBox.Show("Items in Bank not in Cash Book is required", Software.GetApplicationName());
                 txtItemsInBankNotCashBook.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtUncreditedLodgement.Text) == true)
             {
-                MessageBox.Show("Uncredited Lodgements is required", "Cash Book");
+                MessageBox.Show("Uncredited Lodgements is required", Software.GetApplicationName());
                 txtUncreditedLodgement.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtItemsInCashBookNotBank.Text) == true)
             {
-                MessageBox.Show("Items in Cash Book not in Bank is required", "Cash Book");
+                MessageBox.Show("Items in Cash Book not in Bank is required", Software.GetApplicationName());
                 txtItemsInCashBookNotBank.Focus();
                 return;
             }
@@ -272,96 +322,89 @@ namespace CashBook.UI.BankReconcilation
             // Check if the data are in the right format
             if (Utility.IsNumeric(txtCreditTransfer.Text) == false)
             {
-                MessageBox.Show("Credit Transfer must be numeric", "Cash Book");
+                MessageBox.Show("Credit Transfer must be numeric", Software.GetApplicationName());
                 txtCreditTransfer.Focus();
                 return;
             }
 
             if (Utility.IsNumeric(txtInterestReceived.Text) == false)
             {
-                MessageBox.Show("Interest Received must be numeric", "Cash Book");
+                MessageBox.Show("Interest Received must be numeric", Software.GetApplicationName());
                 txtInterestReceived.Focus();
                 return;
             }
 
             if (Utility.IsNumeric(txtStaleChqsReversed.Text) == false)
             {
-                MessageBox.Show("Stale Cheques Reversed must be numeric", "Cash Book");
+                MessageBox.Show("Stale Cheques Reversed must be numeric", Software.GetApplicationName());
                 txtStaleChqsReversed.Focus();
                 return;
             }
 
             if (Utility.IsNumeric(txtBankCharges.Text) == false)
             {
-                MessageBox.Show("Bank Charges must be numeric", "Cash Book");
+                MessageBox.Show("Bank Charges must be numeric", Software.GetApplicationName());
                 txtBankCharges.Focus();
                 return;
             }
 
             if (Utility.IsNumeric(txtDebitTransfer.Text) == false)
             {
-                MessageBox.Show("Debit Transfer must be numeric", "Cash Book");
+                MessageBox.Show("Debit Transfer must be numeric", Software.GetApplicationName());
                 txtDebitTransfer.Focus();
                 return;
             }
 
             if (Utility.IsNumeric(txtOutstandingStaleChqs.Text) == false)
             {
-                MessageBox.Show("Outstanding Stale Cheques must be numeric", "Cash Book");
+                MessageBox.Show("Outstanding Stale Cheques must be numeric", Software.GetApplicationName());
                 txtOutstandingStaleChqs.Focus();
                 return;
             }
 
             if (Utility.IsNumeric(txtUnpresentedChqs.Text) == false)
             {
-                MessageBox.Show("Unpresented Cheques must be numeric", "Cash Book");
+                MessageBox.Show("Unpresented Cheques must be numeric", Software.GetApplicationName());
                 txtUnpresentedChqs.Focus();
                 return;
             }
             if (Utility.IsNumeric(txtItemsInBankNotCashBook.Text) == false)
             {
-                MessageBox.Show("Items in Bank and not in Cash Book must be numeric", "Cash Book");
+                MessageBox.Show("Items in Bank and not in Cash Book must be numeric", Software.GetApplicationName());
                 txtItemsInBankNotCashBook.Focus();
                 return;
 
             }
             if (Utility.IsNumeric(txtUncreditedLodgement.Text) == false)
             {
-                MessageBox.Show("Uncredited Lodgement must be numeric", "Cash Book");
+                MessageBox.Show("Uncredited Lodgement must be numeric", Software.GetApplicationName());
                 txtUncreditedLodgement.Focus();
                 return;
             }
             if (Utility.IsNumeric(txtItemsInCashBookNotBank.Text) == false)
             {
-                MessageBox.Show("Items in Cash Book and not in Bank must be numeric", "Cash Book");
+                MessageBox.Show("Items in Cash Book and not in Bank must be numeric", Software.GetApplicationName());
                 txtItemsInCashBookNotBank.Focus();
                 return;
             }
             if (isNewRecord == true)
             {
-                // Check if the Financial Month Has Been Closed
+
                 string duration = $"{cboMonths.SelectedValue}.{cboYears.SelectedValue}";
-
-                var maintainBalanceForDuration = _maintainBalanceService.GetMaintainBalanceByAccountIdAndDuration((string)cboAccount.SelectedValue,duration);
-
-                if (maintainBalanceForDuration == null)
-                {
-                    MessageBox.Show("You must close previous month before generating bank reconcilation for present month", "Cash Book");
-                    return;
-                }
-                var bankReconcilationResult = _bankReconcilationService.GetBankReconcilationByAccountIdAndDuration((string)cboAccount.SelectedValue,duration);
+                var bankReconcilationResult = _bankReconcilationService.GetBankReconcilationByAccountIdAndDuration((string)cboAccounts.SelectedValue,duration);
 
                 if (bankReconcilationResult != null)
                 {
-                    MessageBox.Show("Bank Reconcilation for this month has already been generated", "Cash Book");
+                    MessageBox.Show("Bank Reconcilation for this month has already been generated", Software.GetApplicationName());
                     Reset();
                     return;
                 }
 
+                string accountId = (string)cboAccounts.SelectedValue;
                 var bankReconcilationCreateDto = new CreateBankReconcilationDto
                 {
-                     AccountId  = (string)cboAccount.SelectedValue,
-                     Duration  =  $"{cboMonths.SelectedValue}.{cboYears.SelectedValue}",
+                     AccountId  = accountId,
+                     Duration  = duration,
                      CreditTransfer  = Utility.ParseNumber(txtCreditTransfer.Text),
                      InterestReceived  = Utility.ParseNumber(txtInterestReceived.Text),
                      StaleChqsReversed  = Utility.ParseNumber(txtStaleChqsReversed.Text),
@@ -376,10 +419,77 @@ namespace CashBook.UI.BankReconcilation
                 };
                 
                 _bankReconcilationService.CreateBankReconcilation(bankReconcilationCreateDto);
-                MessageBox.Show("New Bank Reconcilation record was created successfully", "Cash Book");
+
+                // Check if the financial month has been created and closed
+                // If true then set it as been edited
+                var maintainBalance = _maintainBalanceService.GetMaintainBalanceByAccountIdAndDuration(accountId,duration);
+
+                if (maintainBalance != null && maintainBalance.Status == 1)
+                {
+                    _maintainBalanceService.SetMaintainBalanceAsEdited(maintainBalance.MaintainBalanceId);
+                }
+                MessageBox.Show("New Bank Reconcilation record was created successfully", Software.GetApplicationName());
+                // Get Bank Reconcilation record and display them again
+                listOfBankReconcilation = _bankReconcilationService.GetBankReconcilationByAccountId((string)cboViewBankReconcilationAccounts.SelectedValue);
+                LoadGridData(listOfBankReconcilation);
                 Reset();
                 return;
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void cboViewBankReconcilationAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Reset();
+            listOfBankReconcilation = _bankReconcilationService.GetBankReconcilationByAccountId((string)cboViewBankReconcilationAccounts.SelectedValue);
+            LoadGridData(listOfBankReconcilation);
+        }
+
+        private void grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            bankReconcilationId = listOfBankReconcilation[e.RowIndex].BankReconcilationId;
+            lblSelectedRecord.Text = $"Selected Account { cboViewBankReconcilationAccounts.SelectedText } for the Month of { listOfBankReconcilation[e.RowIndex].Duration}";
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Ensure that the user selects a record
+            if (string.IsNullOrWhiteSpace(bankReconcilationId) == true)
+            {
+                MessageBox.Show("You Must Select a record", Software.GetApplicationName());
+                return;
+            }
+
+            if (MessageBox.Show("Do you wish to delete this bank reconcilation record?", Software.GetApplicationName(), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                Reset();
+                return;
+            }
+
+            var bankReconcilation = listOfBankReconcilation.Find(t => t.BankReconcilationId == bankReconcilationId);
+            
+            //Check if the financial month has not been closeed
+            var maintainBalance = _maintainBalanceService.GetMaintainBalanceByAccountIdAndDuration(bankReconcilation.AccountId, bankReconcilation.Duration);
+
+            if (maintainBalance != null && maintainBalance.Status == 1)
+            {
+                // Set the record as the account has been edited;
+                _maintainBalanceService.SetMaintainBalanceAsEdited(maintainBalance.MaintainBalanceId);
+            }
+
+            _bankReconcilationService.DeleteBankReconcilationRecord(bankReconcilationId);
+
+            // Get Bank Reconcilation record and display them again
+            listOfBankReconcilation = _bankReconcilationService.GetBankReconcilationByAccountId((string)cboViewBankReconcilationAccounts.SelectedValue);
+            LoadGridData(listOfBankReconcilation);
+
+            MessageBox.Show("Bank reconcilation record was deleted successfully", Software.GetApplicationName());
+            Reset();
         }
     }
 }

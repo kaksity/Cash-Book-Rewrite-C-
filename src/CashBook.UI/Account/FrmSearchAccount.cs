@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CashBook.UI.Utilities;
 
 namespace CashBook.UI.Account
 {
@@ -37,21 +38,18 @@ namespace CashBook.UI.Account
             grid.Columns.Add("colsAccountName", "Account Name");
             grid.Columns.Add("colsAccountNumber", "Account Number");
             grid.Columns.Add("colsOpeningBalance", "Opening Balance");
-            grid.Columns.Add("colsCurrentBalance", "Current Balance");
             grid.Columns.Add("colsDateOfOpening", "Date Of Opening");
 
             grid.Columns["colsSNum"].ReadOnly = true;
             grid.Columns["colsAccountName"].ReadOnly = true;
             grid.Columns["colsAccountNumber"].ReadOnly = true;
             grid.Columns["colsOpeningBalance"].ReadOnly = true;
-            grid.Columns["colsCurrentBalance"].ReadOnly = true;
             grid.Columns["colsDateOfOpening"].ReadOnly = true;
 
             grid.Columns["colsSNum"].Width = 70;
             grid.Columns["colsAccountName"].Width = 200;
             grid.Columns["colsAccountNumber"].Width = 200;
             grid.Columns["colsOpeningBalance"].Width = 200;
-            grid.Columns["colsCurrentBalance"].Width = 200;
             grid.Columns["colsDateOfOpening"].Width = 200;
 
             grid.AllowUserToAddRows = false;
@@ -81,9 +79,8 @@ namespace CashBook.UI.Account
                 grid.Rows[i].Cells["colsSNum"].Value = i + 1;
                 grid.Rows[i].Cells["colsAccountName"].Value = data[i].AccountName;
                 grid.Rows[i].Cells["colsAccountNumber"].Value = data[i].AccountNumber;
-                grid.Rows[i].Cells["colsOpeningBalance"].Value = data[i].OpeningBalance;
-                grid.Rows[i].Cells["colsCurrentBalance"].Value = data[i].CurrentBalance;
-                grid.Rows[i].Cells["colsDateOfOpening"].Value = data[i].OpeningDate;
+                grid.Rows[i].Cells["colsOpeningBalance"].Value = $"N{Utility.FormatDecimal(data[i].OpeningBalance)} ";
+                grid.Rows[i].Cells["colsDateOfOpening"].Value = Utility.FormatDate(data[i].OpeningDate);
             }
         }
 
@@ -120,5 +117,6 @@ namespace CashBook.UI.Account
         {
             this.Close();
         }
+
     }
 }

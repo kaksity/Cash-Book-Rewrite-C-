@@ -12,8 +12,9 @@ namespace CashBook.Models.MaintainBalance
         public string AccountId { get; set; }
         public decimal OpeningBalance { get; set; }
         public decimal ClosingBalance { get; set; }
-        public string Duration { get; set; }
+        public DateTime Duration { get; set; }
         public int Status { get; set; }
+        public bool IsEdited { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
