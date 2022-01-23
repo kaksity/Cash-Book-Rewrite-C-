@@ -8,6 +8,7 @@ using CashBook.DataAccess.Transaction;
 using CashBook.Models.Transaction;
 using System.Data;
 using CashBook.Services.TransactionDescription;
+using CashBook.Services.Utility;
 
 namespace CashBook.Services.Transaction
 {
@@ -15,12 +16,15 @@ namespace CashBook.Services.Transaction
     {
         private readonly ITransactionRepository _transactionRepository;
         private readonly ITransactionDescriptionService _transactionDescriptionService;
+        private readonly IUtilityService _utilityService;
 
-        public TransactionService(ITransactionRepository transactionRepository, ITransactionDescriptionService transactionDescriptionService)
+        public TransactionService(ITransactionRepository transactionRepository, ITransactionDescriptionService transactionDescriptionService, IUtilityService utilityService)
         {
             _transactionDescriptionService = transactionDescriptionService;
             _transactionRepository = transactionRepository;
+            _utilityService = utilityService;
         }
+
         public void CreateTransaction(CreateTransactionDto dto)
         {
             var transaction = new TransactionModel
@@ -170,7 +174,8 @@ namespace CashBook.Services.Transaction
 
             // First Get the List of Transaction Distinctively
             var expenseTransactions = _transactionRepository.GetAllExpenseTransactionDistinctByYear(accountId,year);
-            
+            decimal totalPerDay = 0;
+
             //Loop through the transactions to get all the transactions that occured on a particular day
             foreach (var transaction in expenseTransactions)
             {
@@ -182,31 +187,30 @@ namespace CashBook.Services.Transaction
 
                 DataRow row = tblColumnCashbook.NewRow();
 
-                decimal totalPerDay = 0;
-
-                row["colsDateOfTransaction"] = transaction.DateOfTransaction;
+                row["colsDateOfTransaction"] =  transaction.DateOfTransaction;
+                
 
                 foreach (var item in results)
                 {
+
                     decimal ammountWithdrawn = item.AmmountWithdrawn;
                     decimal previousAmmountWithdrawn = 0;
-
-                    
-                    
                     // Get the previous value and then updated it with the current value
-                    if(row[item.TransactionDescriptionId] == null)
+                    if (Convert.IsDBNull(row[item.TransactionDescriptionId]) == true)
                     {
                         previousAmmountWithdrawn = 0;
                     }
                     else
                     {
-                        //previousAmmountWithdrawn = (decimal)row[item.TransactionDescriptionId];
+                        previousAmmountWithdrawn = Convert.ToDecimal(row[item.TransactionDescriptionId]);
                     }
 
-                    row[item.TransactionDescriptionId] = previousAmmountWithdrawn + ammountWithdrawn; //  + previousAmmountWithdrawn; 
+                    row[item.TransactionDescriptionId] = previousAmmountWithdrawn + ammountWithdrawn; 
                     totalPerDay += ammountWithdrawn;
                 }
+
                 row["colsTotalTransaction"] = totalPerDay;
+
                 tblColumnCashbook.Rows.Add(row);
             }
             return tblColumnCashbook;

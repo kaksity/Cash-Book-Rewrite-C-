@@ -57,6 +57,8 @@
     <Compile Include="Reports\Accounts\IAccountReportService.cs" />
     <Compile Include="Reports\BankReconcilations\BankReconcilationReportService.cs" />
     <Compile Include="Reports\BankReconcilations\IBankReconcilationReportService.cs" />
+    <Compile Include="Reports\BinCards\BinCardReportService.cs" />
+    <Compile Include="Reports\BinCards\IBinCardReportService.cs" />
     <Compile Include="Reports\TransactionDescriptions\ITransactionDescriptionReportService.cs" />
     <Compile Include="Reports\TransactionDescriptions\TransactionDescriptionReportService.cs" />
     <Compile Include="Reports\Transactions\ITransactionReportService.cs" />

@@ -36,7 +36,7 @@
             this.cboFilterYears = new System.Windows.Forms.ComboBox();
             this.cboFilterMonths = new System.Windows.Forms.ComboBox();
             this.cboIssueReceipt = new System.Windows.Forms.ComboBox();
-            this.chkTransactionType = new System.Windows.Forms.CheckBox();
+            this.chkIssuesReceipt = new System.Windows.Forms.CheckBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.cboFilterBinCardItems = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -58,11 +58,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 12);
+            this.label3.Location = new System.Drawing.Point(47, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(442, 31);
+            this.label3.Size = new System.Drawing.Size(373, 31);
             this.label3.TabIndex = 0;
-            this.label3.Text = "TRANSACTION REPORT MENU";
+            this.label3.Text = "BIN CARD REPORT MENU";
             // 
             // btnGenerateReport
             // 
@@ -78,11 +78,12 @@
             this.btnGenerateReport.Size = new System.Drawing.Size(237, 60);
             this.btnGenerateReport.TabIndex = 35;
             this.btnGenerateReport.UseVisualStyleBackColor = false;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(30, 195);
+            this.Label2.Location = new System.Drawing.Point(25, 193);
             this.Label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(47, 13);
@@ -114,27 +115,28 @@
             // 
             this.cboIssueReceipt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboIssueReceipt.FormattingEnabled = true;
-            this.cboIssueReceipt.Location = new System.Drawing.Point(162, 165);
+            this.cboIssueReceipt.Location = new System.Drawing.Point(162, 144);
             this.cboIssueReceipt.Margin = new System.Windows.Forms.Padding(2);
             this.cboIssueReceipt.Name = "cboIssueReceipt";
             this.cboIssueReceipt.Size = new System.Drawing.Size(235, 21);
             this.cboIssueReceipt.TabIndex = 31;
             // 
-            // chkTransactionType
+            // chkIssuesReceipt
             // 
-            this.chkTransactionType.AutoSize = true;
-            this.chkTransactionType.Location = new System.Drawing.Point(162, 142);
-            this.chkTransactionType.Margin = new System.Windows.Forms.Padding(2);
-            this.chkTransactionType.Name = "chkTransactionType";
-            this.chkTransactionType.Size = new System.Drawing.Size(143, 17);
-            this.chkTransactionType.TabIndex = 30;
-            this.chkTransactionType.Text = "Both Receipt and Issued";
-            this.chkTransactionType.UseVisualStyleBackColor = true;
+            this.chkIssuesReceipt.AutoSize = true;
+            this.chkIssuesReceipt.Location = new System.Drawing.Point(160, 169);
+            this.chkIssuesReceipt.Margin = new System.Windows.Forms.Padding(2);
+            this.chkIssuesReceipt.Name = "chkIssuesReceipt";
+            this.chkIssuesReceipt.Size = new System.Drawing.Size(143, 17);
+            this.chkIssuesReceipt.TabIndex = 30;
+            this.chkIssuesReceipt.Text = "Both Receipt and Issued";
+            this.chkIssuesReceipt.UseVisualStyleBackColor = true;
+            this.chkIssuesReceipt.CheckedChanged += new System.EventHandler(this.chkIssuesReceipt_CheckedChanged);
             // 
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(30, 169);
+            this.Label5.Location = new System.Drawing.Point(25, 147);
             this.Label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(86, 13);
@@ -174,10 +176,11 @@
             this.Controls.Add(this.cboFilterYears);
             this.Controls.Add(this.cboFilterMonths);
             this.Controls.Add(this.cboIssueReceipt);
-            this.Controls.Add(this.chkTransactionType);
+            this.Controls.Add(this.chkIssuesReceipt);
             this.Controls.Add(this.Label5);
             this.Controls.Add(this.cboFilterBinCardItems);
             this.Controls.Add(this.Label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -202,7 +205,7 @@
         internal System.Windows.Forms.ComboBox cboFilterYears;
         internal System.Windows.Forms.ComboBox cboFilterMonths;
         internal System.Windows.Forms.ComboBox cboIssueReceipt;
-        internal System.Windows.Forms.CheckBox chkTransactionType;
+        internal System.Windows.Forms.CheckBox chkIssuesReceipt;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.ComboBox cboFilterBinCardItems;
         internal System.Windows.Forms.Label Label1;

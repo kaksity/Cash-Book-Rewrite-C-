@@ -28,7 +28,7 @@ namespace CashBook.Services.BinCard
                 DateOfIssueOrReceipt = dto.DateOfIssueOrReceipt,
                 IssuedQuantity = dto.IssuedQuantity,
                 SivSrvOthers = dto.SivSrvOthers,
-                RecievedQuantity = dto.RecievedQuantity,
+                ReceivedQuantity = dto.RecievedQuantity,
                 UnitPrice = dto.UnitPrice,
                 Description = dto.Description,
                 IsDeleted = false,
@@ -61,7 +61,7 @@ namespace CashBook.Services.BinCard
                     DateOfIssueOrReceipt = item.DateOfIssueOrReceipt,
                     IssuedQuantity = item.IssuedQuantity,
                     SivSrvOthers = item.SivSrvOthers,
-                    RecievedQuantity = item.RecievedQuantity,
+                    RecievedQuantity = item.ReceivedQuantity,
                     UnitPrice = item.UnitPrice,
                     Description = item.Description
                 });
@@ -75,7 +75,7 @@ namespace CashBook.Services.BinCard
                 BinCardId = "",
                 DateOfIssueOrReceipt = dto.DateOfIssueOrReceipt,
                 IssuedQuantity = dto.IssuedQuantity,
-                RecievedQuantity = dto.RecievedQuantity,
+                ReceivedQuantity = dto.RecievedQuantity,
                 UnitPrice = dto.UnitPrice,
                 SivSrvOthers = dto.SivSrvOthers,
                 Description = dto.Description,

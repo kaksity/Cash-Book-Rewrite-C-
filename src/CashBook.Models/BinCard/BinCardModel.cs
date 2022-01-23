@@ -13,7 +13,7 @@ namespace CashBook.Models.BinCard
         public string BinCardItemId { get; set; }
         public DateTime DateOfIssueOrReceipt { get; set; }
         public string SivSrvOthers { get; set; }
-        public decimal RecievedQuantity { get; set; }
+        public decimal ReceivedQuantity { get; set; }
         public decimal IssuedQuantity { get; set; }
         public decimal UnitPrice { get; set; }
         public string Description { get; set; }

@@ -13,5 +13,6 @@ namespace CashBook.Services.Utility
         DataTable GetYears();
         DataTable GetIssueOrReceipt();
         string FormatDecimal(decimal input);
+        string FormatDate(DateTime input);
     }
 }

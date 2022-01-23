@@ -29,5 +29,11 @@ namespace CashBook.UI.StockLedger
             var frmBinCardReportMenu = Program.container.GetInstance<FrmGenerateBinCardReport>();
             frmBinCardReportMenu.ShowDialog();
         }
+
+        private void btnIssueAndReceiveItem_Click(object sender, EventArgs e)
+        {
+            var frmBinCard = Program.container.GetInstance<FrmBinCard>();
+            frmBinCard.ShowDialog();
+        }
     }
 }

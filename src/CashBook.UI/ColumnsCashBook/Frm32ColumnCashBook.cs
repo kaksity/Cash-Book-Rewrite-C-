@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CashBook.Services.Account;
 using CashBook.Services.Transaction;
 using CashBook.Services.TransactionDescription;
+using CashBook.UI.Utilities;
 
 namespace CashBook.UI.ColumnsCashBook
 {
@@ -91,6 +92,11 @@ namespace CashBook.UI.ColumnsCashBook
             var results = _transactionService.Get32ColumnCashBook((string)cboAccounts.SelectedValue, (int)cboYears.SelectedValue);
 
             grid.DataSource = results;
+
+            //for (int i = 0; i < grid.Rows.Count; i++)
+            //{
+            //    grid.Rows[i].Cells[""].Value = Utility.FormatDecimal((decimal)grid.Rows[i].Cells[""].Value);
+            //}
 
             var expenseTransactionItems = _transactionDescriptionService.GetAllTransactionDescriptionsByTransactionType("EXPENSE");
 

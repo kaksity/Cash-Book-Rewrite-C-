@@ -57,6 +57,7 @@ namespace CashBook.UI.Transaction
             txtPVNumber.Enabled = true;
             txtSubhead.Enabled = true;
             txtNameOfBeneficiary.Enabled = true;
+            grid.Enabled = false;
             btnNew.Enabled = false;
             btnUndo.Enabled = true;
             btnSave.Enabled = true;
@@ -69,6 +70,7 @@ namespace CashBook.UI.Transaction
             txtPayment.Enabled = false;
             txtPVNumber.Enabled = false;
             txtRefNumber.Enabled = false;
+            grid.Enabled = true;
             txtNameOfBeneficiary.Enabled = false;
             txtSubhead.Enabled = false;
             btnNew.Enabled = true;

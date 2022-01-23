@@ -32,6 +32,8 @@ using CashBook.Services.BinCardItem;
 using CashBook.UI.StockLedger;
 using CashBook.DataAccess.BinCard;
 using CashBook.Services.BinCard;
+using CashBook.DataAccess.Reports.BinCards;
+using CashBook.Services.Reports.BinCards;
 
 namespace CashBook.UI
 {
@@ -52,7 +54,7 @@ namespace CashBook.UI
             Application.SetCompatibleTextRenderingDefault(false);
             container = Bootstrap();
 
-            Application.Run(container.GetInstance<FrmStockLedgerMenu>());
+            Application.Run(container.GetInstance<FrmSplashScreen>());
         }
 
         private static Container Bootstrap()
@@ -85,6 +87,8 @@ namespace CashBook.UI
             container.Register<IBinCardItemService, BinCardItemService>();
             container.Register<IBinCardRepository, BinCardRepository>();
             container.Register<IBinCardService, BinCardService>();
+            container.Register<IBinCardReportRepository, BinCardReportRepository>();
+            container.Register<IBinCardReportService, BinCardReportService>();
             AutoRegisterWindowsForms(container);
 
             container.Verify();

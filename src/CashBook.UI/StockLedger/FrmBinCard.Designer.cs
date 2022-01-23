@@ -61,10 +61,10 @@
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pnlContainer = new System.Windows.Forms.Panel();
             this.txtSivSrvOtherInvoices = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pnlContainer = new System.Windows.Forms.Panel();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -476,6 +476,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create Bin Card";
             // 
+            // txtSivSrvOtherInvoices
+            // 
+            this.txtSivSrvOtherInvoices.Location = new System.Drawing.Point(149, 101);
+            this.txtSivSrvOtherInvoices.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSivSrvOtherInvoices.Name = "txtSivSrvOtherInvoices";
+            this.txtSivSrvOtherInvoices.Size = new System.Drawing.Size(190, 20);
+            this.txtSivSrvOtherInvoices.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 103);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 13);
+            this.label7.TabIndex = 59;
+            this.label7.Text = "Siv Srv and  Other Invoices";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -498,24 +516,6 @@
             this.pnlContainer.Size = new System.Drawing.Size(1183, 55);
             this.pnlContainer.TabIndex = 40;
             // 
-            // txtSivSrvOtherInvoices
-            // 
-            this.txtSivSrvOtherInvoices.Location = new System.Drawing.Point(149, 101);
-            this.txtSivSrvOtherInvoices.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSivSrvOtherInvoices.Name = "txtSivSrvOtherInvoices";
-            this.txtSivSrvOtherInvoices.Size = new System.Drawing.Size(190, 20);
-            this.txtSivSrvOtherInvoices.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 103);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 13);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "Siv Srv and  Other Invoices";
-            // 
             // FrmBinCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,6 +525,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pnlContainer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;

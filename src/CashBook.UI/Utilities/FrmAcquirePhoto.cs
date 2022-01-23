@@ -81,17 +81,22 @@ namespace CashBook.UI.Utilities
         {
             if (picPhoto.Image == null) return;
 
-            var newImage = Zoom(picPhoto.Image,Slider.Value);
+            var newImage = Zoom(picPhoto.Image, Slider.Value);
 
-            picPhoto.Image = (Image)newImage.Clone();
-
-            newImage.Dispose();
+            if(newImage != null)
+            {
+                picPhoto.Image = (Image)newImage.Clone();
+                newImage.Dispose();
+            }
+            
         }
         private Image Zoom(Image image,int zoomFactor)
         {
             // Get the height and width of the new image
             int height = Convert.ToInt32(image.Height * zoomFactor) / 100;
             int width = Convert.ToInt32(image.Width * zoomFactor) / 100;
+
+            if(height == 0 || width == 0) return null;
 
             // Create a new image based on the width and the height;
             var newImage = new Bitmap(image,width,height);

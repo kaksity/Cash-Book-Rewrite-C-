@@ -164,6 +164,8 @@ namespace CashBook.UI.Transaction
             txtRVNumber.Enabled = true;
             txtSubhead.Enabled = true;
             txtNameOfPayee.Enabled = true;
+            grid.Enabled = false;
+
             btnNew.Enabled = false;
             btnUndo.Enabled = true;
             btnSave.Enabled = true;
@@ -178,6 +180,9 @@ namespace CashBook.UI.Transaction
             txtRVNumber.Enabled = false;
             txtNameOfPayee.Enabled = false;
             txtSubhead.Enabled = false;
+
+            grid.Enabled = true;
+
             btnNew.Enabled = true;
             btnUndo.Enabled = false;
             btnSave.Enabled = false;
@@ -191,12 +196,16 @@ namespace CashBook.UI.Transaction
             txtRVNumber.Text = "";
             txtSubhead.Text = "";
             txtNameOfPayee.Text = "";
+
+            
         }
         private void Reset()
         {
             isNewRecord = false;
             Clear();
             Disable();
+            lblSelectedRecord.Text = "";
+            transactionId = "";
         }
     
         private void btnSave_Click(object sender, EventArgs e)

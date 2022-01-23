@@ -26,8 +26,8 @@ namespace CashBook.DataAccess.BinCard
             {
                 connection.Open();
                 string query = @"INSERT INTO 
-                                    BINCARDS(BINCARDID, BINCARDITEMID, DATEOFRECEIPTORISSUE,SIVSRVOTHERS,RECEIVEDQUANTITY, ISSUEDQUANTITY, UNITPRICE, DESCRIPTION, ISDELETED,CREATEDAT, UPDATEDAT)
-                                 VALUES (@BinCardId, @BinCardItemId, @DateOfIssueOrReceipt, @SivSrvOthers, @RecievedQuantity, @IssuedQuantity, @UnitPrice, @Description, @IsDeleted, @CreatedAt, @UpdatedAt);
+                                    BINCARDS(BINCARDID, BINCARDITEMID, DATEOFISSUEORRECEIPT,SIVSRVOTHERS,RECEIVEDQUANTITY, ISSUEDQUANTITY, UNITPRICE, DESCRIPTION, ISDELETED,CREATEDAT, UPDATEDAT)
+                                 VALUES (@BinCardId, @BinCardItemId, @DateOfIssueOrReceipt, @SivSrvOthers, @ReceivedQuantity, @IssuedQuantity, @UnitPrice, @Description, @IsDeleted, @CreatedAt, @UpdatedAt);
                 ";
                 connection.Execute(query,model);
             }
@@ -65,7 +65,7 @@ namespace CashBook.DataAccess.BinCard
                                 WHERE
                                     bc.IsDeleted = false
                                 ORDER BY
-                                    bc.DATEOFRECEIPTORISSUE DESC";
+                                    bc.DATEOFISSUEORRECEIPT DESC";
                 return connection.Query<BinCardModel, BinCardItemModel, BinCardModel>(
                     sql:query,
                     map: (binCard,binCardItem) =>
@@ -93,9 +93,9 @@ namespace CashBook.DataAccess.BinCard
                                 ON
                                     bc.BINCARDITEMID = bci.BINCARDITEMID
                                 WHERE
-                                    bc.IsDeleted = false AND bc.BinCardItemId = @BinCardItemId AND EXTRACT(MONTH FROM bc.DateOfReceiptOrIssue) = @Month AND EXTRACT(Year FROM bc.DateOfReceiptOrIssue) = @Year
+                                    bc.IsDeleted = false AND bc.BinCardItemId = @BinCardItemId AND EXTRACT(MONTH FROM bc.DATEOFISSUEORRECEIPT) = @Month AND EXTRACT(Year FROM bc.DATEOFISSUEORRECEIPT) = @Year
                                 ORDER BY
-                                    bc.DATEOFRECEIPTORISSUE DESC";
+                                    bc.DATEOFISSUEORRECEIPT DESC";
                 return connection.Query<BinCardModel, BinCardItemModel, BinCardModel>(
                     sql: query,
                     map: (binCard, item) =>
@@ -116,7 +116,7 @@ namespace CashBook.DataAccess.BinCard
                 connection.Open();
                 string query = @"UPDATE BINCARDS
                                 SET 
-                                    DATEOFRECEIPTORISSUE = @DateOfReceiptOrIssue, 
+                                    DATEOFISSUEORRECEIPT = @DATEOFISSUEORRECEIPT, 
                                     RECEIVEDQUANTITY = @ReceivedQuantity, 
                                     ISSUEDQUANTITY = @IssuedQuantity, 
                                     UNITPRICE = @UnitPrice, 

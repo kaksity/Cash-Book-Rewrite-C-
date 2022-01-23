@@ -26,7 +26,10 @@ namespace CashBook.Services.Utility
 
             return tblIssueOrReceipt;
         }
-
+        public string FormatDate(DateTime input)
+        {
+            return input.ToString("dd/MM/yyyy");
+        }
         public DataTable GetMonths()
         {
             var tblMonths = new DataTable();

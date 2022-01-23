@@ -31,9 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStockLedgerMenu));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnIssueItem = new System.Windows.Forms.Button();
+            this.btnIssueAndReceiveItem = new System.Windows.Forms.Button();
             this.btnBinCardItem = new System.Windows.Forms.Button();
-            this.btnReceiveItem = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,19 +60,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "STOCK LEDGER MENU";
             // 
-            // btnIssueItem
+            // btnIssueAndReceiveItem
             // 
-            this.btnIssueItem.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnIssueItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
-            this.btnIssueItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIssueItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIssueItem.ForeColor = System.Drawing.Color.White;
-            this.btnIssueItem.Location = new System.Drawing.Point(12, 153);
-            this.btnIssueItem.Name = "btnIssueItem";
-            this.btnIssueItem.Size = new System.Drawing.Size(236, 65);
-            this.btnIssueItem.TabIndex = 12;
-            this.btnIssueItem.Text = "&Issue Item";
-            this.btnIssueItem.UseVisualStyleBackColor = false;
+            this.btnIssueAndReceiveItem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnIssueAndReceiveItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.btnIssueAndReceiveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIssueAndReceiveItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIssueAndReceiveItem.ForeColor = System.Drawing.Color.White;
+            this.btnIssueAndReceiveItem.Location = new System.Drawing.Point(12, 153);
+            this.btnIssueAndReceiveItem.Name = "btnIssueAndReceiveItem";
+            this.btnIssueAndReceiveItem.Size = new System.Drawing.Size(236, 65);
+            this.btnIssueAndReceiveItem.TabIndex = 12;
+            this.btnIssueAndReceiveItem.Text = "&Issue Item / Recieve Item";
+            this.btnIssueAndReceiveItem.UseVisualStyleBackColor = false;
+            this.btnIssueAndReceiveItem.Click += new System.EventHandler(this.btnIssueAndReceiveItem_Click);
             // 
             // btnBinCardItem
             // 
@@ -90,20 +90,6 @@
             this.btnBinCardItem.UseVisualStyleBackColor = false;
             this.btnBinCardItem.Click += new System.EventHandler(this.btnBinCardItem_Click);
             // 
-            // btnReceiveItem
-            // 
-            this.btnReceiveItem.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnReceiveItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
-            this.btnReceiveItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReceiveItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReceiveItem.ForeColor = System.Drawing.Color.White;
-            this.btnReceiveItem.Location = new System.Drawing.Point(12, 233);
-            this.btnReceiveItem.Name = "btnReceiveItem";
-            this.btnReceiveItem.Size = new System.Drawing.Size(236, 65);
-            this.btnReceiveItem.TabIndex = 13;
-            this.btnReceiveItem.Text = "Re&ceive Item";
-            this.btnReceiveItem.UseVisualStyleBackColor = false;
-            // 
             // btnReports
             // 
             this.btnReports.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -111,7 +97,7 @@
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReports.ForeColor = System.Drawing.Color.White;
-            this.btnReports.Location = new System.Drawing.Point(12, 315);
+            this.btnReports.Location = new System.Drawing.Point(12, 224);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(236, 65);
             this.btnReports.TabIndex = 14;
@@ -126,10 +112,10 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(856, 536);
             this.Controls.Add(this.btnReports);
-            this.Controls.Add(this.btnReceiveItem);
-            this.Controls.Add(this.btnIssueItem);
+            this.Controls.Add(this.btnIssueAndReceiveItem);
             this.Controls.Add(this.btnBinCardItem);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -147,9 +133,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnIssueItem;
+        private System.Windows.Forms.Button btnIssueAndReceiveItem;
         private System.Windows.Forms.Button btnBinCardItem;
-        private System.Windows.Forms.Button btnReceiveItem;
         private System.Windows.Forms.Button btnReports;
     }
 }

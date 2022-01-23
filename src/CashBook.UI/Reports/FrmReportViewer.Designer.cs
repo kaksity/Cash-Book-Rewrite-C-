@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportViewer));
             this.rdlViewer = new fyiReporting.RdlViewer.RdlViewer();
             this.btnPDF = new System.Windows.Forms.Button();
+            this.cboZoom = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // rdlViewer
@@ -72,12 +73,23 @@
             this.btnPDF.UseVisualStyleBackColor = false;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
+            // cboZoom
+            // 
+            this.cboZoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboZoom.FormattingEnabled = true;
+            this.cboZoom.Location = new System.Drawing.Point(188, 540);
+            this.cboZoom.Name = "cboZoom";
+            this.cboZoom.Size = new System.Drawing.Size(274, 21);
+            this.cboZoom.TabIndex = 3;
+            this.cboZoom.SelectedIndexChanged += new System.EventHandler(this.cboZoom_SelectedIndexChanged);
+            // 
             // FrmReportViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(746, 581);
+            this.Controls.Add(this.cboZoom);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.rdlViewer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -88,6 +100,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Swift Accounts - Report Viewer";
+            this.Load += new System.EventHandler(this.FrmReportViewer_Load);
             this.ResumeLayout(false);
 
         }
@@ -96,5 +109,6 @@
 
         public fyiReporting.RdlViewer.RdlViewer rdlViewer;
         private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.ComboBox cboZoom;
     }
 }

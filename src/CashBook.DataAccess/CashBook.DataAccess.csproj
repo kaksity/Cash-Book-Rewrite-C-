@@ -74,6 +74,8 @@
     <Compile Include="Reports\Accounts\IAccountReportRepository.cs" />
     <Compile Include="Reports\BankReconcilations\BankReconcilationReportRepository.cs" />
     <Compile Include="Reports\BankReconcilations\IBankReconcilationReportRepository.cs" />
+    <Compile Include="Reports\BinCards\BinCardReportRepository.cs" />
+    <Compile Include="Reports\BinCards\IBinCardReportRepository.cs" />
     <Compile Include="Reports\TransactionDescriptions\ITransactionDescriptionReportRepository.cs" />
     <Compile Include="Reports\TransactionDescriptions\TransactionDescriptionReportRepository.cs" />
     <Compile Include="Reports\Transactions\ITransactionReportRepository.cs" />

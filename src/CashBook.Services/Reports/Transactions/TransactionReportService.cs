@@ -110,7 +110,7 @@ namespace CashBook.Services.Reports
                 {
                     cummulativeBalance = cummulativeBalance + ammountDeposited;
                 }
-                table.Rows[i].SetField<decimal>("CummulativeBalance", cummulativeBalance);
+                table.Rows[i].SetField("CummulativeBalance",_utilityService.FormatDecimal(cummulativeBalance));
             }
             return table;
         }
