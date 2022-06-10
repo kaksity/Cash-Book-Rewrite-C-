@@ -87,7 +87,7 @@
             this.cboViewBankReconcilationAccounts.FormattingEnabled = true;
             this.cboViewBankReconcilationAccounts.Location = new System.Drawing.Point(98, 328);
             this.cboViewBankReconcilationAccounts.Name = "cboViewBankReconcilationAccounts";
-            this.cboViewBankReconcilationAccounts.Size = new System.Drawing.Size(244, 21);
+            this.cboViewBankReconcilationAccounts.Size = new System.Drawing.Size(466, 21);
             this.cboViewBankReconcilationAccounts.TabIndex = 26;
             this.cboViewBankReconcilationAccounts.SelectedIndexChanged += new System.EventHandler(this.cboViewBankReconcilationAccounts_SelectedIndexChanged);
             // 

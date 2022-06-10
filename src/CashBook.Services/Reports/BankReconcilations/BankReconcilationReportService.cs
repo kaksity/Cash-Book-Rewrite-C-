@@ -98,16 +98,29 @@ namespace CashBook.Services.Reports.BankReconcilations
 
             decimal closingBalance = suggestedCashbookBalance + bankTotal;
             parameter.Append($"ClosingBalance=N{_utilityService.FormatDecimal(closingBalance)}&");
-            parameter.Append($"TextCashbookOpeningBalance=CASHBOOK O/BALANCE AS AT 1st {GenerateDateInWord(bankReconcilation.Duration)}&");
-            parameter.Append($"TextCashbookBalance=CASHBOOK BALANCE AS AT {GetLastDateOfTheMonth(bankReconcilation.Duration)}, { GenerateDateInWord(bankReconcilation.Duration)}&");
-            parameter.Append($"TextSuggestedCashbookBalance=SUGGESTED CASHBOOK BALANCE AS AT {GetLastDateOfTheMonth(bankReconcilation.Duration)}, { GenerateDateInWord(bankReconcilation.Duration)}&");
-            parameter.Append($"TextReconciledBalance=SUGGESTED CASHBOOK BALANCE AS AT {GetLastDateOfTheMonth(bankReconcilation.Duration)}, { GenerateDateInWord(bankReconcilation.Duration)}&");
-            parameter.Append($"TextClosingBalance=SUGGESTED BANK BALANCE AS AT {GetLastDateOfTheMonth(bankReconcilation.Duration)}, { GenerateDateInWord(bankReconcilation.Duration)}&");
+            parameter.Append($"TextCashbookOpeningBalance=CASHBOOK O/BALANCE AS AT {GenerateFirstDateInWord(bankReconcilation.Duration)}&");
+            parameter.Append($"TextCashbookBalance=CASHBOOK BALANCE AS AT {GenerateLastDateInWord(bankReconcilation.Duration)}&");
+            parameter.Append($"TextSuggestedCashbookBalance=SUGGESTED CASHBOOK BALANCE AS AT {GenerateLastDateInWord(bankReconcilation.Duration)}&");
+            parameter.Append($"TextReconciledBalance=SUGGESTED CASHBOOK BALANCE AS AT {GenerateLastDateInWord(bankReconcilation.Duration)}&");
+            parameter.Append($"TextClosingBalance=SUGGESTED BANK BALANCE AS AT {GenerateLastDateInWord(bankReconcilation.Duration)}&");
 
             parameter.Append($"PreparedBy={user.FullName}");
             return parameter.ToString();
         }
 
+        private string GenerateFirstDateInWord(string duration)
+        {
+            var splitedDuration = duration.Split('.');
+
+            int month = Convert.ToInt16(splitedDuration[0]);
+            int year = Convert.ToInt16(splitedDuration[1]);
+
+            int numberOfDaysInMonth = DateTime.DaysInMonth(year, month);
+
+            var allMonths = _utilityService.GetMonths();
+            var reportMonths = allMonths.Rows[month - 1].Field<string>("name");
+            return $"1st, {reportMonths} {year}";
+        }
         private decimal GetOpeningBalance(string accountId, string duration)
         {
             var maintainBalance = _maintainBalanceService.GetMaintainBalanceByAccountIdAndDuration(accountId, duration);
@@ -136,11 +149,10 @@ namespace CashBook.Services.Reports.BankReconcilations
             var splitedDuration = duration.Split('.');
             int month = Convert.ToInt16(splitedDuration[0]);
             int year = Convert.ToInt16(splitedDuration[1]);
-
             return DateTime.DaysInMonth(year, month);
         }
 
-        private string GenerateDateInWord(string duration)
+        private string GenerateLastDateInWord(string duration)
         {
             var splitedDuration = duration.Split('.');
 
@@ -150,8 +162,9 @@ namespace CashBook.Services.Reports.BankReconcilations
             int numberOfDaysInMonth = DateTime.DaysInMonth(year, month);
 
             var allMonths = _utilityService.GetMonths();
+            var date = ((numberOfDaysInMonth) == 31) ? $"{numberOfDaysInMonth}st" : $"{numberOfDaysInMonth}th";
             var reportMonths = allMonths.Rows[month - 1].Field<string>("name");
-            return $"{reportMonths} {year}";
+            return $"{ date }, {reportMonths} {year}";
         }
 
         private string GenerateAccountDetailsParameter(string accountId)
@@ -162,7 +175,7 @@ namespace CashBook.Services.Reports.BankReconcilations
         private string GenerateReportTitleParameter(string duration)
         {
             
-            return $"ReportTitle=BANK RECONCILATION AS AT {GenerateDateInWord(duration)}&";
+            return $"ReportTitle=BANK RECONCILATION AS AT {GenerateLastDateInWord(duration)}&";
         }
 
         //public string GenerateReportParameters(string userId, string accountId, int month, int year)

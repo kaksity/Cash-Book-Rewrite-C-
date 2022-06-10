@@ -491,5 +491,10 @@ namespace CashBook.UI.BankReconcilation
             MessageBox.Show("Bank reconcilation record was deleted successfully", Software.GetApplicationName());
             Reset();
         }
+
+        private void cboAccounts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Enable();
+        }
     }
 }

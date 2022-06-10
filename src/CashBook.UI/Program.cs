@@ -15,7 +15,6 @@ using SimpleInjector.Diagnostics;
 using System;
 using System.Windows.Forms;
 using CashBook.Services.Utility;
-using CashBook.UI.Reports;
 using CashBook.Services.Reports;
 using CashBook.DataAccess.Reports;
 using CashBook.Services.Reports.BankReconcilations;
@@ -24,16 +23,23 @@ using CashBook.DataAccess.Reports.TransactionDescriptions;
 using CashBook.Services.Reports.TransactionDescriptions;
 using CashBook.DataAccess.Reports.Accounts;
 using CashBook.Services.Reports.Accounts;
-using CashBook.UI.MainMenu;
-using CashBook.UI.Utilities;
 using CashBook.UI.Authentication;
 using CashBook.DataAccess.BinCardItem;
 using CashBook.Services.BinCardItem;
-using CashBook.UI.StockLedger;
 using CashBook.DataAccess.BinCard;
 using CashBook.Services.BinCard;
 using CashBook.DataAccess.Reports.BinCards;
 using CashBook.Services.Reports.BinCards;
+using CashBook.UI.MainMenu;
+using CashBook.DataAccess.Debtor;
+using CashBook.Services.Debtor;
+using CashBook.DataAccess.DebtorLedger;
+using CashBook.UI.DebtorLedger;
+using CashBook.Services.DebtorLedger;
+using CashBook.DataAccess.Reports.DebtorLedger;
+using CashBook.Services.Reports.DebtorLedgers;
+using CashBook.DataAccess.DataRecovery;
+using CashBook.Services.DataRecovery;
 
 namespace CashBook.UI
 {
@@ -45,7 +51,9 @@ namespace CashBook.UI
         /// 
         public static Container container;
         public static string accountId;
-        public static string userId = "372f76e3-f757-4549-b50c-eb68fd28ebb1";
+        public static string debtorId;
+        public static string binCardItemId;
+        public static string userId = "49fdbfcb-15b0-444a-ad0b-9f86c0909d27";
         [STAThread]
         static void Main()
         {
@@ -89,6 +97,14 @@ namespace CashBook.UI
             container.Register<IBinCardService, BinCardService>();
             container.Register<IBinCardReportRepository, BinCardReportRepository>();
             container.Register<IBinCardReportService, BinCardReportService>();
+            container.Register<IDebtorRepository, DebtorRepository>();
+            container.Register<IDebtorService, DebtorService>();
+            container.Register<IDebtorLedgerRepository, DebtorLedgerRepository>();
+            container.Register<IDebtorLedgerService, DebtorLedgerService>();
+            container.Register<IDebtorLedgerReportRepository, DebtorLedgerReportRepository>();
+            container.Register<IDebtorLedgerReportService, DebtorLedgerReportService>();
+            container.Register<IDataRecoveryRepository, DataRecoveryRepository>();
+            container.Register<IDataRecoveryService, DataRecoveryService>();
             AutoRegisterWindowsForms(container);
 
             container.Verify();

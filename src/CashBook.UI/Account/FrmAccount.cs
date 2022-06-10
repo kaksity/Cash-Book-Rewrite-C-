@@ -152,16 +152,18 @@ namespace CashBook.UI.Account
                 MessageBox.Show("Account Number must 10 digits", Software.GetApplicationName());
                 return;
             }
-            if (Utility.IsNumeric(txtOpeningBalance.Text) == false)
-            {
-                txtOpeningBalance.Focus();
-                MessageBox.Show("Opening Balance must be numeric", Software.GetApplicationName());
-                return;
-            }
+            
 
             // Check if we are going to add a new record or edit an existing record
             if (isNewRecord == true && isEditRecord == false)
             {
+                if (Utility.IsNumeric(txtOpeningBalance.Text) == false)
+                {
+                    txtOpeningBalance.Focus();
+                    MessageBox.Show("Opening Balance must be numeric", Software.GetApplicationName());
+                    return;
+                }
+
                 var checkAccount = _accountService.GetAccountByAccountNumber(txtAccountNumber.Text);
                 if (checkAccount == null)
                 {

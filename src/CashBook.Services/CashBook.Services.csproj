@@ -50,6 +50,12 @@
     <Compile Include="BinCardItem\IBinCardItemService.cs" />
     <Compile Include="BinCard\BinCardService.cs" />
     <Compile Include="BinCard\IBinCardService.cs" />
+    <Compile Include="DataRecovery\DataRecoveryService.cs" />
+    <Compile Include="DataRecovery\IDataRecoveryService.cs" />
+    <Compile Include="DebtorLedger\DebtorLedgerService.cs" />
+    <Compile Include="DebtorLedger\IDebtorLedgerService.cs" />
+    <Compile Include="Debtor\DebtorService.cs" />
+    <Compile Include="Debtor\IDebtorService.cs" />
     <Compile Include="MaintainBalance\IMaintainBalanceService.cs" />
     <Compile Include="MaintainBalance\MaintainBalanceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +65,8 @@
     <Compile Include="Reports\BankReconcilations\IBankReconcilationReportService.cs" />
     <Compile Include="Reports\BinCards\BinCardReportService.cs" />
     <Compile Include="Reports\BinCards\IBinCardReportService.cs" />
+    <Compile Include="Reports\DebtorLedgers\DebtorLedgerReportService.cs" />
+    <Compile Include="Reports\DebtorLedgers\IDebtorLedgerReportService.cs" />
     <Compile Include="Reports\TransactionDescriptions\ITransactionDescriptionReportService.cs" />
     <Compile Include="Reports\TransactionDescriptions\TransactionDescriptionReportService.cs" />
     <Compile Include="Reports\Transactions\ITransactionReportService.cs" />

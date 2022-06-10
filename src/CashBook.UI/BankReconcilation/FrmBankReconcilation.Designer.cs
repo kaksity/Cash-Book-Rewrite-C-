@@ -326,6 +326,7 @@
             this.cboAccounts.Name = "cboAccounts";
             this.cboAccounts.Size = new System.Drawing.Size(518, 21);
             this.cboAccounts.TabIndex = 14;
+            this.cboAccounts.SelectedIndexChanged += new System.EventHandler(this.cboAccounts_SelectedIndexChanged);
             // 
             // GroupBox1
             // 
@@ -480,7 +481,7 @@
             this.cboViewBankReconcilationAccounts.FormattingEnabled = true;
             this.cboViewBankReconcilationAccounts.Location = new System.Drawing.Point(113, 276);
             this.cboViewBankReconcilationAccounts.Name = "cboViewBankReconcilationAccounts";
-            this.cboViewBankReconcilationAccounts.Size = new System.Drawing.Size(244, 21);
+            this.cboViewBankReconcilationAccounts.Size = new System.Drawing.Size(361, 21);
             this.cboViewBankReconcilationAccounts.TabIndex = 26;
             this.cboViewBankReconcilationAccounts.SelectedIndexChanged += new System.EventHandler(this.cboViewBankReconcilationAccounts_SelectedIndexChanged);
             // 

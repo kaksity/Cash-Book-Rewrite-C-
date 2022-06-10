@@ -13,6 +13,6 @@ namespace CashBook.Services.BinCard
         void UpdateExistingBinCard(UpdateBinCardDto model);
         void DeleteBinCard(string binCardId);
         List<ReadBinCardDto> GetAllBinCards();
-        List<ReadBinCardDto> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int month, int year);
+        List<ReadBinCardDto> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int year);
     }
 }

@@ -162,13 +162,13 @@ namespace CashBook.Services.Transaction
             tblColumnCashbook.Rows.Clear();
 
             tblColumnCashbook.Columns.Add("colsDateOfTransaction",typeof(DateTime));
-            tblColumnCashbook.Columns.Add("colsTotalTransaction", typeof(decimal));
+            tblColumnCashbook.Columns.Add("colsTotalTransaction", typeof(string));
 
             var transactionDescriptionItems = _transactionDescriptionService.GetAllTransactionDescriptionsByTransactionType("EXPENSE");
 
             foreach (var item in transactionDescriptionItems)
             {
-                tblColumnCashbook.Columns.Add(item.TransactionDescriptionId,typeof(decimal));
+                tblColumnCashbook.Columns.Add(item.TransactionDescriptionId,typeof(string));
             }
 
 

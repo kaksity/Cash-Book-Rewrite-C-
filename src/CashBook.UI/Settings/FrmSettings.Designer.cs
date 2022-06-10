@@ -34,8 +34,6 @@
             this.btnCancel = new crsButton.cButton();
             this.btnSave = new crsButton.cButton();
             this.btnEdit = new crsButton.cButton();
-            this.btnAddPhoto = new crsButton.cButton();
-            this.picPhoto = new System.Windows.Forms.PictureBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtSecurityAnswer = new System.Windows.Forms.TextBox();
             this.txtSecurityQuestion = new System.Windows.Forms.TextBox();
@@ -55,7 +53,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,8 +62,6 @@
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnEdit);
-            this.groupBox1.Controls.Add(this.btnAddPhoto);
-            this.groupBox1.Controls.Add(this.picPhoto);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.txtSecurityAnswer);
             this.groupBox1.Controls.Add(this.txtSecurityQuestion);
@@ -153,38 +148,12 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnAddPhoto
-            // 
-            this.btnAddPhoto.BackColor = System.Drawing.Color.Transparent;
-            this.btnAddPhoto.ButtonType = crsButton.cButton.btnType.capture_photo;
-            this.btnAddPhoto.FlatAppearance.BorderSize = 0;
-            this.btnAddPhoto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAddPhoto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAddPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPhoto.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPhoto.Image")));
-            this.btnAddPhoto.Location = new System.Drawing.Point(427, 242);
-            this.btnAddPhoto.Name = "btnAddPhoto";
-            this.btnAddPhoto.Size = new System.Drawing.Size(168, 60);
-            this.btnAddPhoto.TabIndex = 58;
-            this.btnAddPhoto.UseVisualStyleBackColor = false;
-            // 
-            // picPhoto
-            // 
-            this.picPhoto.BackColor = System.Drawing.Color.White;
-            this.picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picPhoto.Location = new System.Drawing.Point(400, 36);
-            this.picPhoto.Margin = new System.Windows.Forms.Padding(2);
-            this.picPhoto.Name = "picPhoto";
-            this.picPhoto.Size = new System.Drawing.Size(195, 201);
-            this.picPhoto.TabIndex = 57;
-            this.picPhoto.TabStop = false;
-            // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(142, 296);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(253, 20);
+            this.txtPassword.Size = new System.Drawing.Size(375, 20);
             this.txtPassword.TabIndex = 51;
             // 
             // txtSecurityAnswer
@@ -193,7 +162,7 @@
             this.txtSecurityAnswer.Margin = new System.Windows.Forms.Padding(2);
             this.txtSecurityAnswer.Multiline = true;
             this.txtSecurityAnswer.Name = "txtSecurityAnswer";
-            this.txtSecurityAnswer.Size = new System.Drawing.Size(253, 96);
+            this.txtSecurityAnswer.Size = new System.Drawing.Size(375, 96);
             this.txtSecurityAnswer.TabIndex = 52;
             // 
             // txtSecurityQuestion
@@ -201,7 +170,7 @@
             this.txtSecurityQuestion.Location = new System.Drawing.Point(142, 170);
             this.txtSecurityQuestion.Margin = new System.Windows.Forms.Padding(2);
             this.txtSecurityQuestion.Name = "txtSecurityQuestion";
-            this.txtSecurityQuestion.Size = new System.Drawing.Size(253, 20);
+            this.txtSecurityQuestion.Size = new System.Drawing.Size(375, 20);
             this.txtSecurityQuestion.TabIndex = 53;
             // 
             // txtEmailAddress
@@ -209,7 +178,7 @@
             this.txtEmailAddress.Location = new System.Drawing.Point(142, 145);
             this.txtEmailAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmailAddress.Name = "txtEmailAddress";
-            this.txtEmailAddress.Size = new System.Drawing.Size(253, 20);
+            this.txtEmailAddress.Size = new System.Drawing.Size(375, 20);
             this.txtEmailAddress.TabIndex = 54;
             // 
             // txtTelephoneNumber
@@ -217,7 +186,7 @@
             this.txtTelephoneNumber.Location = new System.Drawing.Point(142, 119);
             this.txtTelephoneNumber.Margin = new System.Windows.Forms.Padding(2);
             this.txtTelephoneNumber.Name = "txtTelephoneNumber";
-            this.txtTelephoneNumber.Size = new System.Drawing.Size(253, 20);
+            this.txtTelephoneNumber.Size = new System.Drawing.Size(375, 20);
             this.txtTelephoneNumber.TabIndex = 55;
             // 
             // txtFullName
@@ -225,7 +194,7 @@
             this.txtFullName.Location = new System.Drawing.Point(142, 93);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(253, 20);
+            this.txtFullName.Size = new System.Drawing.Size(375, 20);
             this.txtFullName.TabIndex = 56;
             // 
             // Label7
@@ -295,7 +264,7 @@
             this.lblUsername.Location = new System.Drawing.Point(143, 36);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(252, 26);
+            this.lblUsername.Size = new System.Drawing.Size(374, 26);
             this.lblUsername.TabIndex = 50;
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -314,7 +283,7 @@
             this.txtOrganizationName.Location = new System.Drawing.Point(143, 69);
             this.txtOrganizationName.Margin = new System.Windows.Forms.Padding(2);
             this.txtOrganizationName.Name = "txtOrganizationName";
-            this.txtOrganizationName.Size = new System.Drawing.Size(253, 20);
+            this.txtOrganizationName.Size = new System.Drawing.Size(375, 20);
             this.txtOrganizationName.TabIndex = 20;
             // 
             // Label1
@@ -367,7 +336,6 @@
             this.Load += new System.EventHandler(this.FrmSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -380,8 +348,6 @@
         internal crsButton.cButton btnCancel;
         internal crsButton.cButton btnSave;
         internal crsButton.cButton btnEdit;
-        internal crsButton.cButton btnAddPhoto;
-        internal System.Windows.Forms.PictureBox picPhoto;
         internal System.Windows.Forms.TextBox txtPassword;
         internal System.Windows.Forms.TextBox txtSecurityAnswer;
         internal System.Windows.Forms.TextBox txtSecurityQuestion;

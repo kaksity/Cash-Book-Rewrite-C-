@@ -76,37 +76,37 @@
             // 
             this.cboYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboYears.FormattingEnabled = true;
-            this.cboYears.Location = new System.Drawing.Point(269, 213);
+            this.cboYears.Location = new System.Drawing.Point(303, 213);
             this.cboYears.Margin = new System.Windows.Forms.Padding(2);
             this.cboYears.Name = "cboYears";
-            this.cboYears.Size = new System.Drawing.Size(128, 21);
+            this.cboYears.Size = new System.Drawing.Size(149, 21);
             this.cboYears.TabIndex = 19;
             // 
             // cboMonths
             // 
             this.cboMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMonths.FormattingEnabled = true;
-            this.cboMonths.Location = new System.Drawing.Point(160, 213);
+            this.cboMonths.Location = new System.Drawing.Point(137, 213);
             this.cboMonths.Margin = new System.Windows.Forms.Padding(2);
             this.cboMonths.Name = "cboMonths";
-            this.cboMonths.Size = new System.Drawing.Size(105, 21);
+            this.cboMonths.Size = new System.Drawing.Size(148, 21);
             this.cboMonths.TabIndex = 20;
             // 
             // cboTypeOfTransaction
             // 
             this.cboTypeOfTransaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypeOfTransaction.FormattingEnabled = true;
-            this.cboTypeOfTransaction.Location = new System.Drawing.Point(162, 131);
+            this.cboTypeOfTransaction.Location = new System.Drawing.Point(139, 131);
             this.cboTypeOfTransaction.Margin = new System.Windows.Forms.Padding(2);
             this.cboTypeOfTransaction.Name = "cboTypeOfTransaction";
-            this.cboTypeOfTransaction.Size = new System.Drawing.Size(235, 21);
+            this.cboTypeOfTransaction.Size = new System.Drawing.Size(313, 21);
             this.cboTypeOfTransaction.TabIndex = 18;
             this.cboTypeOfTransaction.SelectedIndexChanged += new System.EventHandler(this.cboTypeOfTransaction_SelectedIndexChanged);
             // 
             // chkTransactionType
             // 
             this.chkTransactionType.AutoSize = true;
-            this.chkTransactionType.Location = new System.Drawing.Point(162, 108);
+            this.chkTransactionType.Location = new System.Drawing.Point(139, 106);
             this.chkTransactionType.Margin = new System.Windows.Forms.Padding(2);
             this.chkTransactionType.Name = "chkTransactionType";
             this.chkTransactionType.Size = new System.Drawing.Size(123, 17);
@@ -128,7 +128,7 @@
             // chkDescription
             // 
             this.chkDescription.AutoSize = true;
-            this.chkDescription.Location = new System.Drawing.Point(160, 158);
+            this.chkDescription.Location = new System.Drawing.Point(137, 156);
             this.chkDescription.Margin = new System.Windows.Forms.Padding(2);
             this.chkDescription.Name = "chkDescription";
             this.chkDescription.Size = new System.Drawing.Size(93, 17);
@@ -141,20 +141,20 @@
             // 
             this.cboAccounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAccounts.FormattingEnabled = true;
-            this.cboAccounts.Location = new System.Drawing.Point(162, 81);
+            this.cboAccounts.Location = new System.Drawing.Point(139, 81);
             this.cboAccounts.Margin = new System.Windows.Forms.Padding(2);
             this.cboAccounts.Name = "cboAccounts";
-            this.cboAccounts.Size = new System.Drawing.Size(237, 21);
+            this.cboAccounts.Size = new System.Drawing.Size(315, 21);
             this.cboAccounts.TabIndex = 13;
             // 
             // cboDescriptions
             // 
             this.cboDescriptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDescriptions.FormattingEnabled = true;
-            this.cboDescriptions.Location = new System.Drawing.Point(160, 182);
+            this.cboDescriptions.Location = new System.Drawing.Point(137, 182);
             this.cboDescriptions.Margin = new System.Windows.Forms.Padding(2);
             this.cboDescriptions.Name = "cboDescriptions";
-            this.cboDescriptions.Size = new System.Drawing.Size(237, 21);
+            this.cboDescriptions.Size = new System.Drawing.Size(315, 21);
             this.cboDescriptions.TabIndex = 14;
             // 
             // Label4

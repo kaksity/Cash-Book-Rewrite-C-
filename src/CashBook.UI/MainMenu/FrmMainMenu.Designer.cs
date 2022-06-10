@@ -33,11 +33,12 @@
             this.btnBankReconcilation = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnIncomeRegister = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnDebtorLedger = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBackupRestore = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,19 +102,20 @@
             this.btnIncomeRegister.UseVisualStyleBackColor = false;
             this.btnIncomeRegister.Click += new System.EventHandler(this.btnIncomeRegister_Click);
             // 
-            // button5
+            // btnDebtorLedger
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(741, 252);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(236, 65);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Advance Ledger";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnDebtorLedger.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDebtorLedger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.btnDebtorLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDebtorLedger.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDebtorLedger.ForeColor = System.Drawing.Color.White;
+            this.btnDebtorLedger.Location = new System.Drawing.Point(741, 252);
+            this.btnDebtorLedger.Name = "btnDebtorLedger";
+            this.btnDebtorLedger.Size = new System.Drawing.Size(236, 65);
+            this.btnDebtorLedger.TabIndex = 4;
+            this.btnDebtorLedger.Text = "Debtor Ledger";
+            this.btnDebtorLedger.UseVisualStyleBackColor = false;
+            this.btnDebtorLedger.Click += new System.EventHandler(this.btnDebtorLedger_Click);
             // 
             // button6
             // 
@@ -169,6 +171,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "HOME";
             // 
+            // btnBackupRestore
+            // 
+            this.btnBackupRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackupRestore.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBackupRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(163)))));
+            this.btnBackupRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackupRestore.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackupRestore.ForeColor = System.Drawing.Color.White;
+            this.btnBackupRestore.Location = new System.Drawing.Point(659, 585);
+            this.btnBackupRestore.Name = "btnBackupRestore";
+            this.btnBackupRestore.Size = new System.Drawing.Size(194, 44);
+            this.btnBackupRestore.TabIndex = 8;
+            this.btnBackupRestore.Text = "Backup / Restore";
+            this.btnBackupRestore.UseVisualStyleBackColor = false;
+            this.btnBackupRestore.Click += new System.EventHandler(this.btnBackupRestore_Click);
+            // 
             // FrmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,10 +195,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1065, 641);
+            this.Controls.Add(this.btnBackupRestore);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnDebtorLedger);
             this.Controls.Add(this.btnIncomeRegister);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnBankReconcilation);
@@ -205,10 +224,11 @@
         private System.Windows.Forms.Button btnBankReconcilation;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnIncomeRegister;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnDebtorLedger;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBackupRestore;
     }
 }

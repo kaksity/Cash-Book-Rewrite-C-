@@ -69,5 +69,18 @@ namespace CashBook.Services.Utility
             }
             return tblYears;
         }
+
+        public DataTable GetAdavnceOrRetire()
+        {
+            var tblAdvanceOrRetire = new DataTable();
+
+            tblAdvanceOrRetire.Columns.Add("name", typeof(string));
+            tblAdvanceOrRetire.Columns.Add("value", typeof(string));
+
+            tblAdvanceOrRetire.Rows.Add("Advance", "ADVANCE");
+            tblAdvanceOrRetire.Rows.Add("Retire", "RETIRE");
+
+            return tblAdvanceOrRetire;
+        }
     }
 }

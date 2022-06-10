@@ -67,6 +67,12 @@
     <Compile Include="BinCardItem\IBinCardItemRepository.cs" />
     <Compile Include="BinCard\BinCardRepository.cs" />
     <Compile Include="BinCard\IBinCardRepository.cs" />
+    <Compile Include="DataRecovery\DataRecoveryRepository.cs" />
+    <Compile Include="DataRecovery\IDataRecoveryRepository.cs" />
+    <Compile Include="DebtorLedger\DebtorLedgerRepository.cs" />
+    <Compile Include="DebtorLedger\IDebtorLedgerRepository.cs" />
+    <Compile Include="Debtor\DebtorRepository.cs" />
+    <Compile Include="Debtor\IDebtorRepository.cs" />
     <Compile Include="MaintainBalance\IMaintainBalanceRepository.cs" />
     <Compile Include="MaintainBalance\MaintainBalanceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +82,8 @@
     <Compile Include="Reports\BankReconcilations\IBankReconcilationReportRepository.cs" />
     <Compile Include="Reports\BinCards\BinCardReportRepository.cs" />
     <Compile Include="Reports\BinCards\IBinCardReportRepository.cs" />
+    <Compile Include="Reports\DebtorLedger\DebtorLedgerReportRepository.cs" />
+    <Compile Include="Reports\DebtorLedger\IDebtorLedgerReportRepository.cs" />
     <Compile Include="Reports\TransactionDescriptions\ITransactionDescriptionReportRepository.cs" />
     <Compile Include="Reports\TransactionDescriptions\TransactionDescriptionReportRepository.cs" />
     <Compile Include="Reports\Transactions\ITransactionReportRepository.cs" />

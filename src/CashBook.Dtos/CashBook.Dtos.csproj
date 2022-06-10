@@ -54,6 +54,11 @@
     <Compile Include="BinCard\ReadBinCardDto.cs" />
     <Compile Include="BinCard\UpdateBinCardDto.cs" />
     <Compile Include="ColumnCashBook\ColumnCashBookDto.cs" />
+    <Compile Include="DebtorLedger\CreateDebtorLedgerDto.cs" />
+    <Compile Include="DebtorLedger\ReadDebtorLedgerDto.cs" />
+    <Compile Include="Debtor\CreateDebtorDto.cs" />
+    <Compile Include="Debtor\ReadDebtorDto.cs" />
+    <Compile Include="Debtor\UpdateDebtorDto.cs" />
     <Compile Include="MaintainBalance\CreateMaintainBalanceDto.cs" />
     <Compile Include="MaintainBalance\ReadMaintainBalanceDto.cs" />
     <Compile Include="MaintainBalance\UpdateMaintainBalanceDto.cs" />
@@ -66,6 +71,7 @@
     <Compile Include="User\ReadUserDto.cs" />
     <Compile Include="User\UpdateUserDto.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

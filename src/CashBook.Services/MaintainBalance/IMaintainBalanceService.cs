@@ -18,7 +18,6 @@ namespace CashBook.Services.MaintainBalance
         void CloseMaintainBalance(UpdateMaintainBalanceDto dto);
         void UpdatedCorrectedMaintainBalance(UpdateMaintainBalanceDto dto);
         void SetMaintainBalanceAsEdited(string maintainBalanceId);
-
         List<ReadMaintainBalanceDto> GetEditedMaintainBalanceByAccountId(string accountId);
         ReadMaintainBalanceDto RecalculateMaintainBalance(ReadMaintainBalanceDto dto);
     }

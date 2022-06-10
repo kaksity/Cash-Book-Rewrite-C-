@@ -35,7 +35,6 @@
             this.btnRecalculateMaintainBalance = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblHasBeenEdited = new System.Windows.Forms.Label();
-            this.btnRemove = new crsButton.cButton();
             this.btnClose = new crsButton.cButton();
             this.btnCancel = new crsButton.cButton();
             this.cboAccount = new System.Windows.Forms.ComboBox();
@@ -83,7 +82,6 @@
             this.groupBox1.Controls.Add(this.btnRecalculateMaintainBalance);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.lblHasBeenEdited);
-            this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.cboAccount);
@@ -99,7 +97,7 @@
             this.groupBox1.Controls.Add(this.btnCloseTransaction);
             this.groupBox1.Location = new System.Drawing.Point(12, 71);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(387, 362);
+            this.groupBox1.Size = new System.Drawing.Size(442, 362);
             this.groupBox1.TabIndex = 67;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Close a financial month";
@@ -108,7 +106,7 @@
             // 
             this.btnRecalculateMaintainBalance.BackColor = System.Drawing.SystemColors.Control;
             this.btnRecalculateMaintainBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecalculateMaintainBalance.Location = new System.Drawing.Point(236, 197);
+            this.btnRecalculateMaintainBalance.Location = new System.Drawing.Point(301, 197);
             this.btnRecalculateMaintainBalance.Margin = new System.Windows.Forms.Padding(2);
             this.btnRecalculateMaintainBalance.Name = "btnRecalculateMaintainBalance";
             this.btnRecalculateMaintainBalance.Size = new System.Drawing.Size(135, 46);
@@ -134,25 +132,9 @@
             this.lblHasBeenEdited.Location = new System.Drawing.Point(115, 124);
             this.lblHasBeenEdited.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHasBeenEdited.Name = "lblHasBeenEdited";
-            this.lblHasBeenEdited.Size = new System.Drawing.Size(257, 22);
+            this.lblHasBeenEdited.Size = new System.Drawing.Size(322, 22);
             this.lblHasBeenEdited.TabIndex = 81;
             this.lblHasBeenEdited.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.BackColor = System.Drawing.Color.Transparent;
-            this.btnRemove.ButtonType = crsButton.cButton.btnType.remove;
-            this.btnRemove.FlatAppearance.BorderSize = 0;
-            this.btnRemove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnRemove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
-            this.btnRemove.Location = new System.Drawing.Point(125, 301);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(135, 45);
-            this.btnRemove.TabIndex = 79;
-            this.btnRemove.UseVisualStyleBackColor = false;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnClose
             // 
@@ -179,7 +161,7 @@
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(21, 301);
+            this.btnCancel.Location = new System.Drawing.Point(144, 301);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(116, 45);
             this.btnCancel.TabIndex = 77;
@@ -192,7 +174,7 @@
             this.cboAccount.FormattingEnabled = true;
             this.cboAccount.Location = new System.Drawing.Point(115, 19);
             this.cboAccount.Name = "cboAccount";
-            this.cboAccount.Size = new System.Drawing.Size(256, 21);
+            this.cboAccount.Size = new System.Drawing.Size(321, 21);
             this.cboAccount.TabIndex = 76;
             this.cboAccount.SelectedIndexChanged += new System.EventHandler(this.cboAccount_SelectedIndexChanged);
             // 
@@ -233,7 +215,7 @@
             this.lblStatus.Location = new System.Drawing.Point(115, 150);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(257, 22);
+            this.lblStatus.Size = new System.Drawing.Size(322, 22);
             this.lblStatus.TabIndex = 70;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -244,7 +226,7 @@
             this.lblClosingBalance.Location = new System.Drawing.Point(115, 99);
             this.lblClosingBalance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClosingBalance.Name = "lblClosingBalance";
-            this.lblClosingBalance.Size = new System.Drawing.Size(257, 22);
+            this.lblClosingBalance.Size = new System.Drawing.Size(322, 22);
             this.lblClosingBalance.TabIndex = 71;
             this.lblClosingBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -255,7 +237,7 @@
             this.lblOpeningBalance.Location = new System.Drawing.Point(115, 73);
             this.lblOpeningBalance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOpeningBalance.Name = "lblOpeningBalance";
-            this.lblOpeningBalance.Size = new System.Drawing.Size(257, 22);
+            this.lblOpeningBalance.Size = new System.Drawing.Size(322, 22);
             this.lblOpeningBalance.TabIndex = 72;
             this.lblOpeningBalance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -266,7 +248,7 @@
             this.lblCurrentMonth.Location = new System.Drawing.Point(115, 48);
             this.lblCurrentMonth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCurrentMonth.Name = "lblCurrentMonth";
-            this.lblCurrentMonth.Size = new System.Drawing.Size(257, 22);
+            this.lblCurrentMonth.Size = new System.Drawing.Size(322, 22);
             this.lblCurrentMonth.TabIndex = 73;
             this.lblCurrentMonth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -306,9 +288,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.grid);
-            this.groupBox2.Location = new System.Drawing.Point(405, 71);
+            this.groupBox2.Location = new System.Drawing.Point(460, 71);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(419, 362);
+            this.groupBox2.Size = new System.Drawing.Size(364, 362);
             this.groupBox2.TabIndex = 68;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "View Closed Financial Month";
@@ -320,7 +302,7 @@
             this.grid.Margin = new System.Windows.Forms.Padding(2);
             this.grid.Name = "grid";
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(409, 339);
+            this.grid.Size = new System.Drawing.Size(354, 339);
             this.grid.TabIndex = 4;
             this.grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellClick);
             // 
@@ -355,7 +337,6 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        internal crsButton.cButton btnRemove;
         internal crsButton.cButton btnClose;
         internal crsButton.cButton btnCancel;
         private System.Windows.Forms.ComboBox cboAccount;

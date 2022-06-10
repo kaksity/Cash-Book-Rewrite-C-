@@ -160,7 +160,7 @@ namespace CashBook.UI.MaintainBalance
         {
             if (e.RowIndex < 0) return;
             maintainBalance = maintainBalanceList[e.RowIndex];
-            ToForm(maintainBalanceList[e.RowIndex]);
+            ToForm(maintainBalance);
         }
 
         private void ToForm(ReadMaintainBalanceDto data)
@@ -205,31 +205,12 @@ namespace CashBook.UI.MaintainBalance
             {
                 MaintainBalanceId = maintainBalance.MaintainBalanceId,
                 AccountId = maintainBalance.AccountId,
-                ClosingBalance = maintainBalance.OpeningBalance,
+                OpeningBalance = maintainBalance.OpeningBalance,
                 Duration = maintainBalance.Duration,
                 Status = 1
             };
             _maintainBalanceService.CloseMaintainBalance(closeTransaction);
             MessageBox.Show("Financial Month was closed successfully", Software.GetApplicationName());
-            maintainBalanceList = GetMaintainBalanceByAccountId((string)cboAccount.SelectedValue);
-            LoadGridData(maintainBalanceList);
-            Clear();
-        }
-
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            if (maintainBalance == null)
-            {
-                MessageBox.Show("You must select a record", Software.GetApplicationName());
-                return;
-            }
-            if(MessageBox.Show("Are you sure you want to delete this record?",Software.GetApplicationName(),MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.No)
-            {
-                Clear();
-                return;
-            }
-            _maintainBalanceService.DeleteMaintainBalance(maintainBalance.MaintainBalanceId);
-            MessageBox.Show("Financial Month record was deleted successfully", Software.GetApplicationName());
             maintainBalanceList = GetMaintainBalanceByAccountId((string)cboAccount.SelectedValue);
             LoadGridData(maintainBalanceList);
             Clear();

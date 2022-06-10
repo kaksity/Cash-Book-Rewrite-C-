@@ -14,5 +14,6 @@ namespace CashBook.Services.BinCardItem
         void UpdateBinCardItem(UpdateBinCardItemDto dto);
 
         List<ReadBinCardItemDto> GetAllBinCardItem();
+        ReadBinCardItemDto GetBinCardItemByBinCardItemId(string binCardItemId);
     }
 }

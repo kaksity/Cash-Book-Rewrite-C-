@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using CashBook.Services.BinCardItem;
 using CashBook.Services.Reports.BinCards;
 using CashBook.Services.Utility;
+using CashBook.UI.StockLedger;
 
 namespace CashBook.UI.Reports
 {
@@ -29,31 +30,16 @@ namespace CashBook.UI.Reports
 
         private void FrmGenerateBinCardReport_Load(object sender, EventArgs e)
         {
-            LoadBinCardItemsComboBox();
             LoadIssueReceiptComboBox();
             LoadMonthAndYears();
         }
         private void LoadMonthAndYears()
         {
-            var tblMonths = _utilityService.GetMonths();
             var tblYears = _utilityService.GetYears();
-
-            cboFilterMonths.DataSource = tblMonths;
-            cboFilterMonths.DisplayMember = "name";
-            cboFilterMonths.ValueMember = "value";
 
             cboFilterYears.DataSource = tblYears;
             cboFilterYears.DisplayMember = "name";
             cboFilterYears.ValueMember = "value";
-                }
-        private void LoadBinCardItemsComboBox()
-        {
-            var binCardItems = _binCardItemService.GetAllBinCardItem();
-
-            cboFilterBinCardItems.DisplayMember = "BinCardItemName";
-            cboFilterBinCardItems.ValueMember = "BinCardItemId";
-            cboFilterBinCardItems.DataSource = binCardItems;
-
         }
         private void LoadIssueReceiptComboBox()
         {
@@ -79,9 +65,8 @@ namespace CashBook.UI.Reports
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
-            string binCardItemId = (string)cboFilterBinCardItems.SelectedValue;
+            string binCardItemId = Program.binCardItemId;
 
-            int month = (int)cboFilterMonths.SelectedValue;
             int year = (int)cboFilterYears.SelectedValue;
 
             string issueOrReceipt = (string)cboIssueReceipt.SelectedValue;
@@ -93,22 +78,35 @@ namespace CashBook.UI.Reports
 
             if(chkIssuesReceipt.Checked == true)
             {
-                tblBinCardReports = _binCardReportService.GetAllBinCardsReports(binCardItemId,month,year);
+                tblBinCardReports = _binCardReportService.GetAllBinCardsReports(binCardItemId,year);
             }
             else if (chkIssuesReceipt.Checked == false && issueOrReceipt == "ISSUE")
             {
-                tblBinCardReports = _binCardReportService.GetAllIssuedBinCardsReports(binCardItemId, month, year);
+                tblBinCardReports = _binCardReportService.GetAllIssuedBinCardsReports(binCardItemId, year);
             }
             else
             {
-                tblBinCardReports = _binCardReportService.GetAllReceivedBinCardsReports(binCardItemId, month, year);
+                tblBinCardReports = _binCardReportService.GetAllReceivedBinCardsReports(binCardItemId, year);
             }
             var frmViewer = new FrmReportViewer();
             frmViewer.rdlViewer.SourceFile = path;
             frmViewer.rdlViewer.Report.DataSets["Data"].SetData(tblBinCardReports);
-            frmViewer.rdlViewer.Parameters = _binCardReportService.GenerateReportParameters(binCardItemId, month, year, Program.userId);
+            frmViewer.rdlViewer.Parameters = _binCardReportService.GenerateReportParameters(binCardItemId, year, Program.userId);
             frmViewer.rdlViewer.Rebuild();
             frmViewer.ShowDialog();
+        }
+
+        private void btnSearchBinCardItem_Click(object sender, EventArgs e)
+        {
+            var frmSearchStockBinCard = Program.container.GetInstance<FrmSearchStockBinCardItem>();
+            frmSearchStockBinCard.ShowDialog();
+
+            if (string.IsNullOrWhiteSpace(Program.binCardItemId) == true)
+                return;
+
+            var binCardItem = _binCardItemService.GetBinCardItemByBinCardItemId(Program.binCardItemId);
+
+            lblBinCardItem.Text = $"{binCardItem.BinCardItemName}";
         }
     }
 }

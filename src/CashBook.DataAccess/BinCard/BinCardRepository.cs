@@ -65,7 +65,7 @@ namespace CashBook.DataAccess.BinCard
                                 WHERE
                                     bc.IsDeleted = false
                                 ORDER BY
-                                    bc.DATEOFISSUEORRECEIPT DESC";
+                                    bc.DATEOFISSUEORRECEIPT ASC";
                 return connection.Query<BinCardModel, BinCardItemModel, BinCardModel>(
                     sql:query,
                     map: (binCard,binCardItem) =>
@@ -78,7 +78,7 @@ namespace CashBook.DataAccess.BinCard
             }
         }
 
-        public List<BinCardModel> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int month, int year)
+        public List<BinCardModel> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int year)
         {
             using (var connection = dbConnection)
             {
@@ -93,9 +93,9 @@ namespace CashBook.DataAccess.BinCard
                                 ON
                                     bc.BINCARDITEMID = bci.BINCARDITEMID
                                 WHERE
-                                    bc.IsDeleted = false AND bc.BinCardItemId = @BinCardItemId AND EXTRACT(MONTH FROM bc.DATEOFISSUEORRECEIPT) = @Month AND EXTRACT(Year FROM bc.DATEOFISSUEORRECEIPT) = @Year
+                                    bc.IsDeleted = false AND bc.BinCardItemId = @BinCardItemId AND EXTRACT(Year FROM bc.DATEOFISSUEORRECEIPT) = @Year
                                 ORDER BY
-                                    bc.DATEOFISSUEORRECEIPT DESC";
+                                    bc.DATEOFISSUEORRECEIPT ASC";
                 return connection.Query<BinCardModel, BinCardItemModel, BinCardModel>(
                     sql: query,
                     map: (binCard, item) =>
@@ -103,7 +103,7 @@ namespace CashBook.DataAccess.BinCard
                         binCard.BinCardItem = item;
                         return binCard;
                     },
-                    param: new { BinCardItemId = binCardItem, Month = month, Year = year },
+                    param: new { BinCardItemId = binCardItem, Year = year },
                     splitOn: "BinCardItemId"
                     ).ToList();
             }

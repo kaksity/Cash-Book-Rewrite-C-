@@ -66,7 +66,7 @@ namespace CashBook.DataAccess.MaintainBalance
                                     AccountId=@AccountId AND IsDeleted=false
                                 ORDER BY
                                     Duration
-                                DESC
+                                ASC
                                 ";
                 connection.Open();
                 return connection.Query<MaintainBalanceModel>(query, new { AccountId = accountId }).ToList();
@@ -84,9 +84,6 @@ namespace CashBook.DataAccess.MaintainBalance
                                     MaintainBalances 
                                 WHERE
                                     AccountId = @AccountId AND EXTRACT( MONTH FROM Duration) = @Month AND EXTRACT(YEAR FROM Duration) = @Year AND IsDeleted=false
-                                ORDER BY
-                                    Duration
-                                DESC
                                 ";
                 connection.Open();
                 return connection.Query<MaintainBalanceModel>(query, new {
@@ -108,9 +105,6 @@ namespace CashBook.DataAccess.MaintainBalance
                                     MaintainBalances 
                                 WHERE
                                     MaintainBalanceId = @MaintainBalanceId AND IsDeleted=false
-                                ORDER BY
-                                    Duration
-                                DESC
                                 ";
                 connection.Open();
                 return connection.Query<MaintainBalanceModel>(query, new

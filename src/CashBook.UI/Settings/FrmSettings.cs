@@ -60,7 +60,6 @@ namespace CashBook.UI.Settings
 
             btnEdit.Enabled = false;
             btnSave.Enabled = true;
-            btnAddPhoto.Enabled = true;
             btnCancel.Enabled = true;
         }
         private void Disable()
@@ -76,7 +75,6 @@ namespace CashBook.UI.Settings
 
             btnEdit.Enabled = true;
             btnSave.Enabled = false;
-            btnAddPhoto.Enabled = false;
             btnCancel.Enabled = false;
         }
 

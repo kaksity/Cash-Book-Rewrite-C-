@@ -49,6 +49,21 @@ namespace CashBook.Services.BinCardItem
             return data;
         }
 
+        public ReadBinCardItemDto GetBinCardItemByBinCardItemId(string binCardItemId)
+        {
+            
+            var results = _binCardItemRepository.GetBinCardItemByBinCardItemId(binCardItemId);
+            if (results == null)
+                return null;
+
+            return new ReadBinCardItemDto
+            {
+                BinCardItemId = results.BinCardItemId,
+                BinCardItemName = results.BinCardItemName,
+                BinCardItemDescription = results.BinCardItemDescription
+            };
+        }
+
         public void UpdateBinCardItem(UpdateBinCardItemDto dto)
         {
             var model = new BinCardItemModel

@@ -86,9 +86,9 @@ namespace CashBook.Services.BinCard
             _binCardRepository.UpdateExistingBinCard(editBinCard);
         }
 
-        public List<ReadBinCardDto> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int month, int year)
+        public List<ReadBinCardDto> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int year)
         {
-            var results = _binCardRepository.GetBinCardsByBinCardItemsMonthAndYear(binCardItem,month,year);
+            var results = _binCardRepository.GetBinCardsByBinCardItemsMonthAndYear(binCardItem,year);
             return MapBinCardModelToDto(results);
         }
     }

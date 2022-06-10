@@ -63,45 +63,35 @@ namespace CashBook.Services.Reports.BinCards
             }
             return table;
         }
-        public DataTable GetAllBinCardsReports(string binCardItemId, int month, int year)
+        public DataTable GetAllBinCardsReports(string binCardItemId, int year)
         {
 
-            var tblResults = _binCardReportRepository.GetAllBinCardsReports(binCardItemId,month,year);
+            var tblResults = _binCardReportRepository.GetAllBinCardsReports(binCardItemId,year);
             return PrepareTable(tblResults);
         }
 
-        public DataTable GetAllIssuedBinCardsReports(string binCardItemId, int month, int year)
+        public DataTable GetAllIssuedBinCardsReports(string binCardItemId, int year)
         {
-            var tblResults = _binCardReportRepository.GetAllIssuedBinCardsReports(binCardItemId, month, year);
+            var tblResults = _binCardReportRepository.GetAllIssuedBinCardsReports(binCardItemId, year);
             return PrepareTable(tblResults);
         }
 
-        public DataTable GetAllReceivedBinCardsReports(string binCardItemId, int month, int year)
+        public DataTable GetAllReceivedBinCardsReports(string binCardItemId, int year)
         {
-            var tblResults = _binCardReportRepository.GetAllReceivedBinCardsReports(binCardItemId, month, year);
+            var tblResults = _binCardReportRepository.GetAllReceivedBinCardsReports(binCardItemId, year);
             return PrepareTable(tblResults);
         }
 
-        public string GenerateReportParameters(string binCardItemId, int month, int year, string userId)
+        public string GenerateReportParameters(string binCardItemId, int year, string userId)
         {
             var user = _userService.GetUserByUserId(userId);
             var binCardItem = _binCardItemService.GetAllBinCardItem().Where(t => t.BinCardItemId == binCardItemId).FirstOrDefault();
 
-            var date = DateTime.Parse($"{month}/1/{year}");
-
             var parameters = new StringBuilder();
             
             parameters.Append($"OrganizationName={user.OrganizationName}&");
-            parameters.Append($"BinCardItemAndDuration={binCardItem.BinCardItemName} AS OF 1st {GetDateOfReport(month, year)}&");
+            parameters.Append($"BinCardItemAndDuration={binCardItem.BinCardItemName} AS OF {year}&");
             return parameters.ToString();
-        }
-
-
-        private string GetDateOfReport(int month, int year)
-        {
-            var tblMonths = _utilityService.GetMonths();
-            
-            return $"{tblMonths.Rows[month - 1].Field<string>("name")} {year}";
         }
     }
 }

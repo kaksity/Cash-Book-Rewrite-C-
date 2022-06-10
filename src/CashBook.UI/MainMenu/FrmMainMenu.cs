@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CashBook.UI.Account;
 using CashBook.UI.BankReconcilation;
 using CashBook.UI.ColumnsCashBook;
+using CashBook.UI.DebtorLedger;
 using CashBook.UI.Settings;
 using CashBook.UI.StockLedger;
 using CashBook.UI.Transaction;
@@ -26,7 +27,12 @@ namespace CashBook.UI.MainMenu
 
         private void FrmMainMenu_Load(object sender, EventArgs e)
         {
-
+            var today = DateTime.Now;
+            if (today.Day == 1 || today.Day == 14)
+            {
+                var frmBackupRestore = Program.container.GetInstance<FrmBackupRestore>();
+                frmBackupRestore.ShowDialog();
+            }
         }
 
         private void btnBankReconcilation_Click(object sender, EventArgs e)
@@ -68,6 +74,18 @@ namespace CashBook.UI.MainMenu
         {
             var frmStockLedgerMenu = Program.container.GetInstance<FrmStockLedgerMenu>();
             frmStockLedgerMenu.ShowDialog();
+        }
+
+        private void btnDebtorLedger_Click(object sender, EventArgs e)
+        {
+            var frmDebtorLedgerMenu = Program.container.GetInstance<FrmDebtorLedgerMenu>();
+            frmDebtorLedgerMenu.ShowDialog();
+        }
+
+        private void btnBackupRestore_Click(object sender, EventArgs e)
+        {
+            var frmBackupRestore = Program.container.GetInstance<FrmBackupRestore>();
+            frmBackupRestore.ShowDialog();
         }
     }
 }

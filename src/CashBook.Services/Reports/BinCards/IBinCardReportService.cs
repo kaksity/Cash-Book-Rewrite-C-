@@ -9,9 +9,9 @@ namespace CashBook.Services.Reports.BinCards
 {
     public interface IBinCardReportService
     {
-        DataTable GetAllBinCardsReports(string binCardItemId, int month, int year);
-        DataTable GetAllReceivedBinCardsReports(string binCardItemId, int month, int year);
-        DataTable GetAllIssuedBinCardsReports(string binCardItemId, int month, int year);
-        string GenerateReportParameters(string binCardItemId, int month, int year, string userId);
+        DataTable GetAllBinCardsReports(string binCardItemId, int year);
+        DataTable GetAllReceivedBinCardsReports(string binCardItemId, int year);
+        DataTable GetAllIssuedBinCardsReports(string binCardItemId, int year);
+        string GenerateReportParameters(string binCardItemId, int year, string userId);
     }
 }

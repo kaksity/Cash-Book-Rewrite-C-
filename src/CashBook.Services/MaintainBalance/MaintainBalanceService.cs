@@ -23,8 +23,8 @@ namespace CashBook.Services.MaintainBalance
 
         private DateTime GetDateFromDuration(int month,int year)
         {
-            var date = $"{month}/1/{year}";
-            return DateTime.Parse(date);
+
+            return new DateTime(year, month, 1);
         }
 
         private DateTime GetDateFromDuration(string duration)
@@ -33,12 +33,25 @@ namespace CashBook.Services.MaintainBalance
 
             int month = Convert.ToInt16(splitedDuration[0]);
             int year = Convert.ToInt16(splitedDuration[1]);
-            var date = $"{month}/1/{year}";
-            return DateTime.Parse(date);
+
+            return new DateTime(year,month,1);
         }
         
         public void CloseMaintainBalance(UpdateMaintainBalanceDto dto)
         {
+            var bankReconcilation = _bankReconcilationService.GetBankReconcilationByAccountIdAndDuration(dto.AccountId, dto.Duration);
+
+            // Perform the Calculations
+
+            if (bankReconcilation != null)
+            {
+                dto.ClosingBalance = _bankReconcilationService.CalculateBankReconcilationClosingBalance(dto.OpeningBalance, bankReconcilation);
+            }
+            else
+            {
+                dto.ClosingBalance = dto.OpeningBalance;
+            }
+
             var splitedDuration = dto.Duration.Split('.');
 
             int month = Convert.ToInt16(splitedDuration[0]);
@@ -59,6 +72,7 @@ namespace CashBook.Services.MaintainBalance
             if (month == 12)
             {
                 year = year + 1;
+                month = 1;
             }
             else
             {
@@ -205,7 +219,7 @@ namespace CashBook.Services.MaintainBalance
                 ClosingBalance = dto.ClosingBalance,
                 Duration = dto.Duration,
                 IsEdited = false,
-                Status = 1
+                Status = dto.Status
             };
 
             UpdatedCorrectedMaintainBalance(updateMaintainBalance);

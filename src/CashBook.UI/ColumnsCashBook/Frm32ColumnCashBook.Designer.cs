@@ -66,17 +66,17 @@
             // 
             // pgProgress
             // 
-            this.pgProgress.Location = new System.Drawing.Point(504, 465);
+            this.pgProgress.Location = new System.Drawing.Point(648, 465);
             this.pgProgress.Margin = new System.Windows.Forms.Padding(2);
             this.pgProgress.Name = "pgProgress";
-            this.pgProgress.Size = new System.Drawing.Size(426, 45);
+            this.pgProgress.Size = new System.Drawing.Size(282, 45);
             this.pgProgress.TabIndex = 11;
             // 
             // btnExport
             // 
             this.btnExport.BackColor = System.Drawing.SystemColors.Control;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExport.Location = new System.Drawing.Point(311, 464);
+            this.btnExport.Location = new System.Drawing.Point(459, 464);
             this.btnExport.Margin = new System.Windows.Forms.Padding(2);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(94, 46);
@@ -110,7 +110,7 @@
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(410, 465);
+            this.btnClose.Location = new System.Drawing.Point(558, 465);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 45);
             this.btnClose.TabIndex = 18;
@@ -123,7 +123,7 @@
             this.cboAccounts.FormattingEnabled = true;
             this.cboAccounts.Location = new System.Drawing.Point(7, 465);
             this.cboAccounts.Name = "cboAccounts";
-            this.cboAccounts.Size = new System.Drawing.Size(188, 21);
+            this.cboAccounts.Size = new System.Drawing.Size(345, 21);
             this.cboAccounts.TabIndex = 19;
             // 
             // cboYears
@@ -132,14 +132,14 @@
             this.cboYears.FormattingEnabled = true;
             this.cboYears.Location = new System.Drawing.Point(7, 489);
             this.cboYears.Name = "cboYears";
-            this.cboYears.Size = new System.Drawing.Size(188, 21);
+            this.cboYears.Size = new System.Drawing.Size(345, 21);
             this.cboYears.TabIndex = 19;
             // 
             // btnGetRecords
             // 
             this.btnGetRecords.BackColor = System.Drawing.SystemColors.Control;
             this.btnGetRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGetRecords.Location = new System.Drawing.Point(200, 464);
+            this.btnGetRecords.Location = new System.Drawing.Point(361, 465);
             this.btnGetRecords.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetRecords.Name = "btnGetRecords";
             this.btnGetRecords.Size = new System.Drawing.Size(94, 46);
@@ -169,7 +169,7 @@
             this.Name = "Frm32ColumnCashBook";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Frm32ColumnCashBook";
+            this.Text = "Swift Accounts - 32 Column Cash Book";
             this.Load += new System.EventHandler(this.Frm32ColumnCashBook_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

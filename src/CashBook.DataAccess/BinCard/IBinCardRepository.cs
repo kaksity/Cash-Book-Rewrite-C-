@@ -14,6 +14,6 @@ namespace CashBook.DataAccess.BinCard
         void DeleteBinCard(string binCardId);
 
         List<BinCardModel> GetAllBinCards();
-        List<BinCardModel> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int month, int year);
+        List<BinCardModel> GetBinCardsByBinCardItemsMonthAndYear(string binCardItem, int year);
     }
 }

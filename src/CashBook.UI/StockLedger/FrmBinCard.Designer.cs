@@ -32,20 +32,16 @@
             this.btnCancel = new crsButton.cButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRemove = new crsButton.cButton();
-            this.btnAdd = new crsButton.cButton();
             this.lblSelectedRecord = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.cboFilterBinCardItems = new System.Windows.Forms.ComboBox();
             this.btnClose = new crsButton.cButton();
             this.btnAddBinCardItem = new crsButton.cButton();
             this.btnSave = new crsButton.cButton();
             this.btnUndo = new crsButton.cButton();
             this.btnNew = new crsButton.cButton();
-            this.cboBinCardItems = new System.Windows.Forms.ComboBox();
             this.cboIssueReceipt = new System.Windows.Forms.ComboBox();
             this.dtpDateOfIssueReceipt = new System.Windows.Forms.DateTimePicker();
             this.cboFilterYears = new System.Windows.Forms.ComboBox();
-            this.cboFilterMonths = new System.Windows.Forms.ComboBox();
             this.btnLoadAllData = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtUnitPrice = new System.Windows.Forms.TextBox();
@@ -65,6 +61,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
+            this.btnSearchBinCardItem = new System.Windows.Forms.Button();
+            this.lblBinCardItem = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.lblFilterBinCardItem = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -93,7 +93,6 @@
             // 
             this.groupBox3.Controls.Add(this.btnRemove);
             this.groupBox3.Controls.Add(this.btnCancel);
-            this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Controls.Add(this.lblSelectedRecord);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Location = new System.Drawing.Point(5, 360);
@@ -103,7 +102,7 @@
             this.groupBox3.Size = new System.Drawing.Size(766, 88);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Add Supportting Document";
+            this.groupBox3.Text = "Operations";
             // 
             // btnRemove
             // 
@@ -121,21 +120,6 @@
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.ButtonType = crsButton.cButton.btnType.add;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(468, 20);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(85, 48);
-            this.btnAdd.TabIndex = 11;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            // 
             // lblSelectedRecord
             // 
             this.lblSelectedRecord.BackColor = System.Drawing.Color.White;
@@ -143,7 +127,7 @@
             this.lblSelectedRecord.Location = new System.Drawing.Point(115, 16);
             this.lblSelectedRecord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelectedRecord.Name = "lblSelectedRecord";
-            this.lblSelectedRecord.Size = new System.Drawing.Size(348, 67);
+            this.lblSelectedRecord.Size = new System.Drawing.Size(439, 67);
             this.lblSelectedRecord.TabIndex = 2;
             // 
             // label10
@@ -155,16 +139,6 @@
             this.label10.Size = new System.Drawing.Size(87, 13);
             this.label10.TabIndex = 0;
             this.label10.Text = "Selected Record";
-            // 
-            // cboFilterBinCardItems
-            // 
-            this.cboFilterBinCardItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFilterBinCardItems.FormattingEnabled = true;
-            this.cboFilterBinCardItems.Location = new System.Drawing.Point(10, 22);
-            this.cboFilterBinCardItems.Margin = new System.Windows.Forms.Padding(2);
-            this.cboFilterBinCardItems.Name = "cboFilterBinCardItems";
-            this.cboFilterBinCardItems.Size = new System.Drawing.Size(137, 21);
-            this.cboFilterBinCardItems.TabIndex = 13;
             // 
             // btnClose
             // 
@@ -246,16 +220,6 @@
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // cboBinCardItems
-            // 
-            this.cboBinCardItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBinCardItems.FormattingEnabled = true;
-            this.cboBinCardItems.Location = new System.Drawing.Point(149, 24);
-            this.cboBinCardItems.Margin = new System.Windows.Forms.Padding(2);
-            this.cboBinCardItems.Name = "cboBinCardItems";
-            this.cboBinCardItems.Size = new System.Drawing.Size(190, 21);
-            this.cboBinCardItems.TabIndex = 0;
-            // 
             // cboIssueReceipt
             // 
             this.cboIssueReceipt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -280,27 +244,17 @@
             // 
             this.cboFilterYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterYears.FormattingEnabled = true;
-            this.cboFilterYears.Location = new System.Drawing.Point(296, 24);
+            this.cboFilterYears.Location = new System.Drawing.Point(426, 22);
             this.cboFilterYears.Margin = new System.Windows.Forms.Padding(2);
             this.cboFilterYears.Name = "cboFilterYears";
             this.cboFilterYears.Size = new System.Drawing.Size(137, 21);
             this.cboFilterYears.TabIndex = 15;
             // 
-            // cboFilterMonths
-            // 
-            this.cboFilterMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFilterMonths.FormattingEnabled = true;
-            this.cboFilterMonths.Location = new System.Drawing.Point(151, 22);
-            this.cboFilterMonths.Margin = new System.Windows.Forms.Padding(2);
-            this.cboFilterMonths.Name = "cboFilterMonths";
-            this.cboFilterMonths.Size = new System.Drawing.Size(137, 21);
-            this.cboFilterMonths.TabIndex = 14;
-            // 
             // btnLoadAllData
             // 
             this.btnLoadAllData.BackColor = System.Drawing.SystemColors.Control;
             this.btnLoadAllData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadAllData.Location = new System.Drawing.Point(541, 17);
+            this.btnLoadAllData.Location = new System.Drawing.Point(671, 15);
             this.btnLoadAllData.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoadAllData.Name = "btnLoadAllData";
             this.btnLoadAllData.Size = new System.Drawing.Size(91, 32);
@@ -338,7 +292,7 @@
             // 
             this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
             this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Location = new System.Drawing.Point(437, 17);
+            this.btnFilter.Location = new System.Drawing.Point(567, 15);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(100, 32);
@@ -384,11 +338,11 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.lblFilterBinCardItem);
+            this.groupBox4.Controls.Add(this.btnSearch);
             this.groupBox4.Controls.Add(this.btnLoadAllData);
             this.groupBox4.Controls.Add(this.btnFilter);
             this.groupBox4.Controls.Add(this.cboFilterYears);
-            this.groupBox4.Controls.Add(this.cboFilterMonths);
-            this.groupBox4.Controls.Add(this.cboFilterBinCardItems);
             this.groupBox4.Location = new System.Drawing.Point(5, 452);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
@@ -450,6 +404,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblBinCardItem);
+            this.groupBox1.Controls.Add(this.btnSearchBinCardItem);
             this.groupBox1.Controls.Add(this.txtSivSrvOtherInvoices);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.btnClose);
@@ -457,7 +413,6 @@
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnUndo);
             this.groupBox1.Controls.Add(this.btnNew);
-            this.groupBox1.Controls.Add(this.cboBinCardItems);
             this.groupBox1.Controls.Add(this.cboIssueReceipt);
             this.groupBox1.Controls.Add(this.dtpDateOfIssueReceipt);
             this.groupBox1.Controls.Add(this.txtDescription);
@@ -516,6 +471,46 @@
             this.pnlContainer.Size = new System.Drawing.Size(1183, 55);
             this.pnlContainer.TabIndex = 40;
             // 
+            // btnSearchBinCardItem
+            // 
+            this.btnSearchBinCardItem.Location = new System.Drawing.Point(315, 26);
+            this.btnSearchBinCardItem.Name = "btnSearchBinCardItem";
+            this.btnSearchBinCardItem.Size = new System.Drawing.Size(27, 20);
+            this.btnSearchBinCardItem.TabIndex = 60;
+            this.btnSearchBinCardItem.Text = "...";
+            this.btnSearchBinCardItem.UseVisualStyleBackColor = true;
+            this.btnSearchBinCardItem.Click += new System.EventHandler(this.btnSearchBinCardItem_Click);
+            // 
+            // lblBinCardItem
+            // 
+            this.lblBinCardItem.BackColor = System.Drawing.Color.White;
+            this.lblBinCardItem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblBinCardItem.Location = new System.Drawing.Point(149, 26);
+            this.lblBinCardItem.Name = "lblBinCardItem";
+            this.lblBinCardItem.Size = new System.Drawing.Size(163, 23);
+            this.lblBinCardItem.TabIndex = 61;
+            this.lblBinCardItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(394, 23);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(27, 20);
+            this.btnSearch.TabIndex = 63;
+            this.btnSearch.Text = "...";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblFilterBinCardItem
+            // 
+            this.lblFilterBinCardItem.BackColor = System.Drawing.Color.White;
+            this.lblFilterBinCardItem.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFilterBinCardItem.Location = new System.Drawing.Point(10, 20);
+            this.lblFilterBinCardItem.Name = "lblFilterBinCardItem";
+            this.lblFilterBinCardItem.Size = new System.Drawing.Size(378, 23);
+            this.lblFilterBinCardItem.TabIndex = 64;
+            this.lblFilterBinCardItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FrmBinCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -552,20 +547,16 @@
         internal crsButton.cButton btnCancel;
         internal System.Windows.Forms.GroupBox groupBox3;
         internal crsButton.cButton btnRemove;
-        internal crsButton.cButton btnAdd;
         internal System.Windows.Forms.Label lblSelectedRecord;
         internal System.Windows.Forms.Label label10;
-        internal System.Windows.Forms.ComboBox cboFilterBinCardItems;
         internal crsButton.cButton btnClose;
         internal crsButton.cButton btnAddBinCardItem;
         internal crsButton.cButton btnSave;
         internal crsButton.cButton btnUndo;
         internal crsButton.cButton btnNew;
-        internal System.Windows.Forms.ComboBox cboBinCardItems;
         internal System.Windows.Forms.ComboBox cboIssueReceipt;
         internal System.Windows.Forms.DateTimePicker dtpDateOfIssueReceipt;
         internal System.Windows.Forms.ComboBox cboFilterYears;
-        internal System.Windows.Forms.ComboBox cboFilterMonths;
         internal System.Windows.Forms.Button btnLoadAllData;
         internal System.Windows.Forms.TextBox txtDescription;
         internal System.Windows.Forms.TextBox txtUnitPrice;
@@ -585,5 +576,9 @@
         private System.Windows.Forms.Panel pnlContainer;
         internal System.Windows.Forms.TextBox txtSivSrvOtherInvoices;
         internal System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblBinCardItem;
+        private System.Windows.Forms.Button btnSearchBinCardItem;
+        private System.Windows.Forms.Label lblFilterBinCardItem;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

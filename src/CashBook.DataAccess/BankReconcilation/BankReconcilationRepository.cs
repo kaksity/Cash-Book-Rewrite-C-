@@ -62,7 +62,9 @@ namespace CashBook.DataAccess.BankReconcilation
                                 FROM
                                     BankReconcilations
                                 WHERE
-                                    AccountId = @AccountId AND IsDeleted = false";
+                                    AccountId = @AccountId AND IsDeleted = false
+                                ORDER BY duration ASC
+                                ";
                 return connection.Query<BankReconcilationModel>(query, new
                 {
                     AccountId = accountId,

@@ -82,7 +82,7 @@ namespace CashBook.DataAccess.Transaction
                                         trans.TransactionDescriptionId = transdesc.TransactionDescriptionId
                                     WHERE
                                         trans.IsDeleted=false AND trans.AmmountDeposited=0
-                                    ORDER BY trans.DateOfTransaction DESC
+                                    ORDER BY trans.DateOfTransaction ASC
                 ";
                 return connection.Query<TransactionModel,AccountModel,TransactionDescriptionModel,TransactionModel>(
                     sql: sqlQuery,
@@ -116,7 +116,7 @@ namespace CashBook.DataAccess.Transaction
                                         trans.TransactionDescriptionId = transdesc.TransactionDescriptionId
                                     WHERE
                                         trans.AccountId = @AccountId AND trans.IsDeleted=false AND trans.AmmountDeposited=0 AND trans.DateOfTransaction=@DateOfTransaction
-                                    ORDER BY trans.DateOfTransaction DESC
+                                    ORDER BY trans.DateOfTransaction ASC
                 ";
                 return connection.Query<TransactionModel, AccountModel, TransactionDescriptionModel, TransactionModel>(
                     sql: sqlQuery,
@@ -162,7 +162,7 @@ namespace CashBook.DataAccess.Transaction
                                         trans.TransactionDescriptionId = transdesc.TransactionDescriptionId
                                     WHERE
                                         trans.IsDeleted=false AND trans.AmmountWithdrawn=0
-                                    ORDER BY trans.DateOfTransaction DESC
+                                    ORDER BY trans.DateOfTransaction ASC
                 ";
                 return connection.Query<TransactionModel, AccountModel, TransactionDescriptionModel, TransactionModel>(
                     sql: sqlQuery,
@@ -196,7 +196,7 @@ namespace CashBook.DataAccess.Transaction
                                         trans.TransactionDescriptionId = transdesc.TransactionDescriptionId
                                     WHERE
                                         trans.AccountId = @AccountId AND trans.IsDeleted=false AND extract(YEAR FROM trans.DateOfTransaction) = @Year AND extract(MONTH FROM trans.DateOfTransaction) = @Month
-                                    ORDER BY trans.DateOfTransaction DESC
+                                    ORDER BY trans.DateOfTransaction ASC
                 ";
                 return connection.Query<TransactionModel, AccountModel, TransactionDescriptionModel, TransactionModel>(
                     sql: sqlQuery,
@@ -231,7 +231,7 @@ namespace CashBook.DataAccess.Transaction
                                         trans.TransactionDescriptionId = transdesc.TransactionDescriptionId
                                     WHERE
                                         trans.AccountId = @AccountId AND trans.IsDeleted=false AND trans.AmmountDeposited=0 AND extract(YEAR FROM trans.DateOfTransaction) = @Year AND extract(MONTH FROM trans.DateOfTransaction) = @Month
-                                    ORDER BY trans.DateOfTransaction DESC
+                                    ORDER BY trans.DateOfTransaction ASC
                 ";
                 return connection.Query<TransactionModel, AccountModel, TransactionDescriptionModel, TransactionModel>(
                     sql: sqlQuery,
@@ -266,7 +266,7 @@ namespace CashBook.DataAccess.Transaction
                                         trans.TransactionDescriptionId = transdesc.TransactionDescriptionId
                                     WHERE
                                         trans.AccountId = @AccountId AND trans.IsDeleted=false AND trans.AmmountWithdrawn=0 AND extract(YEAR FROM trans.DateOfTransaction) = @Year AND extract(MONTH FROM trans.DateOfTransaction) = @Month
-                                    ORDER BY trans.DateOfTransaction DESC
+                                    ORDER BY trans.DateOfTransaction ASC
                 ";
                 return connection.Query<TransactionModel, AccountModel, TransactionDescriptionModel, TransactionModel>(
                     sql: sqlQuery,
@@ -301,7 +301,7 @@ namespace CashBook.DataAccess.Transaction
                                         trans.TransactionDescriptionId = transdesc.TransactionDescriptionId
                                     WHERE
                                         trans.IsDeleted=false AND trans.TransactionId=@TransactionId
-                                    ORDER BY trans.DateOfTransaction DESC
+                                    ORDER BY trans.DateOfTransaction ASC
                 ";
                 return connection.Query<TransactionModel, AccountModel, TransactionDescriptionModel, TransactionModel>(
                     sql: sqlQuery,

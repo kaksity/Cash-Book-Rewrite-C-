@@ -26,7 +26,7 @@ namespace CashBook.UI.StockLedger
 
         private string binCardId = "";
         private List<ReadBinCardDto> binCardsList = null;
-
+        private string searchBinCardItem = "";
 
         public FrmBinCard(IBinCardItemService binCardItemService,IUtilityService utilityService, IBinCardService binCardService)
         {
@@ -40,24 +40,18 @@ namespace CashBook.UI.StockLedger
 
         private void FrmBinCard_Load(object sender, EventArgs e)
         {
-            LoadBinCardItemsComboBox();
             LoadIssueReceiptComboBox();
             LoadMonthAndYears();
             Reset();
             InitBinCardDataGridView();
-
+            searchBinCardItem = "";
             binCardsList = _binCardService.GetAllBinCards();
             LoadGridData(binCardsList);
         }
 
         private void LoadMonthAndYears()
         {
-            var tblMonths = _utilityService.GetMonths();
             var tblYears = _utilityService.GetYears();
-
-            cboFilterMonths.DataSource = tblMonths;
-            cboFilterMonths.DisplayMember = "name";
-            cboFilterMonths.ValueMember = "value";
 
             cboFilterYears.DataSource = tblYears;
             cboFilterYears.DisplayMember = "name";
@@ -103,7 +97,6 @@ namespace CashBook.UI.StockLedger
 
         private void Enable()
         {
-            cboBinCardItems.Enabled = true;
             cboIssueReceipt.Enabled = true;
             txtDescription.Enabled = true;
             txtQuantity.Enabled = true;
@@ -122,7 +115,6 @@ namespace CashBook.UI.StockLedger
         private void Disable()
         {
 
-            cboBinCardItems.Enabled = false;
             cboIssueReceipt.Enabled = false;
             txtDescription.Enabled = false;
             txtQuantity.Enabled = false;
@@ -179,19 +171,6 @@ namespace CashBook.UI.StockLedger
             }
         }
             
-        private void LoadBinCardItemsComboBox()
-        {
-            var binCardItems = _binCardItemService.GetAllBinCardItem();
-
-            cboBinCardItems.DisplayMember = "BinCardItemName";
-            cboBinCardItems.ValueMember = "BinCardItemId";
-            cboBinCardItems.DataSource = binCardItems;
-
-            cboFilterBinCardItems.DisplayMember = "BinCardItemName";
-            cboFilterBinCardItems.ValueMember = "BinCardItemId";
-            cboFilterBinCardItems.DataSource = binCardItems;
-
-        }
         private void LoadIssueReceiptComboBox()
         {
             var tblIssueOrReceipt = _utilityService.GetIssueOrReceipt();
@@ -204,7 +183,6 @@ namespace CashBook.UI.StockLedger
         {
             var frmBinCardItem = Program.container.GetInstance<FrmBinCardItems>();
             frmBinCardItem.ShowDialog();
-            LoadBinCardItemsComboBox();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -233,16 +211,10 @@ namespace CashBook.UI.StockLedger
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            if (cboBinCardItems.SelectedValue == null)
+            if (Program.binCardItemId == "")
             {
                 MessageBox.Show("Bin Card Iems is required", Software.GetApplicationName());
-                cboBinCardItems.Focus();
-                return;
-            }
-            if (cboIssueReceipt.SelectedValue == null)
-            {
-                MessageBox.Show("Issue/Receipt is required", Software.GetApplicationName());
-                cboBinCardItems.Focus();
+                btnSearchBinCardItem.Focus();
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtSivSrvOtherInvoices.Text) == true)
@@ -285,7 +257,7 @@ namespace CashBook.UI.StockLedger
             if (isNewRecord == true && isEditedRecord == false)
             {
                 var newRecord = new CreateBinCardDto {
-                    BinCardItemId = (string)cboBinCardItems.SelectedValue,
+                    BinCardItemId = Program.binCardItemId,
                     DateOfIssueOrReceipt = dtpDateOfIssueReceipt.Value,
                     SivSrvOthers = txtSivSrvOtherInvoices.Text,
                     Description = txtDescription.Text,
@@ -349,8 +321,35 @@ namespace CashBook.UI.StockLedger
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            binCardsList = _binCardService.GetBinCardsByBinCardItemsMonthAndYear((string)cboFilterBinCardItems.SelectedValue, (int)cboFilterMonths.SelectedValue, (int)cboFilterYears.SelectedValue);
+            binCardsList = _binCardService.GetBinCardsByBinCardItemsMonthAndYear(searchBinCardItem, (int)cboFilterYears.SelectedValue);
             LoadGridData(binCardsList);
+        }
+
+        private void btnSearchBinCardItem_Click(object sender, EventArgs e)
+        {
+            var frmSearchStockBinCard = Program.container.GetInstance<FrmSearchStockBinCardItem>();
+            frmSearchStockBinCard.ShowDialog();
+
+            if (string.IsNullOrWhiteSpace(Program.binCardItemId) == true)
+                return;
+
+            var binCardItem = _binCardItemService.GetBinCardItemByBinCardItemId(Program.binCardItemId);
+
+            lblBinCardItem.Text = $"{binCardItem.BinCardItemName}";
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var frmSearchStockBinCard = Program.container.GetInstance<FrmSearchStockBinCardItem>();
+            frmSearchStockBinCard.ShowDialog();
+
+            if (string.IsNullOrWhiteSpace(Program.binCardItemId) == true)
+                return;
+
+            var binCardItem = _binCardItemService.GetBinCardItemByBinCardItemId(Program.binCardItemId);
+            searchBinCardItem = Program.binCardItemId;
+            Program.binCardItemId = "";
+            lblFilterBinCardItem.Text = $"{binCardItem.BinCardItemName}";
         }
     }
 }

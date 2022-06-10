@@ -30,10 +30,11 @@ namespace CashBook.DataAccess.Reports
                 query.Append($" AND trans.AccountId = '{accountId}' AND trans.TRANSACTIONDESCRIPTIONID='{transactionDescriptionId}' AND EXTRACT(MONTH FROM trans.DATEOFTRANSACTION)={month} AND EXTRACT(year FROM trans.DATEOFTRANSACTION)={year}");
 
                 if (transactionType == "INCOME")
-                    query.Append(" AND trans.AmmountWithdrawn=0");
+                    query.Append(" AND trans.AmmountWithdrawn=0 ");
                 else
-                    query.Append(" AND trans.AmmountDeposited=0");
+                    query.Append(" AND trans.AmmountDeposited=0 ");
 
+                query.Append(" ORDER BY trans.DATEOFTRANSACTION ASC");
                 var tblTransactions = new DataTable();
 
                 
@@ -49,8 +50,8 @@ namespace CashBook.DataAccess.Reports
             {
                 connection.Open();
                 StringBuilder query = new StringBuilder("SELECT trans.AMMOUNTWITHDRAWN, trans.AMMOUNTDEPOSITED, trans.NAMEOFBENEFICIARY, trans.DATEOFTRANSACTION, trans.PVORRVNUMBER, trans.SUBHEADCOLUMN, trans.TRANSACTIONDESCRIPTIONID AS CummulativeBalance, transdec .DescriptionName,trans.REFNUMBER FROM TRANSACTIONS trans INNER JOIN TransactionDescriptions transdec ON trans.TRANSACTIONDESCRIPTIONID = transdec.TRANSACTIONDESCRIPTIONID WHERE trans.IsDeleted=false");
-                query.Append($" AND trans.AccountId = '{accountId}' AND trans.TRANSACTIONDESCRIPTIONID='{transactionDescriptionId}' AND EXTRACT(MONTH FROM trans.DATEOFTRANSACTION)={month} AND EXTRACT(year FROM trans.DATEOFTRANSACTION)={year}");
-
+                query.Append($" AND trans.AccountId = '{accountId}' AND trans.TRANSACTIONDESCRIPTIONID='{transactionDescriptionId}' AND EXTRACT(MONTH FROM trans.DATEOFTRANSACTION)={month} AND EXTRACT(year FROM trans.DATEOFTRANSACTION)={year} ");
+                query.Append(" ORDER BY trans.DATEOFTRANSACTION ASC");
                 var tblTransactions = new DataTable();
 
                 var adapter = new FbDataAdapter(query.ToString(), connection);
@@ -68,10 +69,11 @@ namespace CashBook.DataAccess.Reports
                 query.Append($" AND trans.AccountId = '{accountId}' AND EXTRACT(MONTH FROM trans.DATEOFTRANSACTION)={month} AND EXTRACT(year FROM trans.DATEOFTRANSACTION)={year} ");
 
                 if (transactionType == "INCOME")
-                    query.Append(" AND trans.AmmountWithdrawn=0");
+                    query.Append(" AND trans.AmmountWithdrawn=0 ");
                 else
-                    query.Append(" AND trans.AmmountDeposited=0");
+                    query.Append(" AND trans.AmmountDeposited=0 ");
 
+                query.Append(" ORDER BY trans.DATEOFTRANSACTION ASC");
                 var tblTransactions = new DataTable();
 
 
@@ -88,6 +90,8 @@ namespace CashBook.DataAccess.Reports
                 connection.Open();
                 StringBuilder query = new StringBuilder("SELECT trans.AMMOUNTWITHDRAWN, trans.AMMOUNTDEPOSITED, trans.NAMEOFBENEFICIARY, trans.DATEOFTRANSACTION, trans.PVORRVNUMBER, trans.SUBHEADCOLUMN, trans.TRANSACTIONDESCRIPTIONID AS CummulativeBalance, transdec .DescriptionName,trans.REFNUMBER FROM TRANSACTIONS trans INNER JOIN TransactionDescriptions transdec ON trans.TRANSACTIONDESCRIPTIONID = transdec.TRANSACTIONDESCRIPTIONID WHERE trans.IsDeleted=false");
                 query.Append($" AND trans.AccountId = '{accountId}' AND EXTRACT(MONTH FROM trans.DATEOFTRANSACTION)={month} AND EXTRACT(year FROM trans.DATEOFTRANSACTION)={year} ");
+                query.Append(" ORDER BY trans.DATEOFTRANSACTION ASC");
+
                 var tblTransactions = new DataTable();
 
                 var adapter = new FbDataAdapter(query.ToString(), connection);

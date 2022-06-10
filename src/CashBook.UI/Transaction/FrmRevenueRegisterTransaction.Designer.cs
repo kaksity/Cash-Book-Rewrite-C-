@@ -64,7 +64,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRemove = new crsButton.cButton();
             this.btnCancel = new crsButton.cButton();
-            this.btnAdd = new crsButton.cButton();
             this.lblSelectedRecord = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.grid = new System.Windows.Forms.DataGridView();
@@ -407,7 +406,7 @@
             // 
             this.btnLoadAllData.BackColor = System.Drawing.SystemColors.Control;
             this.btnLoadAllData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadAllData.Location = new System.Drawing.Point(541, 17);
+            this.btnLoadAllData.Location = new System.Drawing.Point(670, 17);
             this.btnLoadAllData.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoadAllData.Name = "btnLoadAllData";
             this.btnLoadAllData.Size = new System.Drawing.Size(91, 32);
@@ -420,7 +419,7 @@
             // 
             this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
             this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Location = new System.Drawing.Point(437, 17);
+            this.btnFilter.Location = new System.Drawing.Point(566, 17);
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(100, 32);
@@ -433,17 +432,17 @@
             // 
             this.cboFilterYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterYears.FormattingEnabled = true;
-            this.cboFilterYears.Location = new System.Drawing.Point(296, 24);
+            this.cboFilterYears.Location = new System.Drawing.Point(452, 24);
             this.cboFilterYears.Margin = new System.Windows.Forms.Padding(2);
             this.cboFilterYears.Name = "cboFilterYears";
-            this.cboFilterYears.Size = new System.Drawing.Size(137, 21);
+            this.cboFilterYears.Size = new System.Drawing.Size(110, 21);
             this.cboFilterYears.TabIndex = 0;
             // 
             // cboFilterMonths
             // 
             this.cboFilterMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterMonths.FormattingEnabled = true;
-            this.cboFilterMonths.Location = new System.Drawing.Point(151, 22);
+            this.cboFilterMonths.Location = new System.Drawing.Point(311, 24);
             this.cboFilterMonths.Margin = new System.Windows.Forms.Padding(2);
             this.cboFilterMonths.Name = "cboFilterMonths";
             this.cboFilterMonths.Size = new System.Drawing.Size(137, 21);
@@ -453,17 +452,16 @@
             // 
             this.cboFilterAccounts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterAccounts.FormattingEnabled = true;
-            this.cboFilterAccounts.Location = new System.Drawing.Point(10, 22);
+            this.cboFilterAccounts.Location = new System.Drawing.Point(4, 24);
             this.cboFilterAccounts.Margin = new System.Windows.Forms.Padding(2);
             this.cboFilterAccounts.Name = "cboFilterAccounts";
-            this.cboFilterAccounts.Size = new System.Drawing.Size(137, 21);
+            this.cboFilterAccounts.Size = new System.Drawing.Size(303, 21);
             this.cboFilterAccounts.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnRemove);
             this.groupBox3.Controls.Add(this.btnCancel);
-            this.groupBox3.Controls.Add(this.btnAdd);
             this.groupBox3.Controls.Add(this.lblSelectedRecord);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Location = new System.Drawing.Point(5, 360);
@@ -473,7 +471,7 @@
             this.groupBox3.Size = new System.Drawing.Size(766, 88);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Add Supportting Document";
+            this.groupBox3.Text = "Operations";
             // 
             // btnRemove
             // 
@@ -507,21 +505,6 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.ButtonType = crsButton.cButton.btnType.add;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(468, 20);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(85, 48);
-            this.btnAdd.TabIndex = 3;
-            this.btnAdd.UseVisualStyleBackColor = false;
-            // 
             // lblSelectedRecord
             // 
             this.lblSelectedRecord.BackColor = System.Drawing.Color.White;
@@ -529,7 +512,7 @@
             this.lblSelectedRecord.Location = new System.Drawing.Point(115, 16);
             this.lblSelectedRecord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSelectedRecord.Name = "lblSelectedRecord";
-            this.lblSelectedRecord.Size = new System.Drawing.Size(348, 67);
+            this.lblSelectedRecord.Size = new System.Drawing.Size(439, 67);
             this.lblSelectedRecord.TabIndex = 2;
             // 
             // label10
@@ -622,7 +605,6 @@
         internal System.Windows.Forms.GroupBox groupBox3;
         internal crsButton.cButton btnRemove;
         internal crsButton.cButton btnCancel;
-        internal crsButton.cButton btnAdd;
         internal System.Windows.Forms.Label lblSelectedRecord;
         internal System.Windows.Forms.Label label10;
         internal System.Windows.Forms.DataGridView grid;

@@ -58,7 +58,15 @@ namespace CashBook.DataAccess.BinCardItem
                 return connection.Query<BinCardItemModel>(query).ToList();
             }
         }
-
+        public BinCardItemModel GetBinCardItemByBinCardItemId(string binCardItemId)
+        {
+            using (var connection = dbConnection)
+            {
+                connection.Open();
+                string query = @"SELECT * FROM BinCardItems WHERE IsDeleted=false AND BinCardItemId=@BinCardItemId";
+                return connection.Query<BinCardItemModel>(query, new { BinCardItemId = binCardItemId }).FirstOrDefault();
+            }
+        }
         public void UpdateBinCardItem(BinCardItemModel model)
         {
             using (var connection = dbConnection)
